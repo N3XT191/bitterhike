@@ -15,10 +15,10 @@ jobs:
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - name: copy file via ssh password
+      - name: copy file via ssh key
         uses: appleboy/scp-action@master
         with:
-          host: ${{ secrets.SSHHOST }}
+          host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           source: "out/*"
