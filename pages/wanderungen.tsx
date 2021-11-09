@@ -218,15 +218,15 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					</ul>
 				</div>
 				<div style={{ position: "relative" }}>
-					<h3 id="daytrips">Tageswanderungen</h3>
+					<h3 id="daytrips">Sonstige Wanderungen</h3>
 					<div>
 						<p>Eine Liste aller meiner Tageswanderungen:</p>
 						<ul>
 							{posts
 								.filter(
 									(p) =>
-										p.frontMatter.tags.findIndex(
-											(t) => t === "Tageswanderung"
+										p.frontMatter.tags?.findIndex(
+											(t) => t === "Sonstige Wanderungen"
 										) !== -1
 								)
 								.sort((a, b) =>

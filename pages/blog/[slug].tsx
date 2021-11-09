@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import useIsMobile from "../../components/isMobile";
 import PostNavigation from "../../components/PostNavigation";
 import StatCard from "../../components/StatCard";
+import Link from "next/link";
 
 export const getStaticPaths = async () => {
 	const files = fs.readdirSync(path.join("posts"));
@@ -101,7 +102,7 @@ const PostPage: React.FC<Props> = ({
 			)}
 			<StatCard data={frontMatter as any} />
 			<div style={{ fontSize: useMobile ? undefined : 24 }}>
-				<MDXRemote {...mdxSource} components={{ Img }} />
+				<MDXRemote {...mdxSource} components={{ Img, Link }} />
 			</div>
 			<PostNavigation previousSlug={previousSlug} nextSlug={nextSlug} />
 		</div>

@@ -30,6 +30,7 @@ const Img = ({ d, src }: { d: string; src: string }) => {
 				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
+				objectPosition: "center",
 			}}
 		>
 			<img
