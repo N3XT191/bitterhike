@@ -45,7 +45,7 @@ export default function Home({ posts }: { posts: any[] }) {
 	return (
 		<Container fluid>
 			<div style={{ display: "flex", alignItems: "center" }}>
-				<h1>Blög{tag ? ": " + tag : ""}</h1>
+				<h1>Blog{tag ? ": " + tag : ""}</h1>
 				{tag ? <RemoveTagFilter /> : undefined}
 			</div>
 			<Row xs={1} sm={1} md={2} lg={2} xl={2} xxl={2}>
