@@ -25,11 +25,25 @@ const Header = () => {
 						<Nav
 							style={{ display: "flex", justifyContent: "end", width: "100%" }}
 						>
+							<Link href="/blog" passHref>
+								<a style={{ color: "black", textDecoration: "none" }}>
+									<div
+										style={{
+											cursor: "pointer",
+											marginTop: 10,
+											fontSize: 20,
+										}}
+									>
+										Blog
+									</div>
+								</a>
+							</Link>
 							<Link href="/wanderungen" passHref>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<div
 										style={{
 											cursor: "pointer",
+											marginLeft: 20,
 											marginTop: 10,
 											fontSize: 20,
 										}}

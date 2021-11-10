@@ -33,6 +33,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ posts }: { posts: any[] }) {
 	const router = useRouter();
+	const { tag } = router.query;
 
 	var dateOptions = {
 		year: "numeric" as "numeric",
@@ -40,35 +41,24 @@ export default function Home({ posts }: { posts: any[] }) {
 		day: "numeric" as "numeric",
 	};
 	const mobile = useIsMobile();
-
+	const filteredPosts = tag
+		? posts.filter((p) => p.frontMatter.tags.findIndex((t) => t === tag) !== -1)
+		: posts;
 	return (
 		<Container fluid>
 			<NextSeo
 				title="BitterHike - Ein Wanderblog"
 				description="BitterHike - Mein Blog in dem ich über meine Wandererlebnisse schreibe."
 			/>
-			<h1>BitterHike - Mein Wanderblog</h1>
-			<p>
-				Hier schreibe ich ab und zu über meine Wanderungen in und um die
-				Schweizer Alpen. Unten sind meine aktuellsten Posts und{" "}
-				<Link href="/wanderungen" passHref>
-					<a>hier</a>
-				</Link>{" "}
-				findest du eine Liste aller meiner Wanderungen.
-			</p>
-			<p>
-				Falls ich gerade unterwegs in den Bergen bin kannst du mich auf der{" "}
-				<Link href="/live" passHref>
-					<a>Live</a>
-				</Link>{" "}
-				Seite verfolgen!
-			</p>
-			<h2>Neuste Posts</h2>
+
+			<div style={{ display: "flex", alignItems: "center" }}>
+				<h1>Blog{tag ? ": " + tag : ""}</h1>
+				{tag ? <RemoveTagFilter /> : undefined}
+			</div>
 			<Row xs={1} sm={1} md={2} lg={2} xl={2} xxl={2}>
-				{posts.length > 0 ? (
-					posts
+				{filteredPosts.length > 0 ? (
+					filteredPosts
 						.sort((a, b) => (a.frontMatter.date < b.frontMatter.date ? 1 : -1))
-						.slice(0, 4)
 						.map((post, index) => (
 							<Link href={"/blog/" + post.slug} passHref key={index}>
 								<a style={{ color: "black", textDecoration: "none" }}>
@@ -105,9 +95,6 @@ export default function Home({ posts }: { posts: any[] }) {
 				) : (
 					<div>no posts found</div>
 				)}
-				<Link href="/blog" passHref>
-					<a style={{ marginTop: -10, marginBottom: 10 }}>Ältere Posts...</a>
-				</Link>
 			</Row>
 		</Container>
 	);

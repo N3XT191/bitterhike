@@ -65,7 +65,7 @@ const StatCard = ({
 				>
 					<div>Tags:&nbsp;</div>
 					{data.tags.map((tag) => (
-						<Link key={tag} href={{ pathname: "/", query: { tag } }}>
+						<Link key={tag} href={{ pathname: "/blog/", query: { tag } }}>
 							<div
 								style={{
 									marginRight: 5,
