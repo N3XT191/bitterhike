@@ -47,7 +47,7 @@ export default function Home({ posts }: { posts: any[] }) {
 	return (
 		<Container fluid>
 			<NextSeo
-				title="BitterHike - Ein Wanderblog"
+				title="BitterHike - Marc's Wanderblog"
 				description="BitterHike - Mein Blog in dem ich über meine Wandererlebnisse schreibe."
 			/>
 

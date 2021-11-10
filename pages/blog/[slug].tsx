@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-import Img from "./Img";
+import Img from "../../components/Img";
 import React from "react";
 import dynamic from "next/dynamic";
 import useIsMobile from "../../components/isMobile";

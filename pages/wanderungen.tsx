@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import dynamic from "next/dynamic";
 import path from "path";
 import React from "react";
-import Img from "./blog/Img";
+import Img from "../components/Img";
 import fs from "fs";
 import Link from "next/link";
 import { Card } from "react-bootstrap";
@@ -41,7 +41,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 		<div className="mt-3">
 			<NextSeo
 				title="BitterHike - Wanderungen"
-				description="Eine Übersicht meiner Wanderungen"
+				description="Eine Übersicht meiner Wanderungen in und um die Schweizer Alpen"
 			/>
 			<div
 				style={{

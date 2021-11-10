@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "./blog/Img";
+import Img from "../components/Img";
 
 const Bio = () => {
 	return (
