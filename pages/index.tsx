@@ -3,6 +3,8 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 
+import { NextSeo } from "next-seo";
+
 import { Container, Col, Row, Card } from "react-bootstrap";
 import useIsMobile from "../components/isMobile";
 import { useRouter } from "next/router";
@@ -44,6 +46,10 @@ export default function Home({ posts }: { posts: any[] }) {
 		: posts;
 	return (
 		<Container fluid>
+			<NextSeo
+				title="BitterHike - Ein Wanderblog"
+				description="Hier schreibe ich über meine Wandererlebnisse"
+			/>
 			<div style={{ display: "flex", alignItems: "center" }}>
 				<h1>Blog{tag ? ": " + tag : ""}</h1>
 				{tag ? <RemoveTagFilter /> : undefined}
@@ -54,7 +60,7 @@ export default function Home({ posts }: { posts: any[] }) {
 						.sort((a, b) => (a.frontMatter.date < b.frontMatter.date ? 1 : -1))
 						.map((post, index) => (
 							<Link href={"/blog/" + post.slug} passHref key={index}>
-								<Col>
+								<a style={{ color: "black", textDecoration: "none" }}>
 									<Card style={{ marginBottom: 20, cursor: "pointer" }}>
 										<div style={{ height: mobile ? 150 : 300 }}>
 											<Card.Img
@@ -82,7 +88,7 @@ export default function Home({ posts }: { posts: any[] }) {
 											</Card.Text>
 										</Card.Body>
 									</Card>
-								</Col>
+								</a>
 							</Link>
 						))
 				) : (

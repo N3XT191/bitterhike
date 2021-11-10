@@ -7,6 +7,7 @@ import fs from "fs";
 import Link from "next/link";
 import { Card } from "react-bootstrap";
 import useIsMobile from "../components/isMobile";
+import { NextSeo } from "next-seo";
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
@@ -38,6 +39,10 @@ const Bio = ({ posts }: { posts: any[] }) => {
 	);
 	return (
 		<div className="mt-3">
+			<NextSeo
+				title="BitterHike - Wanderungen"
+				description="Eine Übersicht meiner Wanderungen"
+			/>
 			<div
 				style={{
 					width: "100%",

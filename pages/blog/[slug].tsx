@@ -12,6 +12,8 @@ import PostNavigation from "../../components/PostNavigation";
 import StatCard from "../../components/StatCard";
 import Link from "next/link";
 
+import { NextSeo } from "next-seo";
+
 export const getStaticPaths = async () => {
 	const files = fs.readdirSync(path.join("posts"));
 	const paths = files.map((filename) => ({
@@ -78,6 +80,10 @@ const PostPage: React.FC<Props> = ({
 
 	return (
 		<div className="mt-4" style={{ width: "100%", position: "relative" }}>
+			<NextSeo
+				title={"BitterHike - " + frontMatter.title}
+				description={frontMatter.description}
+			/>
 			<PostNavigation previousSlug={previousSlug} nextSlug={nextSlug} />
 			<h1>{frontMatter.title}</h1>
 			{frontMatter.sectionGPXUrl ? (
@@ -102,7 +108,7 @@ const PostPage: React.FC<Props> = ({
 			)}
 			<StatCard data={frontMatter as any} />
 			<div style={{ fontSize: useMobile ? undefined : 24 }}>
-				<MDXRemote {...mdxSource} components={{ Img, Link }} />
+				<MDXRemote {...mdxSource} components={{ Img }} />
 			</div>
 			<PostNavigation previousSlug={previousSlug} nextSlug={nextSlug} />
 		</div>
