@@ -4,3 +4,4 @@
 
 // NOTE: This file should not be edited
 // see https://nextjs.org/docs/basic-features/typescript for more information.
+NEXT_PUBLIC_GOOGLE_ANALYTICS = "G-NLCK29G8PX";
