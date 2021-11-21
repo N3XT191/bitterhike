@@ -25,40 +25,60 @@ const Header = () => {
 						<Nav
 							style={{ display: "flex", justifyContent: "end", width: "100%" }}
 						>
+							<Link href="/blog" passHref>
+								<a style={{ color: "black", textDecoration: "none" }}>
+									<div
+										style={{
+											cursor: "pointer",
+											marginTop: 10,
+											fontSize: 20,
+										}}
+									>
+										Blog
+									</div>
+								</a>
+							</Link>
 							<Link href="/wanderungen" passHref>
-								<div
-									style={{
-										cursor: "pointer",
-										marginTop: 10,
-										fontSize: 20,
-									}}
-								>
-									Wanderungen
-								</div>
+								<a style={{ color: "black", textDecoration: "none" }}>
+									<div
+										style={{
+											cursor: "pointer",
+											marginLeft: 20,
+											marginTop: 10,
+											fontSize: 20,
+										}}
+									>
+										Wanderungen
+									</div>
+								</a>
 							</Link>
 							<Link href="/bio" passHref>
-								<div
-									style={{
-										cursor: "pointer",
-										marginLeft: 20,
-										marginTop: 10,
-										fontSize: 20,
-									}}
-								>
-									Über Mich
-								</div>
+								<a style={{ color: "black", textDecoration: "none" }}>
+									<div
+										style={{
+											cursor: "pointer",
+											marginLeft: 20,
+											marginTop: 10,
+											fontSize: 20,
+										}}
+									>
+										Über Mich
+									</div>
+								</a>
 							</Link>
 							<Link href="/live" passHref>
-								<div
-									style={{
-										cursor: "pointer",
-										marginLeft: 20,
-										marginTop: 10,
-										fontSize: 20,
-									}}
-								>
-									Live
-								</div>
+								<a style={{ color: "black", textDecoration: "none" }}>
+									<div
+										style={{
+											cursor: "pointer",
+											marginLeft: 20,
+											marginTop: 10,
+											fontSize: 20,
+										}}
+									>
+										Live
+									</div>
+								</a>
 							</Link>
 						</Nav>
 					</Navbar.Collapse>

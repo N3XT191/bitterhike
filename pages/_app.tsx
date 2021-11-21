@@ -5,11 +5,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { Container } from "react-bootstrap";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
 	return (
 		<>
 			<Container style={{ maxWidth: 900 }}>
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=G-NLCK29G8PX"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-NLCK29G8PX');
+        `}
+				</Script>
 				<Head>
 					<meta name="apple-mobile-web-app-title" content="BitterHike" />
 					<meta name="apple-mobile-web-app-capable" content="yes" />

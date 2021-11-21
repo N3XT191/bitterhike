@@ -2,11 +2,12 @@ import matter from "gray-matter";
 import dynamic from "next/dynamic";
 import path from "path";
 import React from "react";
-import Img from "./blog/Img";
+import Img from "../components/Img";
 import fs from "fs";
 import Link from "next/link";
 import { Card } from "react-bootstrap";
 import useIsMobile from "../components/isMobile";
+import { NextSeo } from "next-seo";
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
@@ -38,6 +39,10 @@ const Bio = ({ posts }: { posts: any[] }) => {
 	);
 	return (
 		<div className="mt-3">
+			<NextSeo
+				title="BitterHike - Wanderungen"
+				description="Eine Übersicht meiner Wanderungen in und um die Schweizer Alpen"
+			/>
 			<div
 				style={{
 					width: "100%",
@@ -218,15 +223,15 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					</ul>
 				</div>
 				<div style={{ position: "relative" }}>
-					<h3 id="daytrips">Tageswanderungen</h3>
+					<h3 id="daytrips">Sonstige Wanderungen</h3>
 					<div>
 						<p>Eine Liste aller meiner Tageswanderungen:</p>
 						<ul>
 							{posts
 								.filter(
 									(p) =>
-										p.frontMatter.tags.findIndex(
-											(t) => t === "Tageswanderung"
+										p.frontMatter.tags?.findIndex(
+											(t) => t === "Sonstige Wanderungen"
 										) !== -1
 								)
 								.sort((a, b) =>

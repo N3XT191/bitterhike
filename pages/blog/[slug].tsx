@@ -4,12 +4,15 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-import Img from "./Img";
+import Img from "../../components/Img";
 import React from "react";
 import dynamic from "next/dynamic";
 import useIsMobile from "../../components/isMobile";
 import PostNavigation from "../../components/PostNavigation";
 import StatCard from "../../components/StatCard";
+import Link from "next/link";
+
+import { NextSeo } from "next-seo";
 
 export const getStaticPaths = async () => {
 	const files = fs.readdirSync(path.join("posts"));
@@ -77,6 +80,10 @@ const PostPage: React.FC<Props> = ({
 
 	return (
 		<div className="mt-4" style={{ width: "100%", position: "relative" }}>
+			<NextSeo
+				title={"BitterHike - " + frontMatter.title}
+				description={frontMatter.description}
+			/>
 			<PostNavigation previousSlug={previousSlug} nextSlug={nextSlug} />
 			<h1>{frontMatter.title}</h1>
 			{frontMatter.sectionGPXUrl ? (
