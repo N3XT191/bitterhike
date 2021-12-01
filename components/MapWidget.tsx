@@ -82,7 +82,6 @@ const MapWidget = ({
 		polyline = L.polyline(livePoints, {
 			lineJoin: "round",
 		});
-		console.log(polyline);
 	}
 
 	useEffect(() => {
@@ -127,7 +126,6 @@ const MapWidget = ({
 				const corner1 = [bboxArray[1], bboxArray[0]];
 				const corner2 = [bboxArray[3], bboxArray[2]];
 				mapRef.current.fitBounds([corner1, corner2]);
-				console.log(partRoute);
 			}
 		}
 	}, [fullScreen]);
