@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+import useIsMobile from "../components/isMobile";
 
 const testFeed = {
 	response: {
@@ -139,6 +140,7 @@ const Live = () => {
 
 		fetchData();
 	}, []);
+	const mobile = useIsMobile();
 	return (
 		<div className="mt-3">
 			<NextSeo
@@ -148,7 +150,7 @@ const Live = () => {
 			<p className="display-4 text-center">Live Tracking</p>
 			{liveData.length > 0 ? (
 				<MapWidget
-					height={600}
+					height={mobile ? 380 : 600}
 					sectionGPXUrl=""
 					fullGPXUrl="/NSWest/gpx/nswest.gpx"
 					fullLabel="Geplante Route"
