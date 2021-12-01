@@ -122,8 +122,8 @@ const Live = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const result = testFeed;
-			//const result = await getFeed();
+			//const result = testFeed;
+			const result = await getFeed();
 
 			console.log(result.response);
 			if (result?.response?.errors?.error?.code === "E-0195") {
