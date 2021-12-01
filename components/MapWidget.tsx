@@ -26,9 +26,8 @@ const coordinates = [
 	{ lat: 47.4769, lng: 8.54179 },
 	{ lat: 47.3769, lng: 8.44179 },
 ];
-const latLongs = coordinates.map((point) => new L.LatLng(point.lat, point.lng));
 
-const polyline = L.polyline(coordinates, {
+let polyline = L.polyline(coordinates, {
 	lineJoin: "round",
 });
 
@@ -54,6 +53,7 @@ interface Props {
 	fullLabel?: string;
 	focusOn?: "section" | "full" | "live";
 	live?: boolean;
+	livePoints?: { lng: number; lat: number }[];
 }
 const MapWidget = ({
 	sectionGPXUrl,
@@ -63,6 +63,7 @@ const MapWidget = ({
 	fullLabel,
 	focusOn,
 	live,
+	livePoints,
 }: Props) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
@@ -76,6 +77,13 @@ const MapWidget = ({
 	const [partRouteGPX] = sectionGPXUrl
 		? useFetcher(() => getGPX(sectionGPXUrl))
 		: [undefined];
+
+	if (livePoints?.length > 0) {
+		polyline = L.polyline(livePoints.slice(1), {
+			lineJoin: "round",
+		});
+		console.log(polyline);
+	}
 
 	useEffect(() => {
 		if (wholeRouteGPX) {
@@ -197,8 +205,8 @@ const MapWidget = ({
 							key={2}
 							data={wholeRoute}
 							style={{
-								color: "#1b75b5",
-								weight: 4,
+								color: "#0095ff",
+								weight: 5,
 								opacity: 1,
 							}}
 						/>
@@ -210,7 +218,7 @@ const MapWidget = ({
 					<Pane name="live" className="live">
 						<Polyline
 							pathOptions={{ color: "lime", weight: 7 }}
-							positions={coordinates}
+							positions={livePoints}
 						/>
 					</Pane>
 				) : undefined}
@@ -256,8 +264,8 @@ const MapWidget = ({
 						<div
 							style={{
 								width: 20,
-								height: 4,
-								backgroundColor: "#1b75b5",
+								height: 5,
+								backgroundColor: "#0095ff",
 								margin: "0 10px",
 							}}
 						/>
@@ -279,7 +287,7 @@ const MapWidget = ({
 								margin: "0 10px",
 							}}
 						/>
-						<div>{fullLabel ? fullLabel : "Live"}</div>
+						<div>{"Letzte 7 Tage"}</div>
 					</div>
 				) : undefined}
 			</div>
