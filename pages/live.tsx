@@ -150,7 +150,7 @@ const Live = () => {
 			<p className="display-4 text-center">Live Tracking</p>
 			{liveData.length > 0 ? (
 				<MapWidget
-					height={mobile ? 430 : 600}
+					height={mobile ? 470 : 600}
 					sectionGPXUrl=""
 					fullGPXUrl="/NSWest/gpx/nswest.gpx"
 					fullLabel="Geplante Route"
