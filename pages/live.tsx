@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
@@ -134,7 +133,6 @@ const Live = () => {
 					return { lat: m.latitude, lng: m.longitude };
 				});
 				setLiveData(points);
-				console.log(points);
 			}
 		};
 

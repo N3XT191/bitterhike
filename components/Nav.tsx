@@ -25,7 +25,7 @@ const Header = () => {
 						<Nav
 							style={{ display: "flex", justifyContent: "end", width: "100%" }}
 						>
-							<Link href="/blog" passHref>
+							<Link href="/blog/" passHref>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<div
 										style={{
@@ -38,7 +38,7 @@ const Header = () => {
 									</div>
 								</a>
 							</Link>
-							<Link href="/wanderungen" passHref>
+							<Link href="/wanderungen/" passHref>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<div
 										style={{
@@ -52,7 +52,7 @@ const Header = () => {
 									</div>
 								</a>
 							</Link>
-							<Link href="/bio" passHref>
+							<Link href="/bio/" passHref>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<div
 										style={{
@@ -66,7 +66,7 @@ const Header = () => {
 									</div>
 								</a>
 							</Link>
-							<Link href="/live" passHref>
+							<Link href="/live/" passHref>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<div
 										style={{

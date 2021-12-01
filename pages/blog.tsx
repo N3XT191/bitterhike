@@ -60,7 +60,7 @@ export default function Blog({ posts }: { posts: any[] }) {
 					filteredPosts
 						.sort((a, b) => (a.frontMatter.date < b.frontMatter.date ? 1 : -1))
 						.map((post, index) => (
-							<Link href={"/blog/" + post.slug} passHref key={index}>
+							<Link href={"/blog/" + post.slug + "/"} passHref key={index}>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<Card style={{ marginBottom: 20, cursor: "pointer" }}>
 										<div style={{ height: mobile ? 150 : 300 }}>

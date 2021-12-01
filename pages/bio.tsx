@@ -31,7 +31,7 @@ const Bio = () => {
 				ich auf <a href="mailto:marc@bitter.li">marc@bitter.li</a> erreichbar.
 			</p>
 			<p className="text-center">
-				<Link href={"/marc-pics"}>
+				<Link href={"/marc-pics/"}>
 					<a style={{ color: "black", textDecoration: "none" }}>
 						<div
 							style={{
