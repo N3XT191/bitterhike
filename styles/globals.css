@@ -21,6 +21,9 @@ a {
 .partRoute {
 	z-index: 660 !important;
 }
+.live {
+	z-index: 670 !important;
+}
 .cross {
 	color: gray;
 }

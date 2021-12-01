@@ -31,7 +31,7 @@ export const getStaticProps = async () => {
 	};
 };
 
-export default function Home({ posts }: { posts: any[] }) {
+export default function Blog({ posts }: { posts: any[] }) {
 	const router = useRouter();
 	const { tag } = router.query;
 

@@ -79,7 +79,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 								<a href="#ns">Schweiz Nord-Süd Querung (Abgeschlossen)</a>
 							</li>
 							<li>
-								<a href="#daytrips">Tageswanderungen</a>
+								<a href="#daytrips">Sonstige Wanderungen</a>
 							</li>
 						</ul>
 					</Card.Body>
@@ -225,7 +225,6 @@ const Bio = ({ posts }: { posts: any[] }) => {
 				<div style={{ position: "relative" }}>
 					<h3 id="daytrips">Sonstige Wanderungen</h3>
 					<div>
-						<p>Eine Liste aller meiner Tageswanderungen:</p>
 						<ul>
 							{posts
 								.filter(
