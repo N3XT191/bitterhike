@@ -106,7 +106,9 @@ export default function Home({ posts }: { posts: any[] }) {
 					<div>no posts found</div>
 				)}
 				<Link href="/blog" passHref>
-					<a style={{ marginTop: -10, marginBottom: 10 }}>Ältere Posts...</a>
+					<a style={{ marginTop: -10, marginBottom: 10, fontSize: 26 }}>
+						Mehr Posts...
+					</a>
 				</Link>
 			</Row>
 		</Container>
