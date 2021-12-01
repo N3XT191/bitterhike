@@ -79,7 +79,7 @@ const MapWidget = ({
 		: [undefined];
 
 	if (livePoints?.length > 0) {
-		polyline = L.polyline(livePoints.slice(1), {
+		polyline = L.polyline(livePoints, {
 			lineJoin: "round",
 		});
 		console.log(polyline);
