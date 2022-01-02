@@ -10,7 +10,6 @@ import dynamic from "next/dynamic";
 import useIsMobile from "../../components/isMobile";
 import PostNavigation from "../../components/PostNavigation";
 import StatCard from "../../components/StatCard";
-import Link from "next/link";
 
 import { NextSeo } from "next-seo";
 

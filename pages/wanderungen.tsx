@@ -73,17 +73,80 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					>
 						<ul style={{ paddingLeft: useIsMobile() ? 20 : undefined }}>
 							<li>
+								<a href="#jura">Jura (Aktiv)</a>
+							</li>
+							<li>
 								<a href="#nswest">Schweiz Nord-Süd Querung 2.0 (Aktiv)</a>
 							</li>
 							<li>
 								<a href="#ns">Schweiz Nord-Süd Querung (Abgeschlossen)</a>
 							</li>
 							<li>
-								<a href="#daytrips">Tageswanderungen</a>
+								<a href="#daytrips">Sonstige Wanderungen</a>
 							</li>
 						</ul>
 					</Card.Body>
 				</Card>
+				<h3 id="jura">Jura (Aktiv)</h3>
+				<div
+					style={{
+						width: 450,
+						maxWidth: "100%",
+						height: 300,
+						float: "right",
+						marginBottom: 10,
+						marginLeft: 10,
+					}}
+				>
+					<MapWidget
+						sectionGPXUrl="/lagern/gpx/lagern.gpx"
+						fullGPXUrl="/jura/gpx/jura.gpx"
+						height={295}
+						sectionLabel="Gewandert"
+						fullLabel="Ganze Route"
+						focusOn="full"
+					/>
+				</div>
+				<div>
+					<p>
+						Vom Kanton Zürich bis nach Nyon, dem ganzen Jura entlang. Das ist
+						der Plan.
+					</p>
+					<p>
+						Im Sommer 2021 war ich schon auf dem Lägern. Die weitere Route führt
+						über den Hauenstein, Weissenstein, Chasseral und den Chasseron, so
+						oft wie möglich auf der Krete bis zum Lac de Joux und von da runter
+						nach Nyon.
+					</p>
+
+					<p>Unten aufgelistet sind alle Abschnitte die dazu gehören.</p>
+					<ul>
+						{posts
+							.filter(
+								(p) => p.frontMatter.tags.findIndex((t) => t === "Jura") !== -1
+							)
+							.sort((a, b) =>
+								a.frontMatter.date > b.frontMatter.date ? 1 : -1
+							)
+							.map((p) => (
+								<li>
+									<Link href={"/blog/" + p.slug}>
+										<div
+											style={{
+												marginBottom: 10,
+												color: "#0d6efd",
+												fontSize: 20,
+												cursor: "pointer",
+												textDecoration: "underline",
+											}}
+										>
+											{p.frontMatter.title}
+										</div>
+									</Link>
+								</li>
+							))}
+					</ul>
+				</div>
 				<h3 id="nswest">Schweiz Nord-Süd Querung 2.0 (Aktiv)</h3>
 				<div
 					style={{
@@ -225,7 +288,6 @@ const Bio = ({ posts }: { posts: any[] }) => {
 				<div style={{ position: "relative" }}>
 					<h3 id="daytrips">Sonstige Wanderungen</h3>
 					<div>
-						<p>Eine Liste aller meiner Tageswanderungen:</p>
 						<ul>
 							{posts
 								.filter(

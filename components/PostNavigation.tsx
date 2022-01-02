@@ -13,10 +13,12 @@ const PostNavigation = ({
 				justifyContent: "space-between",
 			}}
 		>
-			<a href={"/blog/" + previousSlug}>
+			<a href={"/blog/" + previousSlug + "/"}>
 				{previousSlug ? "← Vorheriger Post" : ""}
 			</a>
-			<a href={"/blog/" + nextSlug}>{nextSlug ? "Nächster Post →" : ""}</a>
+			<a href={"/blog/" + nextSlug + "/"}>
+				{nextSlug ? "Nächster Post →" : ""}
+			</a>
 		</div>
 	);
 };

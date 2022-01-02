@@ -1,8 +1,15 @@
-import { useState, useEffect, useRef, createRef } from "react";
-import { MapContainer, TileLayer, GeoJSON, Pane, Tooltip } from "react-leaflet";
+import React, { useState, useEffect, useRef } from "react";
+import {
+	MapContainer,
+	TileLayer,
+	GeoJSON,
+	Pane,
+	Tooltip,
+	Polyline,
+} from "react-leaflet";
 import toGeoJSON from "./togeojson";
 
-import L, { bounds } from "leaflet";
+import L from "leaflet";
 
 import bbox from "turf-bbox";
 
@@ -14,6 +21,15 @@ async function getGPX(path) {
 		return await fetch(path).then((response) => response.text());
 	} catch (e) {}
 }
+const coordinates = [
+	{ lat: 47.3769, lng: 8.54179 },
+	{ lat: 47.4769, lng: 8.54179 },
+	{ lat: 47.3769, lng: 8.44179 },
+];
+
+let polyline = L.polyline(coordinates, {
+	lineJoin: "round",
+});
 
 function useFetcher(fetchSomethingAPI) {
 	const [data, setData] = useState();
@@ -35,7 +51,9 @@ interface Props {
 	height: number;
 	sectionLabel?: string;
 	fullLabel?: string;
-	focusOn?: "section" | "full";
+	focusOn?: "section" | "full" | "live";
+	live?: boolean;
+	livePoints?: { lng: number; lat: number }[];
 }
 const MapWidget = ({
 	sectionGPXUrl,
@@ -44,6 +62,8 @@ const MapWidget = ({
 	sectionLabel,
 	fullLabel,
 	focusOn,
+	live,
+	livePoints,
 }: Props) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
@@ -57,6 +77,12 @@ const MapWidget = ({
 	const [partRouteGPX] = sectionGPXUrl
 		? useFetcher(() => getGPX(sectionGPXUrl))
 		: [undefined];
+
+	if (livePoints?.length > 0) {
+		polyline = L.polyline(livePoints, {
+			lineJoin: "round",
+		});
+	}
 
 	useEffect(() => {
 		if (wholeRouteGPX) {
@@ -76,25 +102,34 @@ const MapWidget = ({
 	}, [mapRef.current, partRouteGPX]);
 
 	useEffect(() => {
-		const routeToFocusOn = focusOn === "full" ? wholeRoute : partRoute;
-		if (routeToFocusOn) {
-			const bboxArray = bbox(routeToFocusOn);
-			const corner1 = [bboxArray[1], bboxArray[0]];
-			const corner2 = [bboxArray[3], bboxArray[2]];
-			mapRef.current.fitBounds([corner1, corner2]);
+		if (focusOn === "live") {
+			mapRef.current?.fitBounds(polyline.getBounds());
+		} else {
+			const routeToFocusOn = focusOn === "full" ? wholeRoute : partRoute;
+			if (routeToFocusOn) {
+				const bboxArray = bbox(routeToFocusOn);
+				const corner1 = [bboxArray[1], bboxArray[0]];
+				const corner2 = [bboxArray[3], bboxArray[2]];
+				mapRef.current.fitBounds([corner1, corner2]);
+			}
 		}
 	}, [mapRef.current, partRoute, wholeRoute, focusOn]);
 
 	useEffect(() => {
 		mapRef.current?.invalidateSize();
-		const routeToFocusOn = focusOn === "full" ? wholeRoute : partRoute;
-		if (routeToFocusOn) {
-			const bboxArray = bbox(routeToFocusOn);
-			const corner1 = [bboxArray[1], bboxArray[0]];
-			const corner2 = [bboxArray[3], bboxArray[2]];
-			mapRef.current.fitBounds([corner1, corner2]);
+		if (focusOn === "live") {
+			mapRef.current?.fitBounds(polyline.getBounds());
+		} else {
+			const routeToFocusOn = focusOn === "full" ? wholeRoute : partRoute;
+			if (routeToFocusOn) {
+				const bboxArray = bbox(routeToFocusOn);
+				const corner1 = [bboxArray[1], bboxArray[0]];
+				const corner2 = [bboxArray[3], bboxArray[2]];
+				mapRef.current.fitBounds([corner1, corner2]);
+			}
 		}
 	}, [fullScreen]);
+
 	return (
 		<div
 			style={{
@@ -168,8 +203,8 @@ const MapWidget = ({
 							key={2}
 							data={wholeRoute}
 							style={{
-								color: "#1b75b5",
-								weight: 4,
+								color: "#0095ff",
+								weight: 5,
 								opacity: 1,
 							}}
 						/>
@@ -177,6 +212,14 @@ const MapWidget = ({
 						<div />
 					)}
 				</Pane>
+				{live ? (
+					<Pane name="live" className="live">
+						<Polyline
+							pathOptions={{ color: "lime", weight: 7 }}
+							positions={livePoints}
+						/>
+					</Pane>
+				) : undefined}
 			</MapContainer>
 			<div
 				style={{
@@ -219,12 +262,30 @@ const MapWidget = ({
 						<div
 							style={{
 								width: 20,
-								height: 4,
-								backgroundColor: "#1b75b5",
+								height: 5,
+								backgroundColor: "#0095ff",
 								margin: "0 10px",
 							}}
 						/>
 						<div>{fullLabel ? fullLabel : "Complete Route"}</div>
+					</div>
+				) : undefined}
+				{live ? (
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+						}}
+					>
+						<div
+							style={{
+								width: 20,
+								height: 7,
+								backgroundColor: "lime",
+								margin: "0 10px",
+							}}
+						/>
+						<div>{"Letzte 7 Tage"}</div>
 					</div>
 				) : undefined}
 			</div>

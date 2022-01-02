@@ -51,14 +51,14 @@ export default function Home({ posts }: { posts: any[] }) {
 			<p>
 				Hier schreibe ich ab und zu über meine Wanderungen in und um die
 				Schweizer Alpen. Unten sind meine aktuellsten Posts und{" "}
-				<Link href="/wanderungen" passHref>
+				<Link href="/wanderungen/" passHref>
 					<a>hier</a>
 				</Link>{" "}
 				findest du eine Liste aller meiner Wanderungen.
 			</p>
 			<p>
 				Falls ich gerade unterwegs in den Bergen bin kannst du mich auf der{" "}
-				<Link href="/live" passHref>
+				<Link href="/live/" passHref>
 					<a>Live</a>
 				</Link>{" "}
 				Seite verfolgen!
@@ -70,7 +70,7 @@ export default function Home({ posts }: { posts: any[] }) {
 						.sort((a, b) => (a.frontMatter.date < b.frontMatter.date ? 1 : -1))
 						.slice(0, 4)
 						.map((post, index) => (
-							<Link href={"/blog/" + post.slug} passHref key={index}>
+							<Link href={"/blog/" + post.slug + "/"} passHref key={index}>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<Card style={{ marginBottom: 20, cursor: "pointer" }}>
 										<div style={{ height: mobile ? 150 : 300 }}>
@@ -105,8 +105,10 @@ export default function Home({ posts }: { posts: any[] }) {
 				) : (
 					<div>no posts found</div>
 				)}
-				<Link href="/blog" passHref>
-					<a style={{ marginTop: -10, marginBottom: 10 }}>Ältere Posts...</a>
+				<Link href="/blog/" passHref>
+					<a style={{ marginTop: -10, marginBottom: 10, fontSize: 26 }}>
+						Mehr Posts...
+					</a>
 				</Link>
 			</Row>
 		</Container>
