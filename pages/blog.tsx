@@ -14,6 +14,9 @@ import RemoveTagFilter from "../components/RemoveTagFilter";
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
 	const posts = files.map((filename) => {
+		if (filename.slice(filename.length - 3) !== "mdx") {
+			return;
+		}
 		const markdownWithMeta = fs.readFileSync(
 			path.join("posts", filename),
 			"utf-8"
@@ -26,7 +29,7 @@ export const getStaticProps = async () => {
 	});
 	return {
 		props: {
-			posts,
+			posts: posts.filter((p) => p),
 		},
 	};
 };
