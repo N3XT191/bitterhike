@@ -97,13 +97,46 @@
 	</wpt>
 	<wpt lat="47.8085099198" lon="8.5677050200">
 		<ele>822.7</ele>
-		<name>Destination</name>
+		<name>Wegpunkt</name>
 		<extensions>
 			<swisstopo:waypoint_id>777906669</swisstopo:waypoint_id>
 			<swisstopo:waypoint_routepoint_id>1478029480</swisstopo:waypoint_routepoint_id>
 			<swisstopo:waypoint_meters_into_tour>36819.878866</swisstopo:waypoint_meters_into_tour>
 			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
-			<swisstopo:waypoint_stage_before distance="36819.878866" duration="35929.368530" ascent="1182.117920" descent="721.119916" />
+			<swisstopo:waypoint_stage_before distance="0.000000" duration="0.000000" ascent="0.000000" descent="0.000000" />
+		</extensions>
+	</wpt>
+	<wpt lat="47.8074434905" lon="8.5686766844">
+		<ele>796.5</ele>
+		<name>Wegpunkt</name>
+		<extensions>
+			<swisstopo:waypoint_id>1163838013</swisstopo:waypoint_id>
+			<swisstopo:waypoint_routepoint_id>934121376</swisstopo:waypoint_routepoint_id>
+			<swisstopo:waypoint_meters_into_tour>37556.050279</swisstopo:waypoint_meters_into_tour>
+			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
+			<swisstopo:waypoint_stage_before distance="0.000000" duration="0.000000" ascent="0.000000" descent="0.000000" />
+		</extensions>
+	</wpt>
+	<wpt lat="47.7959411914" lon="8.5831098722">
+		<ele>663.0</ele>
+		<name>Wegpunkt</name>
+		<extensions>
+			<swisstopo:waypoint_id>18747724</swisstopo:waypoint_id>
+			<swisstopo:waypoint_routepoint_id>981560600</swisstopo:waypoint_routepoint_id>
+			<swisstopo:waypoint_meters_into_tour>39563.338189</swisstopo:waypoint_meters_into_tour>
+			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
+			<swisstopo:waypoint_stage_before distance="0.000000" duration="0.000000" ascent="0.000000" descent="0.000000" />
+		</extensions>
+	</wpt>
+	<wpt lat="47.7922115256" lon="8.6110901709">
+		<ele>607.8</ele>
+		<name>Ziel</name>
+		<extensions>
+			<swisstopo:waypoint_id>119627946</swisstopo:waypoint_id>
+			<swisstopo:waypoint_routepoint_id>1700957912</swisstopo:waypoint_routepoint_id>
+			<swisstopo:waypoint_meters_into_tour>41822.649776</swisstopo:waypoint_meters_into_tour>
+			<swisstopo:waypoint_is_controlpoint>1</swisstopo:waypoint_is_controlpoint>
+			<swisstopo:waypoint_stage_before distance="41822.649776" duration="40256.738230" ascent="1211.346924" descent="965.241913" />
 		</extensions>
 	</wpt>
 	<trk>
@@ -15581,6 +15614,1548 @@
 				<ele>822.7</ele>
 				<extensions>
 					<swisstopo:routepoint_id>1478029480</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8085118935" lon="8.5677082238">
+				<ele>822.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1344427615</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8084779318" lon="8.5679644960">
+				<ele>822.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2119475218</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8083645465" lon="8.5678319095">
+				<ele>821.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1708736137</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8082256650" lon="8.5676620660">
+				<ele>820.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>429443228</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8080698911" lon="8.5674952007">
+				<ele>821.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2107279076</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8079473841" lon="8.5673757720">
+				<ele>821.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>739124008</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8077393318" lon="8.5671510548">
+				<ele>823.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1411788208</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074022860" lon="8.5667800746">
+				<ele>827.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>377596153</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8071721082" lon="8.5665181776">
+				<ele>829.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>444366586</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8070942366" lon="8.5664330797">
+				<ele>829.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1668570283</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8068873710" lon="8.5662017202">
+				<ele>830.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1819283855</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8066160886" lon="8.5658888902">
+				<ele>832.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>831584999</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8065053038" lon="8.5657196558">
+				<ele>832.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>625503517</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8063108062" lon="8.5653717531">
+				<ele>830.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>905158154</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062607053" lon="8.5654374360">
+				<ele>829.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>218938930</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8061719370" lon="8.5655490202">
+				<ele>828.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1067109199</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8061287091" lon="8.5656014993">
+				<ele>827.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1268371496</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8060582149" lon="8.5656834348">
+				<ele>827.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1597053150</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8059535491" lon="8.5658113669">
+				<ele>825.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>274188197</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8058875508" lon="8.5658933977">
+				<ele>823.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1928604164</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8058441612" lon="8.5659625600">
+				<ele>822.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2079500177</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8057983623" lon="8.5660483582">
+				<ele>821.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2010603561</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8057639969" lon="8.5661143751">
+				<ele>820.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1558864182</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8057274803" lon="8.5661703338">
+				<ele>819.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>529813474</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8056535492" lon="8.5662588696">
+				<ele>817.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1107857056</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8056023884" lon="8.5663178535">
+				<ele>816.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1070320702</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8055887391" lon="8.5663342498">
+				<ele>816.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1557011242</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8055569121" lon="8.5663702835">
+				<ele>815.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1599705599</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8055228372" lon="8.5664062692">
+				<ele>815.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1904225600</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8056064580" lon="8.5664781372">
+				<ele>816.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>370867959</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8056954726" lon="8.5665734826">
+				<ele>816.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1180243319</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8057790610" lon="8.5666486879">
+				<ele>817.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>43015094</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8058627463" lon="8.5667138832">
+				<ele>817.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1400179466</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8060023078" lon="8.5668136444">
+				<ele>819.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>690481236</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8061474569" lon="8.5669168627">
+				<ele>819.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2063988711</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062815276" lon="8.5670031580">
+				<ele>818.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1154915786</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8063764202" lon="8.5670719309">
+				<ele>818.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1712413716</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8064735284" lon="8.5671440888">
+				<ele>817.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2108971365</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8065850222" lon="8.5672399162">
+				<ele>815.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1264137820</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8067254163" lon="8.5673697355">
+				<ele>813.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1308620969</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8068000769" lon="8.5674380781">
+				<ele>812.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1612597056</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8069392821" lon="8.5675745481">
+				<ele>810.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1675095052</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8070594440" lon="8.5677039375">
+				<ele>808.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1959410441</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8071560991" lon="8.5678228134">
+				<ele>806.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>149555142</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8072304360" lon="8.5679245257">
+				<ele>805.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1017404604</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8073300747" lon="8.5680835166">
+				<ele>803.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1254382014</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8073997860" lon="8.5681984811">
+				<ele>802.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>551546699</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074361659" lon="8.5682726838">
+				<ele>801.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1305949641</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074548207" lon="8.5683198078">
+				<ele>801.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1812743947</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074707099" lon="8.5684202737">
+				<ele>799.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>437017240</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074724078" lon="8.5684770484">
+				<ele>799.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>554679940</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074520380" lon="8.5686067782">
+				<ele>797.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>279239953</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074434905" lon="8.5686766844">
+				<ele>796.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>934121376</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8074434905" lon="8.5686766844">
+				<ele>796.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1560384806</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8073830454" lon="8.5687655077">
+				<ele>795.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>317137278</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8072166865" lon="8.5688787692">
+				<ele>793.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>71819492</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8071372305" lon="8.5689571732">
+				<ele>791.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>184392430</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8069660425" lon="8.5692205191">
+				<ele>786.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>264668389</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8066465979" lon="8.5697009709">
+				<ele>779.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>842980986</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8065212424" lon="8.5698751793">
+				<ele>777.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1031812443</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8064458605" lon="8.5699970553">
+				<ele>775.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>741279976</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8063690304" lon="8.5701522749">
+				<ele>774.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1139920385</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8063115996" lon="8.5702778715">
+				<ele>773.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>940295808</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062655381" lon="8.5703903610">
+				<ele>772.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>219486783</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062475763" lon="8.5705034513">
+				<ele>771.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1684939982</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062435129" lon="8.5706902634">
+				<ele>769.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2066908132</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062537581" lon="8.5710242308">
+				<ele>767.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>829500652</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062704220" lon="8.5713917106">
+				<ele>764.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2101105487</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062831728" lon="8.5716990321">
+				<ele>761.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>58828741</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8063032510" lon="8.5719464359">
+				<ele>759.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>892172367</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8063013683" lon="8.5721399698">
+				<ele>757.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1010148815</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062810919" lon="8.5722596850">
+				<ele>756.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1712904170</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8062489260" lon="8.5724458951">
+				<ele>754.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1762097155</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8061930262" lon="8.5726449463">
+				<ele>752.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1767391955</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8061354628" lon="8.5727838869">
+				<ele>750.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>562782381</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8061009961" lon="8.5728599102">
+				<ele>749.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1165496079</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8060610069" lon="8.5729258026">
+				<ele>748.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1294255466</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8059982780" lon="8.5730179073">
+				<ele>747.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>689756599</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8059355166" lon="8.5731133485">
+				<ele>747.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>622432887</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8058388080" lon="8.5732314240">
+				<ele>745.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>836687272</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8057312169" lon="8.5733125537">
+				<ele>744.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>480059948</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8055901661" lon="8.5733662662">
+				<ele>743.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>271484257</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8054344710" lon="8.5734230018">
+				<ele>741.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1580641171</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8052406578" lon="8.5734689075">
+				<ele>739.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1463447607</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8050320377" lon="8.5735345198">
+				<ele>737.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1033721758</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8049020641" lon="8.5736051555">
+				<ele>736.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>618882476</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8047977472" lon="8.5736963655">
+				<ele>735.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1294471711</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8046501985" lon="8.5738400460">
+				<ele>733.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>29219020</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8044307978" lon="8.5740889801">
+				<ele>731.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1457797624</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8042035288" lon="8.5743377434">
+				<ele>729.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>563737945</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8039012478" lon="8.5747851348">
+				<ele>727.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>45791051</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8038728553" lon="8.5748145613">
+				<ele>726.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>811048531</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8037990477" lon="8.5748897355">
+				<ele>726.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1213953008</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8036496400" lon="8.5749933222">
+				<ele>725.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1813558956</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8035614483" lon="8.5750448257">
+				<ele>724.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1249971621</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8034825088" lon="8.5750698293">
+				<ele>724.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1587999193</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8034093846" lon="8.5750749338">
+				<ele>723.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>575671835</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8033498132" lon="8.5750736547">
+				<ele>722.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>902701110</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8032297744" lon="8.5750477161">
+				<ele>721.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1873073362</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8031288108" lon="8.5750255246">
+				<ele>719.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>781213761</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8029997149" lon="8.5750060664">
+				<ele>718.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>144663369</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8028368995" lon="8.5749858843">
+				<ele>717.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>405754379</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8027471106" lon="8.5749706075">
+				<ele>716.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1253268628</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8026742792" lon="8.5749456830">
+				<ele>716.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1166221020</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8026016756" lon="8.5748974027">
+				<ele>715.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>593436971</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8025425598" lon="8.5748494121">
+				<ele>715.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>981114929</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8024845029" lon="8.5748081188">
+				<ele>714.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1219170037</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8024173890" lon="8.5747733056">
+				<ele>714.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1449335832</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8023277954" lon="8.5747380101">
+				<ele>713.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>80320503</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8020739870" lon="8.5748260043">
+				<ele>712.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1326963605</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8019238458" lon="8.5748895255">
+				<ele>711.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>659635140</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8018536378" lon="8.5749414136">
+				<ele>711.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1177212166</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8018436045" lon="8.5750479888">
+				<ele>710.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>638034151</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8018178678" lon="8.5751508896">
+				<ele>709.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1054126386</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8017855824" lon="8.5752336264">
+				<ele>709.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2109565399</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8016860049" lon="8.5754150339">
+				<ele>720.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>510649023</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8015634265" lon="8.5756493417">
+				<ele>705.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1133476149</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8015486192" lon="8.5756690467">
+				<ele>705.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>6203706</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8014805612" lon="8.5757309912">
+				<ele>704.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1186471686</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8013140974" lon="8.5758542276">
+				<ele>702.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1643964207</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8012142419" lon="8.5759488600">
+				<ele>701.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>581824747</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8011291610" lon="8.5760271237">
+				<ele>701.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1235478038</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8010499607" lon="8.5760788163">
+				<ele>701.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>660001823</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8009880761" lon="8.5760841607">
+				<ele>700.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>897602406</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8009263219" lon="8.5760761593">
+				<ele>700.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2078501114</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8008737551" lon="8.5760483325">
+				<ele>700.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>251737249</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8007868657" lon="8.5759663739">
+				<ele>699.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>405159353</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8006118810" lon="8.5756956434">
+				<ele>698.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1990084881</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8005262456" lon="8.5756003643">
+				<ele>697.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>298792942</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8003733337" lon="8.5754869548">
+				<ele>696.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>996209508</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8002437974" lon="8.5753974078">
+				<ele>695.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1510688944</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8001207121" lon="8.5753380337">
+				<ele>695.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>449923327</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.8000006731" lon="8.5753120961">
+				<ele>694.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>571435802</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7998355770" lon="8.5752952023">
+				<ele>694.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>574654830</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7997161411" lon="8.5753226711">
+				<ele>693.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>989767251</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7996034167" lon="8.5753536210">
+				<ele>693.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>609857895</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7994995539" lon="8.5753981093">
+				<ele>692.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2089677781</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7991995804" lon="8.5756085746">
+				<ele>691.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1266902229</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7990183418" lon="8.5757481738">
+				<ele>690.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>525402798</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7988973585" lon="8.5758189892">
+				<ele>690.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2139553169</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7987776619" lon="8.5758731468">
+				<ele>690.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2003926015</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7986287090" lon="8.5759300126">
+				<ele>689.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>998498204</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7984878195" lon="8.5759670294">
+				<ele>688.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1322096970</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7983380683" lon="8.5759905076">
+				<ele>688.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>470479281</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7981615367" lon="8.5759933883">
+				<ele>687.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>310487513</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7979445741" lon="8.5759920634">
+				<ele>687.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2125852428</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7978656994" lon="8.5760103903">
+				<ele>687.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1516322257</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7977733042" lon="8.5760317636">
+				<ele>687.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>639734450</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7976690827" lon="8.5761129477">
+				<ele>688.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1713764268</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7975633137" lon="8.5762374785">
+				<ele>688.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1185378712</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7974528530" lon="8.5763819294">
+				<ele>688.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>454219365</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7973408771" lon="8.5765663903">
+				<ele>689.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1907986117</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7972470803" lon="8.5767312198">
+				<ele>689.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1296851415</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7971667386" lon="8.5768996750">
+				<ele>690.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1370198502</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7970938733" lon="8.5771083334">
+				<ele>689.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1459076333</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7970123244" lon="8.5774002270">
+				<ele>689.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>580163638</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7969340162" lon="8.5777055370">
+				<ele>687.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1234506486</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7968632163" lon="8.5780477136">
+				<ele>686.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1510996535</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7968083470" lon="8.5783702111">
+				<ele>685.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1324637970</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7966639983" lon="8.5793347991">
+				<ele>681.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>227393341</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7965995126" lon="8.5797204875">
+				<ele>679.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1426474174</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7964537103" lon="8.5804881615">
+				<ele>677.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>244007310</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7963153667" lon="8.5811825815">
+				<ele>674.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1484577047</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7961816787" lon="8.5818604142">
+				<ele>670.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1821418083</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7961045915" lon="8.5822691819">
+				<ele>667.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>194332996</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7960390049" lon="8.5826515022">
+				<ele>665.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1979520332</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7959411914" lon="8.5831098722">
+				<ele>663.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>981560600</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7959411914" lon="8.5831098722">
+				<ele>663.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>542194830</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7958863316" lon="8.5833155699">
+				<ele>662.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>895393589</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7958627043" lon="8.5834318483">
+				<ele>662.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1462135794</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7958312090" lon="8.5835479563">
+				<ele>662.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>460917137</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7957963745" lon="8.5836606551">
+				<ele>663.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>660806830</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7957064732" lon="8.5838856146">
+				<ele>663.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1542453173</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7956314457" lon="8.5840842006">
+				<ele>663.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1735375674</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7955654427" lon="8.5842796446">
+				<ele>664.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1483543011</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7955002351" lon="8.5845084735">
+				<ele>664.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1622244207</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7953670126" lon="8.5850227944">
+				<ele>663.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>606004737</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7951593887" lon="8.5857857603">
+				<ele>661.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1754160685</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7949669305" lon="8.5864923238">
+				<ele>659.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1523126779</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7948651650" lon="8.5868938669">
+				<ele>658.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1186702413</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7947970464" lon="8.5871893619">
+				<ele>658.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1226825602</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7947475032" lon="8.5874251974">
+				<ele>657.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1267397967</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7946848058" lon="8.5877408294">
+				<ele>656.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>267336776</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7946101105" lon="8.5881329456">
+				<ele>655.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>593404708</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7945234866" lon="8.5887083231">
+				<ele>654.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>438870688</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7944767889" lon="8.5891110555">
+				<ele>653.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1640809418</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7944472428" lon="8.5893706799">
+				<ele>653.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1246377199</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7944428492" lon="8.5894740237">
+				<ele>652.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1306090755</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7944362404" lon="8.5895739825">
+				<ele>652.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2036963298</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7943890861" lon="8.5903637663">
+				<ele>651.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>57849012</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7943214966" lon="8.5911731245">
+				<ele>650.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1605736240</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7942550255" lon="8.5919825051">
+				<ele>648.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>181993831</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7942509276" lon="8.5921692732">
+				<ele>647.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>753604289</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7942485487" lon="8.5924094667">
+				<ele>647.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2116218864</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7942486821" lon="8.5928499193">
+				<ele>646.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>666285634</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7942444176" lon="8.5930533675">
+				<ele>645.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1282915180</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7942287805" lon="8.5932699145">
+				<ele>645.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1219614380</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7942041180" lon="8.5934896013">
+				<ele>644.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>327474045</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7941608428" lon="8.5937722797">
+				<ele>644.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2003170701</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940738600" lon="8.5943810032">
+				<ele>642.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1188837688</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940462853" lon="8.5946673599">
+				<ele>642.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>607170528</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940046902" lon="8.5951202463">
+				<ele>640.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2020257199</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7939726484" lon="8.5955166165">
+				<ele>639.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>598800876</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7939319750" lon="8.5959895422">
+				<ele>638.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>937953090</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7938961604" lon="8.5964258696">
+				<ele>637.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1647614650</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7938645454" lon="8.5967788703">
+				<ele>636.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1805278132</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7938341901" lon="8.5970051030">
+				<ele>635.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1660599708</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7937865099" lon="8.5972776702">
+				<ele>635.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1001815944</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7937414421" lon="8.5975135903">
+				<ele>634.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1248778328</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7936898292" lon="8.5977293464">
+				<ele>633.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>859676565</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7936104100" lon="8.5980279107">
+				<ele>632.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>314050939</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7935153539" lon="8.5983161215">
+				<ele>632.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1886811094</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7933964608" lon="8.5986271658">
+				<ele>631.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1890525256</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7933004121" lon="8.5989020059">
+				<ele>630.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2037420227</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7932166934" lon="8.5991804520">
+				<ele>630.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1295003774</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7931784987" lon="8.5994031720">
+				<ele>629.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>381667273</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7931502532" lon="8.5996427933">
+				<ele>629.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>148203722</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7931366523" lon="8.5998793990">
+				<ele>628.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1926408781</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7931401769" lon="8.6000896869">
+				<ele>628.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1688920095</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7931516687" lon="8.6002901396">
+				<ele>628.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>241190619</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7931719858" lon="8.6005074695">
+				<ele>627.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1389091644</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7932121681" lon="8.6007619392">
+				<ele>627.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1168534171</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7932767447" lon="8.6010503118">
+				<ele>626.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>815860182</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7933931406" lon="8.6015533716">
+				<ele>625.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>478992779</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7934464753" lon="8.6018414992">
+				<ele>625.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1662927697</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7934962374" lon="8.6021495690">
+				<ele>624.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1473621421</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7935276909" lon="8.6023771561">
+				<ele>623.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>226321896</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7935546718" lon="8.6027147563">
+				<ele>622.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>598567235</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7935893997" lon="8.6032894335">
+				<ele>621.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1306116097</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7936014993" lon="8.6036534007">
+				<ele>620.9</ele>
+				<extensions>
+					<swisstopo:routepoint_id>315402645</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7936249818" lon="8.6038908239">
+				<ele>620.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>982613719</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7936613508" lon="8.6041885918">
+				<ele>619.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>639529803</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7937166599" lon="8.6045034608">
+				<ele>619.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>421745786</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7937892171" lon="8.6048921184">
+				<ele>619.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1585390202</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7938836513" lon="8.6053413203">
+				<ele>619.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1823516685</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7939474812" lon="8.6057030940">
+				<ele>620.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1105798458</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940141597" lon="8.6060048702">
+				<ele>620.4</ele>
+				<extensions>
+					<swisstopo:routepoint_id>831202468</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940324522" lon="8.6061988043">
+				<ele>620.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>638755941</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940386481" lon="8.6063657778">
+				<ele>620.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>300349034</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940309545" lon="8.6065724858">
+				<ele>619.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1379643988</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7940040859" lon="8.6067854440">
+				<ele>619.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1295569657</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7939236730" lon="8.6071807403">
+				<ele>618.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1302528266</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7938383612" lon="8.6076159680">
+				<ele>617.2</ele>
+				<extensions>
+					<swisstopo:routepoint_id>144269144</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7937725719" lon="8.6078981364">
+				<ele>617.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>222465745</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7936831113" lon="8.6081864546">
+				<ele>617.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>212746788</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7936136288" lon="8.6083884588">
+				<ele>616.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>74993661</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7935786026" lon="8.6085178165">
+				<ele>616.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1993043285</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7933877807" lon="8.6088239121">
+				<ele>615.1</ele>
+				<extensions>
+					<swisstopo:routepoint_id>628565089</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7932554880" lon="8.6090111789">
+				<ele>613.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>821391230</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7931906164" lon="8.6090898251">
+				<ele>613.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1097519694</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7930600842" lon="8.6092137326">
+				<ele>611.7</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1276452975</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7929400876" lon="8.6094079426">
+				<ele>610.3</ele>
+				<extensions>
+					<swisstopo:routepoint_id>2131000942</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7928028955" lon="8.6096351379">
+				<ele>609.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>567528</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7925734311" lon="8.6112116327">
+				<ele>609.6</ele>
+				<extensions>
+					<swisstopo:routepoint_id>948508508</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7925139942" lon="8.6111969695">
+				<ele>609.5</ele>
+				<extensions>
+					<swisstopo:routepoint_id>811382275</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7923941643" lon="8.6111509390">
+				<ele>604.0</ele>
+				<extensions>
+					<swisstopo:routepoint_id>380737475</swisstopo:routepoint_id>
+				</extensions>
+			</trkpt>
+			<trkpt lat="47.7922115256" lon="8.6110901709">
+				<ele>607.8</ele>
+				<extensions>
+					<swisstopo:routepoint_id>1700957912</swisstopo:routepoint_id>
 				</extensions>
 			</trkpt>
 		</trkseg>
