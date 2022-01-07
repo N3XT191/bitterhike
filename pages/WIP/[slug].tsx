@@ -4,17 +4,17 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-import Img from "../../../components/Img";
+import Img from "../../components/Img";
 import React from "react";
 import dynamic from "next/dynamic";
-import useIsMobile from "../../../components/isMobile";
-import PostNavigation from "../../../components/PostNavigation";
-import StatCard from "../../../components/StatCard";
+import useIsMobile from "../../components/isMobile";
+import PostNavigation from "../../components/PostNavigation";
+import StatCard from "../../components/StatCard";
 
 import { NextSeo } from "next-seo";
 
 export const getStaticPaths = async () => {
-	const files = fs.readdirSync(path.join("posts/WIP"));
+	const files = fs.readdirSync(path.join("posts-WIP"));
 	const paths = files.map((filename) => ({
 		params: {
 			slug: filename.replace(".mdx", ""),
@@ -32,10 +32,10 @@ export const getStaticProps = async ({
 	params: { slug: string };
 }) => {
 	const markdownWithMeta = fs.readFileSync(
-		path.join("posts", "WIP", slug + ".mdx"),
+		path.join("posts-WIP", slug + ".mdx"),
 		"utf-8"
 	);
-	const files = fs.readdirSync(path.join("posts/WIP"));
+	const files = fs.readdirSync(path.join("posts-WIP"));
 	const slugs = files.map((filename) => filename.replace(".mdx", "")).sort();
 	const slugIndex = slugs.findIndex((s) => s === slug);
 	const { data: frontMatter, content } = matter(markdownWithMeta);
@@ -68,7 +68,7 @@ const PostPage: React.FC<Props> = ({
 }) => {
 	const MapWidget = React.useMemo(
 		() =>
-			dynamic(() => import("../../../components/MapWidget"), {
+			dynamic(() => import("../../components/MapWidget"), {
 				loading: () => <p>A map is loading</p>,
 				ssr: false,
 			}),
@@ -85,6 +85,7 @@ const PostPage: React.FC<Props> = ({
 				description={frontMatter.description}
 			/>
 			<PostNavigation previousSlug={previousSlug} nextSlug={nextSlug} />
+			<h1 style={{ color: "red" }}>WORK IN PROGRESS</h1>
 			<h1>{frontMatter.title}</h1>
 			{frontMatter.sectionGPXUrl ? (
 				<div
