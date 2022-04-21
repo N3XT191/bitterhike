@@ -102,7 +102,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					}}
 				>
 					<MapWidget
-						sectionGPXUrl="/lagern/gpx/lagern.gpx"
+						sectionGPXUrl="/jura/gpx/jura-completed.gpx"
 						fullGPXUrl="/jura/gpx/jura.gpx"
 						height={295}
 						sectionLabel="Gewandert"
@@ -162,7 +162,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					}}
 				>
 					<MapWidget
-						sectionGPXUrl="/NSWest/gpx/nswest1.gpx"
+						sectionGPXUrl="/NSWest/gpx/nswest-completed.gpx"
 						fullGPXUrl="/NSWest/gpx/nswest.gpx"
 						height={300}
 						sectionLabel="Gewandert"
