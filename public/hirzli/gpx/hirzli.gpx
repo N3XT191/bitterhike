@@ -8,13 +8,6 @@
 		<name></name>
 		<desc></desc>
 	</metadata>
-	<wpt lat="47.1253617880" lon="9.0200067126">
-		<ele>982.5</ele>
-		<name>Startpunkt</name>
-		<extensions>
-			
-		</extensions>
-	</wpt>
 	<trk>
 		<name>Swisstopo Route</name>
 		<trkseg>
