@@ -9,7 +9,6 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import useIsMobile from "../components/isMobile";
 import { useRouter } from "next/router";
 import React from "react";
-import RemoveTagFilter from "../components/RemoveTagFilter";
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
