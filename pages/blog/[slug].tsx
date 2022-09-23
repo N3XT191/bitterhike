@@ -71,9 +71,7 @@ const PostPage: React.FC<Props> = ({
 				loading: () => <p>A map is loading</p>,
 				ssr: false,
 			}),
-		[
-			/* list variables which should trigger a re-render here */
-		]
+		[]
 	);
 	const useMobile = useIsMobile();
 
