@@ -40,7 +40,7 @@ const Img = ({ d, src }: { d: string; src: string }) => {
 				alt="image"
 			/>
 			<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-				<div style={{ maxWidth: "90%", color: "#888" }}>{d}</div>
+				<div style={{ maxWidth: "90%", color: "#888", fontSize: 16 }}>{d}</div>
 			</div>
 		</div>
 	);
