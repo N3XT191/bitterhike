@@ -8,6 +8,9 @@ import Link from "next/link";
 import { Card } from "react-bootstrap";
 import useIsMobile from "../components/isMobile";
 import { NextSeo } from "next-seo";
+const LongHikeSummary = dynamic(() => import("../components/LongHikeSummary"), {
+	ssr: false,
+});
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("posts"));
@@ -90,204 +93,49 @@ const Bio = ({ posts }: { posts: any[] }) => {
 						</ul>
 					</Card.Body>
 				</Card>
-				<h3 id="jura">Jura (Aktiv)</h3>
-				<div
-					style={{
-						width: 450,
-						maxWidth: "100%",
-						height: 300,
-						float: "right",
-						marginBottom: 10,
-						marginLeft: 10,
-					}}
-				>
-					<MapWidget
-						sectionGPXUrl="/jura/gpx/jura-completed.gpx"
-						fullGPXUrl="/jura/gpx/jura.gpx"
-						height={295}
-						sectionLabel="Gewandert"
-						fullLabel="Ganze Route"
-						focusOn="full"
-					/>
-				</div>
-				<div>
-					<p>
-						Vom Kanton Zürich bis nach Nyon, dem ganzen Jura entlang. Das ist
-						der Plan.
-					</p>
-					<p>
-						Im Sommer 2021 war ich schon auf dem Lägern. Die weitere Route führt
-						über den Hauenstein, Weissenstein, Chasseral und den Chasseron, so
-						oft wie möglich auf der Krete bis zum Lac de Joux und von da runter
-						nach Nyon.
-					</p>
-
-					<p>Unten aufgelistet sind alle Abschnitte die dazu gehören.</p>
-					<ul>
-						{posts
-							.filter(
-								(p) => p.frontMatter.tags.findIndex((t) => t === "Jura") !== -1
-							)
-							.sort((a, b) =>
-								a.frontMatter.date > b.frontMatter.date ? 1 : -1
-							)
-							.map((p) => (
-								<li>
-									<Link href={"/blog/" + p.slug}>
-										<div
-											style={{
-												marginBottom: 10,
-												color: "#0d6efd",
-												fontSize: 20,
-												cursor: "pointer",
-												textDecoration: "underline",
-											}}
-										>
-											{p.frontMatter.title}
-										</div>
-									</Link>
-								</li>
-							))}
-					</ul>
-				</div>
-				<h3 id="nswest">Schweiz Nord-Süd Querung 2.0 (Aktiv)</h3>
-				<div
-					style={{
-						width: 450,
-						maxWidth: "100%",
-						height: 300,
-						float: "right",
-						marginBottom: 10,
-						marginLeft: 10,
-					}}
-				>
-					<MapWidget
-						sectionGPXUrl="/NSWest/gpx/nswest-completed.gpx"
-						fullGPXUrl="/NSWest/gpx/nswest.gpx"
-						height={300}
-						sectionLabel="Gewandert"
-						fullLabel="Ganze Route"
-						focusOn="full"
-					/>
-				</div>
-				<div>
-					<p>
-						Seit Beginn der Planungsphase meiner Nord-Süd Querung habe ich mit
-						einer alternativen Route geliebäugelt die im Tessin der Via Alta
-						Verzasca folgt und dann auf "meiner" Seite des Zürichsees
-						vorbeikommt.
-					</p>
-					<p>
-						In 5 Tagesetappen habe ich in den letzten 2-3 Jahren schon einen
-						Teil der Route schon gewandert, der Grossteil steht aber noch aus.
-						Die Route ist mit 410 km etwas länger als die erste Querung, und hat
-						mit über 29'000 Hm deutlich mehr Höhe!
-					</p>
-
-					<p>Unten aufgelistet sind alle Abschnitte die dazu gehören.</p>
-					<ul>
-						{posts
-							.filter(
-								(p) =>
-									p.frontMatter.tags.findIndex((t) => t === "Nord-Süd-2.0") !==
-									-1
-							)
-							.sort((a, b) =>
-								a.frontMatter.date > b.frontMatter.date ? 1 : -1
-							)
-							.map((p) => (
-								<li>
-									<Link href={"/blog/" + p.slug}>
-										<div
-											style={{
-												marginBottom: 10,
-												color: "#0d6efd",
-												fontSize: 20,
-												cursor: "pointer",
-												textDecoration: "underline",
-											}}
-										>
-											{p.frontMatter.title}
-										</div>
-									</Link>
-								</li>
-							))}
-					</ul>
-				</div>
-				<h3 id="ns">Schweiz Nord-Süd Querung (Abgeschlossen)</h3>
-				<div
-					style={{
-						width: 450,
-						maxWidth: "100%",
-						height: 300,
-						float: "right",
-						marginBottom: 10,
-						marginLeft: 10,
-					}}
-				>
-					<MapWidget
-						sectionGPXUrl="/NS/gpx/ns.gpx"
-						fullGPXUrl=""
-						height={300}
-						sectionLabel="Route"
-					/>
-				</div>
-				<div>
-					<p>
-						In 2019, 2020 und 2021 durchquerte ich die Schweiz vom südlichsten
-						Punkt im Tessin zum nördlichsten Punkt im Kanton Schaffhausen in
-						insgesamt 16 Tagesettapen in 5 Abschnitten. Grösstenteils alleine
-						und mit Zelt, im Norden mit kleinem Rucksack in Tagesettappen. Die
-						Route ist insgesamt fast 400km lang und hat 24'500 Hm. Das gibt pro
-						Tag im Schnitt rund 24 km und über 1500 Hm!
-					</p>
-					<p>
-						Im Juni mehrfach vom letzten Schnee noch aufgehalten, im August und
-						September aber auch teilweise vom ersten Schnee im Herbst
-						überrascht... Von Alpinen Gratwanderungen bis gemütlichen
-						Waldspaziergang hat diese Route für alle etwas.
-					</p>
-					<div
-						style={{
-							width: "100%",
-							maxHeight: 320,
-							overflow: "hidden",
-							objectFit: "cover",
-							marginBottom: 20,
-						}}
-					>
-						<Img src="/NS/168.jpeg" d="" />
-					</div>
-
-					<p>Unten aufgelistet sind alle Abschnitte die dazu gehören.</p>
-					<ul>
-						{posts
-							.filter(
-								(p) =>
-									p.frontMatter.tags.findIndex((t) => t === "Nord-Süd") !== -1
-							)
-							.sort((a, b) =>
-								a.frontMatter.date > b.frontMatter.date ? 1 : -1
-							)
-							.map((p) => (
-								<li>
-									<Link href={"/blog/" + p.slug}>
-										<div
-											style={{
-												marginBottom: 10,
-												color: "#0d6efd",
-												fontSize: 20,
-												cursor: "pointer",
-												textDecoration: "underline",
-											}}
-										>
-											{p.frontMatter.title}
-										</div>
-									</Link>
-								</li>
-							))}
-					</ul>
-				</div>
+				<LongHikeSummary
+					id="jura"
+					title="Jura (Aktiv)"
+					description={[
+						"Vom Kanton Zürich bis nach Nyon, dem ganzen Jura entlang. Das ist der Plan.",
+						"Im Sommer 2021 war ich schon auf dem Lägern. Die weitere Route führt über den Hauenstein, Weissenstein, Chasseral und den Chasseron, so oft wie möglich auf der Krete bis zum Lac de Joux und von da runter nach Nyon",
+						"Unten aufgelistet sind alle Abschnitte die dazu gehören.",
+					]}
+					sectionGPXUrl="/jura/gpx/jura-completed.gpx"
+					fullGPXUrl="/jura/gpx/jura.gpx"
+					posts={posts.filter(
+						(p) => p.frontMatter.tags.findIndex((t) => t === "Jura") !== -1
+					)}
+				/>
+				<LongHikeSummary
+					id="nswest"
+					title="Schweiz Nord-Süd Querung 2.0 (Aktiv)"
+					description={[
+						"Seit Beginn der Planungsphase meiner Nord-Süd Querung habe ich mit einer alternativen Route geliebäugelt die im Tessin der Via Alta Verzasca folgt und dann auf 'meiner' Seite des Zürichsees vorbeikommt.",
+						"In 5 Tagesetappen habe ich in den letzten 2-3 Jahren schon einen Teil der Route schon gewandert, der Grossteil steht aber noch aus.  Die Route ist mit 410 km etwas länger als die erste Querung, und hat mit über 29'000 Hm deutlich mehr Höhe!",
+						"Unten aufgelistet sind alle Abschnitte die dazu gehören.",
+					]}
+					sectionGPXUrl="/NSWest/gpx/nswest-completed.gpx"
+					fullGPXUrl="/NSWest/gpx/nswest.gpx"
+					posts={posts.filter(
+						(p) =>
+							p.frontMatter.tags.findIndex((t) => t === "Nord-Süd-2.0") !== -1
+					)}
+				/>{" "}
+				<LongHikeSummary
+					id="ns"
+					title="Schweiz Nord-Süd Querung (Abgeschlossen)"
+					description={[
+						"In 2019, 2020 und 2021 durchquerte ich die Schweiz vom südlichsten Punkt im Tessin zum nördlichsten Punkt im Kanton Schaffhausen in insgesamt 16 Tagesettapen in 5 Abschnitten. Grösstenteils alleine und mit Zelt, im Norden mit kleinem Rucksack in Tagesettappen. Die Route ist insgesamt fast 400km lang und hat 24'500 Hm. Das gibt pro Tag im Schnitt rund 24 km und über 1500 Hm!",
+						"In 5 Tagesetappen habe ich in den letzten 2-3 Jahren schon einen Teil der Route schon gewandert, der Grossteil steht aber noch aus.  Die Route ist mit 410 km etwas länger als die erste Querung, und hat mit über 29'000 Hm deutlich mehr Höhe!",
+						"Im Juni mehrfach vom letzten Schnee noch aufgehalten, im August und September aber auch teilweise vom ersten Schnee im Herbst überrascht... Von Alpinen Gratwanderungen bis gemütlichen Waldspaziergang hat diese Route für alle etwas.",
+					]}
+					sectionGPXUrl="/NS/gpx/ns.gpx"
+					fullGPXUrl=""
+					posts={posts.filter(
+						(p) => p.frontMatter.tags.findIndex((t) => t === "Nord-Süd") !== -1
+					)}
+				/>
 				<div style={{ position: "relative" }}>
 					<h3 id="daytrips">Sonstige Wanderungen</h3>
 					<div>
