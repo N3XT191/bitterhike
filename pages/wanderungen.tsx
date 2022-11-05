@@ -146,15 +146,17 @@ const Bio = ({ posts }: { posts: any[] }) => {
 				<div style={{ position: "relative" }}>
 					<h3 id="daytrips">Sonstige Wanderungen</h3>
 					<div>
-						<MapWidget
-							height={295}
-							sectionLabel="Gewandert"
-							fullLabel="Ganze Route"
-							routeListUrls={sonstigeWanderungenPosts.map(
-								(post) => post.frontMatter.sectionGPXUrl
-							)}
-							focusOn="all"
-						/>
+						<div style={{ marginBottom: 20 }}>
+							<MapWidget
+								height={295}
+								sectionLabel="Gewandert"
+								fullLabel="Ganze Route"
+								routeListUrls={sonstigeWanderungenPosts.map(
+									(post) => post.frontMatter.sectionGPXUrl
+								)}
+								focusOn="all"
+							/>
+						</div>
 						<ul>
 							{sonstigeWanderungenPosts
 								.sort((a, b) =>
