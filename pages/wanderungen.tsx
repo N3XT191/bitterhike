@@ -43,6 +43,11 @@ const Bio = ({ posts }: { posts: any[] }) => {
 			}),
 		[]
 	);
+
+	const sonstigeWanderungenPosts = posts.filter(
+		(p) =>
+			p.frontMatter.tags?.findIndex((t) => t === "Sonstige Wanderungen") !== -1
+	);
 	return (
 		<div className="mt-3">
 			<NextSeo
@@ -141,14 +146,17 @@ const Bio = ({ posts }: { posts: any[] }) => {
 				<div style={{ position: "relative" }}>
 					<h3 id="daytrips">Sonstige Wanderungen</h3>
 					<div>
+						<MapWidget
+							height={295}
+							sectionLabel="Gewandert"
+							fullLabel="Ganze Route"
+							routeListUrls={sonstigeWanderungenPosts.map(
+								(post) => post.frontMatter.sectionGPXUrl
+							)}
+							focusOn="all"
+						/>
 						<ul>
-							{posts
-								.filter(
-									(p) =>
-										p.frontMatter.tags?.findIndex(
-											(t) => t === "Sonstige Wanderungen"
-										) !== -1
-								)
+							{sonstigeWanderungenPosts
 								.sort((a, b) =>
 									a.frontMatter.date < b.frontMatter.date ? 1 : -1
 								)

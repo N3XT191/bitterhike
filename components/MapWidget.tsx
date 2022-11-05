@@ -15,6 +15,7 @@ import bbox from "turf-bbox";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-gpx";
+import { route } from "next/dist/server/router";
 
 async function getGPX(path) {
 	try {
@@ -41,19 +42,33 @@ function useFetcher(fetchSomethingAPI) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return [data];
+	return data;
+}
+function useFetcherMany(fetchMany) {
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		Promise.all(fetchMany.map((f) => f())).then((response) =>
+			setData(response)
+		);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	return data;
 }
 // eslint-disable-next-line react-hooks/rules-of-hooks
 
 interface Props {
-	sectionGPXUrl: string;
-	fullGPXUrl: string;
+	sectionGPXUrl?: string;
+	fullGPXUrl?: string;
 	height: number;
 	sectionLabel?: string;
 	fullLabel?: string;
-	focusOn?: "section" | "full" | "live";
+	focusOn?: "section" | "full" | "live" | "all";
 	live?: boolean;
 	livePoints?: { lng: number; lat: number }[];
+	routeListUrls?: string[];
 }
 const MapWidget = ({
 	sectionGPXUrl,
@@ -64,6 +79,7 @@ const MapWidget = ({
 	focusOn,
 	live,
 	livePoints,
+	routeListUrls,
 }: Props) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
@@ -71,12 +87,19 @@ const MapWidget = ({
 
 	const [wholeRoute, setWholeRoute] = useState(undefined);
 	const [partRoute, setPartRoute] = useState(undefined);
-	const [wholeRouteGPX] = fullGPXUrl
+	const [routeList, setRouteList] = useState([undefined]);
+	const wholeRouteGPX = fullGPXUrl
 		? useFetcher(() => getGPX(fullGPXUrl))
-		: [undefined];
-	const [partRouteGPX] = sectionGPXUrl
+		: undefined;
+	const partRouteGPX = sectionGPXUrl
 		? useFetcher(() => getGPX(sectionGPXUrl))
-		: [undefined];
+		: undefined;
+	const routeListGPXs =
+		routeListUrls?.length > 0
+			? JSON.stringify(
+					useFetcherMany(routeListUrls.map((url) => () => getGPX(url)))
+			  )
+			: undefined;
 
 	if (livePoints?.length > 0) {
 		polyline = L.polyline(livePoints, {
@@ -93,6 +116,7 @@ const MapWidget = ({
 			);
 		}
 	}, [mapRef.current, wholeRouteGPX]);
+
 	useEffect(() => {
 		if (partRouteGPX) {
 			setPartRoute(
@@ -102,25 +126,53 @@ const MapWidget = ({
 	}, [mapRef.current, partRouteGPX]);
 
 	useEffect(() => {
+		if (routeListGPXs) {
+			const routeListGPXsArray = JSON.parse(routeListGPXs);
+			setRouteList(
+				routeListGPXsArray.map((gpx) =>
+					toGeoJSON.gpx(new DOMParser().parseFromString(gpx, "text/xml"))
+				)
+			);
+		}
+	}, [mapRef.current, routeListGPXs]);
+
+	useEffect(() => {
 		if (focusOn === "live") {
 			mapRef.current?.fitBounds(polyline.getBounds());
 		} else {
-			const routeToFocusOn = focusOn === "full" ? wholeRoute : partRoute;
+			const routeToFocusOn =
+				focusOn === "full" ? wholeRoute : focusOn === "all" ? "all" : partRoute;
+			if (routeToFocusOn === "all") {
+				mapRef?.current?.fitBounds([
+					[45.775246, 10.541811],
+					[47.894305, 5.81769],
+				]);
+				return;
+			}
 			if (routeToFocusOn) {
 				const bboxArray = bbox(routeToFocusOn);
 				const corner1 = [bboxArray[1], bboxArray[0]];
 				const corner2 = [bboxArray[3], bboxArray[2]];
+				console.log([corner1, corner2]);
 				mapRef.current.fitBounds([corner1, corner2]);
 			}
 		}
-	}, [mapRef.current, partRoute, wholeRoute, focusOn]);
+	}, [mapRef.current, partRoute, wholeRoute, routeList, focusOn]);
 
 	useEffect(() => {
 		mapRef.current?.invalidateSize();
 		if (focusOn === "live") {
 			mapRef.current?.fitBounds(polyline.getBounds());
 		} else {
-			const routeToFocusOn = focusOn === "full" ? wholeRoute : partRoute;
+			const routeToFocusOn =
+				focusOn === "full" ? wholeRoute : focusOn === "all" ? "all" : partRoute;
+			if (routeToFocusOn === "all") {
+				mapRef?.current?.fitBounds([
+					[45.775246, 10.541811],
+					[47.894305, 5.81769],
+				]);
+				return;
+			}
 			if (routeToFocusOn) {
 				const bboxArray = bbox(routeToFocusOn);
 				const corner1 = [bboxArray[1], bboxArray[0]];
@@ -208,6 +260,26 @@ const MapWidget = ({
 								opacity: 1,
 							}}
 						/>
+					) : (
+						<div />
+					)}
+				</Pane>
+				<Pane name={"route"}>
+					{routeList?.length > 1 ? (
+						routeList.map((route2, i) => {
+							console.log(route2, i);
+							return (
+								<GeoJSON
+									key={i + 100}
+									data={route2}
+									style={{
+										color: "#0095ff",
+										weight: 5,
+										opacity: 1,
+									}}
+								/>
+							);
+						})
 					) : (
 						<div />
 					)}
