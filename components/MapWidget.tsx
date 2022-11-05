@@ -15,7 +15,6 @@ import bbox from "turf-bbox";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-gpx";
-import { route } from "next/dist/server/router";
 
 async function getGPX(path) {
 	try {
@@ -153,7 +152,6 @@ const MapWidget = ({
 				const bboxArray = bbox(routeToFocusOn);
 				const corner1 = [bboxArray[1], bboxArray[0]];
 				const corner2 = [bboxArray[3], bboxArray[2]];
-				console.log([corner1, corner2]);
 				mapRef.current.fitBounds([corner1, corner2]);
 			}
 		}
@@ -267,7 +265,6 @@ const MapWidget = ({
 				<Pane name={"route"}>
 					{routeList?.length > 1 ? (
 						routeList.map((route2, i) => {
-							console.log(route2, i);
 							return (
 								<GeoJSON
 									key={i + 100}
