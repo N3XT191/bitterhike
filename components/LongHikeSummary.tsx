@@ -8,6 +8,7 @@ interface Props {
 	fullGPXUrl: string;
 	posts: any[];
 	description: string[];
+	focus?: boolean;
 }
 
 const LongHikeSummary = ({
@@ -17,6 +18,7 @@ const LongHikeSummary = ({
 	fullGPXUrl,
 	posts,
 	description,
+	focus,
 }: Props) => {
 	return (
 		<>
@@ -37,7 +39,7 @@ const LongHikeSummary = ({
 					height={295}
 					sectionLabel="Gewandert"
 					fullLabel="Ganze Route"
-					focusOn="full"
+					focusOn={focus ? "full" : undefined}
 				/>
 			</div>
 			<div>

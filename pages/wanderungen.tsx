@@ -106,6 +106,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					posts={posts.filter(
 						(p) => p.frontMatter.tags.findIndex((t) => t === "Jura") !== -1
 					)}
+					focus={true}
 				/>
 				<LongHikeSummary
 					id="nswest"
@@ -121,6 +122,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 						(p) =>
 							p.frontMatter.tags.findIndex((t) => t === "Nord-Süd-2.0") !== -1
 					)}
+					focus={true}
 				/>{" "}
 				<LongHikeSummary
 					id="ns"
