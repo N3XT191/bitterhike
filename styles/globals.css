@@ -38,3 +38,7 @@ ul li {
 .leaflet-marker-icon {
 	display: none !important;
 }
+
+.container {
+	position: relative;
+}

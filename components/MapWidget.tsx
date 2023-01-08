@@ -152,7 +152,7 @@ const MapWidget = ({
 				const bboxArray = bbox(routeToFocusOn);
 				const corner1 = [bboxArray[1], bboxArray[0]];
 				const corner2 = [bboxArray[3], bboxArray[2]];
-				mapRef.current.fitBounds([corner1, corner2]);
+				mapRef.current?.fitBounds([corner1, corner2]);
 			}
 		}
 	}, [mapRef.current, partRoute, wholeRoute, routeList, focusOn]);
