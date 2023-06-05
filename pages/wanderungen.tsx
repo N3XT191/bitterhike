@@ -134,7 +134,6 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					title="Schweiz Nord-Süd Querung (Abgeschlossen)"
 					description={[
 						"In 2019, 2020 und 2021 durchquerte ich die Schweiz vom südlichsten Punkt im Tessin zum nördlichsten Punkt im Kanton Schaffhausen in insgesamt 16 Tagesettapen in 5 Abschnitten. Grösstenteils alleine und mit Zelt, im Norden mit kleinem Rucksack in Tagesettappen. Die Route ist insgesamt fast 400km lang und hat 24'500 Hm. Das gibt pro Tag im Schnitt rund 24 km und über 1500 Hm!",
-						"In 5 Tagesetappen habe ich in den letzten 2-3 Jahren schon einen Teil der Route schon gewandert, der Grossteil steht aber noch aus.  Die Route ist mit 410 km etwas länger als die erste Querung, und hat mit über 29'000 Hm deutlich mehr Höhe!",
 						"Im Juni mehrfach vom letzten Schnee noch aufgehalten, im August und September aber auch teilweise vom ersten Schnee im Herbst überrascht... Von Alpinen Gratwanderungen bis gemütlichen Waldspaziergang hat diese Route für alle etwas.",
 					]}
 					sectionGPXUrl="/NS/gpx/ns.gpx"
