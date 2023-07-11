@@ -9,6 +9,8 @@ interface Props {
 	posts: any[];
 	description: string[];
 	focus?: boolean;
+	global?: boolean;
+	onToggleFullScreen?: (fullScreen: boolean) => void;
 }
 
 const LongHikeSummary = ({
@@ -19,6 +21,8 @@ const LongHikeSummary = ({
 	posts,
 	description,
 	focus,
+	global,
+	onToggleFullScreen,
 }: Props) => {
 	return (
 		<>
@@ -40,6 +44,8 @@ const LongHikeSummary = ({
 					sectionLabel="Gewandert"
 					fullLabel="Ganze Route"
 					focusOn={focus ? "full" : undefined}
+					global={global}
+					onToggleFullScreen={onToggleFullScreen}
 				/>
 			</div>
 			<div>

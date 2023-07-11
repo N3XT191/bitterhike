@@ -4,7 +4,6 @@ import {
 	TileLayer,
 	GeoJSON,
 	Pane,
-	Tooltip,
 	Polyline,
 } from "react-leaflet";
 import toGeoJSON from "./togeojson";
@@ -68,6 +67,8 @@ interface Props {
 	live?: boolean;
 	livePoints?: { lng: number; lat: number }[];
 	routeListUrls?: string[];
+	global?: boolean;
+	onToggleFullScreen?: (fullScreen: boolean) => void;
 }
 const MapWidget = ({
 	sectionGPXUrl,
@@ -79,6 +80,8 @@ const MapWidget = ({
 	live,
 	livePoints,
 	routeListUrls,
+	global,
+	onToggleFullScreen,
 }: Props) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
@@ -209,6 +212,7 @@ const MapWidget = ({
 					borderRadius: 4,
 				}}
 				onClick={() => {
+					onToggleFullScreen(!fullScreen);
 					setFullScreen(!fullScreen);
 				}}
 			/>
@@ -224,11 +228,15 @@ const MapWidget = ({
 				}}
 			>
 				<TileLayer
-					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-					url="https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg"
+					//url="https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg"
+					//url="https://tile.tracestrack.com/topo__/{z}/{x}/{y}.png?key=c6dfcc3433a0b2347e354f6b557cae06"
+					url={
+						global
+							? "https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key=Li3zsMRF2YsO6iSNBdTs "
+							: "https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg"
+					}
 				/>
 				<TileLayer
-					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 					url="https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.swisstlm3d-wanderwege/default/current/3857/{z}/{x}/{y}.png"
 					opacity={0.5}
 				/>
