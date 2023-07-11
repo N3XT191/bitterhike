@@ -3,7 +3,7 @@ import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import useIsMobile from "../components/isMobile";
 
-const testFeed = {
+/*const testFeed = {
 	response: {
 		feedMessageResponse: {
 			count: "10",
@@ -97,7 +97,7 @@ const testFeed = {
 			],
 		},
 	},
-} as any;
+} as any;*/
 
 const getFeed = async () => {
 	const res = await fetch(
@@ -124,10 +124,14 @@ const Live = () => {
 			//const result = testFeed;
 			const result = await getFeed();
 
+			console.log(result?.response?.feedMessageResponse?.messages);
+
 			if (result?.response?.errors?.error?.code === "E-0195") {
 				setLiveData([]);
-			} else if (result?.response?.feedMessageResponse?.messages?.length > 0) {
-				const messages = result.response.feedMessageResponse.messages;
+			} else if (
+				result?.response?.feedMessageResponse?.messages?.message.length > 0
+			) {
+				const messages = result.response.feedMessageResponse.messages.message;
 				const points = messages.map((m) => {
 					return { lat: m.latitude, lng: m.longitude };
 				});

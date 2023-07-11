@@ -86,6 +86,9 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					>
 						<ul style={{ paddingLeft: useIsMobile() ? 20 : undefined }}>
 							<li>
+								<a href="#hrp">HRP - Haute Randonnée Pyrénéenne (Aktiv)</a>
+							</li>
+							<li>
 								<a href="#jura">Jura (Aktiv)</a>
 							</li>
 							<li>
@@ -103,7 +106,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 				{fullScreen === "" || fullScreen === "hrp" ? (
 					<LongHikeSummary
 						id="hrp"
-						title="HRP - Haute Randonnée Pyrénéenne"
+						title="HRP - Haute Randonnée Pyrénéenne (Aktiv)"
 						description={Array(7).fill(".")}
 						sectionGPXUrl="/HRP/gpx/HRP_done.gpx"
 						fullGPXUrl="/HRP/gpx/HRP_ganz.gpx"
