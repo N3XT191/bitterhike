@@ -212,7 +212,7 @@ const MapWidget = ({
 					borderRadius: 4,
 				}}
 				onClick={() => {
-					onToggleFullScreen(!fullScreen);
+					onToggleFullScreen ? onToggleFullScreen(!fullScreen) : null;
 					setFullScreen(!fullScreen);
 				}}
 			/>
