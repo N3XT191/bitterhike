@@ -153,7 +153,7 @@ const Live = () => {
 				<MapWidget
 					height={mobile ? 470 : 600}
 					sectionGPXUrl=""
-					fullGPXUrl="/NSWest/gpx/nswest.gpx"
+					fullGPXUrl="/HRP/gpx/HRP_todo.gpx"
 					fullLabel="Geplante Route"
 					sectionLabel="Letzte 7 Tage"
 					live={true}
