@@ -102,6 +102,7 @@ const PostPage: React.FC<Props> = ({
 						sectionGPXUrl={frontMatter.sectionGPXUrl}
 						fullGPXUrl={frontMatter.fullGPXUrl}
 						height={useMobile ? 200 : 500}
+						global={frontMatter.global}
 					/>
 				</div>
 			) : (
