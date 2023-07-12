@@ -42,7 +42,7 @@ const sections = [
 		title: "Schweiz Nord-Süd Querung 2.0 (Aktiv)",
 		description: [
 			"Seit Beginn der Planungsphase meiner Nord-Süd Querung habe ich mit einer alternativen Route geliebäugelt die im Tessin der Via Alta Verzasca folgt und dann auf 'meiner' Seite des Zürichsees vorbeikommt.",
-			"In 5 Tagesetappen habe ich in den letzten 2-3 Jahren schon einen Teil der Route schon gewandert, der Grossteil steht aber noch aus.  Die Route ist mit 410 km etwas länger als die erste Querung, und hat mit über 29'000 Hm deutlich mehr Höhe!",
+			"In 5 Tagesetappen habe ich in den letzten 2-3 Jahren schon einen Teil der Route schon gewandert, der Grossteil steht aber noch aus. Die Route ist mit 410 km etwas länger als die erste Querung, und hat mit über 29'000 Hm deutlich mehr Höhe!",
 			"Unten aufgelistet sind alle Abschnitte die dazu gehören.",
 		],
 		sectionGPXUrl: "/NSWest/gpx/nswest-completed.gpx",
@@ -104,31 +104,6 @@ const Bio = ({ posts }) => {
 	};
 
 	const [fullScreen, setFullScreen] = useState("");
-
-	const renderLongHikeSummary = (
-		id,
-		title,
-		description,
-		sectionGPXUrl,
-		fullGPXUrl,
-		posts,
-		focus,
-		global
-	) => {
-		return (
-			<LongHikeSummary
-				id={id}
-				title={title}
-				description={description}
-				sectionGPXUrl={sectionGPXUrl}
-				fullGPXUrl={fullGPXUrl}
-				posts={posts}
-				focus={focus}
-				global={global}
-				onToggleFullScreen={(fullScreen) => setFullScreen(fullScreen ? id : "")}
-			/>
-		);
-	};
 
 	const renderLink = (slug, title) => (
 		<li>
@@ -195,18 +170,21 @@ const Bio = ({ posts }) => {
 					</Card.Body>
 				</Card>
 				{sections.map((section) =>
-					fullScreen === "" || fullScreen === section.id
-						? renderLongHikeSummary(
-								section.id,
-								section.title,
-								section.description,
-								section.sectionGPXUrl,
-								section.fullGPXUrl,
-								getFilteredPosts(section.tag),
-								section.focus,
-								section.global
-						  )
-						: null
+					fullScreen === "" || fullScreen === section.id ? (
+						<LongHikeSummary
+							id={section.id}
+							title={section.title}
+							description={section.description}
+							sectionGPXUrl={section.sectionGPXUrl}
+							fullGPXUrl={section.fullGPXUrl}
+							posts={getFilteredPosts(section.tag)}
+							focus={section.focus}
+							global={section.global}
+							onToggleFullScreen={(fullScreen) =>
+								setFullScreen(fullScreen ? section.id : "")
+							}
+						/>
+					) : null
 				)}
 
 				<div style={{ position: "relative" }}>
