@@ -183,6 +183,15 @@ const MapWidget = ({
 		}
 	}, [fullScreen]);
 
+	const keys = [
+		"o7cZVRPphCemlW1RkLto", //nxt
+		"Li3zsMRF2YsO6iSNBdTs", //@b.li
+		"vBVR7FsoukrtPkMK1tcT", //bluewin
+		"F0iOF2FVWQb0y7bTfUcl", //mbi
+		"uuvwmcKSJPIIH0MuBlw9", //m.b@a
+	];
+	const key = keys[Math.floor(Math.random() * keys.length)];
+
 	return (
 		<div
 			style={{
@@ -232,8 +241,10 @@ const MapWidget = ({
 					//url="https://tile.tracestrack.com/topo__/{z}/{x}/{y}.png?key=c6dfcc3433a0b2347e354f6b557cae06"
 					url={
 						global
-							? "https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key=Li3zsMRF2YsO6iSNBdTs "
-							: "https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg"
+							? "https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key=" +
+							  key
+							: //"https://tile.tracestrack.com/topo__/{z}/{x}/{y}.png?key=c6dfcc3433a0b2347e354f6b557cae06"
+							  "https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg"
 					}
 				/>
 				<TileLayer

@@ -107,7 +107,7 @@ const Bio = ({ posts }: { posts: any[] }) => {
 					<LongHikeSummary
 						id="hrp"
 						title="HRP - Haute Randonnée Pyrénéenne (Aktiv)"
-						description={Array(7).fill(".")}
+						description={Array(4).fill(".")}
 						sectionGPXUrl="/HRP/gpx/HRP_done.gpx"
 						fullGPXUrl="/HRP/gpx/HRP_ganz.gpx"
 						posts={posts.filter(
