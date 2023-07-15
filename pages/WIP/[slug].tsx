@@ -14,7 +14,7 @@ import StatCard from "../../components/StatCard";
 import { NextSeo } from "next-seo";
 
 export const getStaticPaths = async () => {
-	const files = fs.readdirSync(path.join("posts-WIP"));
+	const files = fs.readdirSync(path.join("data", "posts-WIP"));
 	const paths = files.map((filename) => ({
 		params: {
 			slug: filename.replace(".mdx", ""),
