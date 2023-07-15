@@ -12,10 +12,12 @@ const styles = {
 		listStyleType: "none",
 		marginBlockEnd: 0,
 	},
-	item: {
-		width: "250px",
-		height: "250px",
-		flexShrink: 0,
+	item: (size) => {
+		return {
+			width: size,
+			height: size,
+			flexShrink: 0,
+		};
 	},
 	itemSnapPoint: {
 		scrollSnapAlign: "start",
@@ -116,12 +118,17 @@ export const Carousel = <T extends any>({
 interface CarouselItemProps {
 	readonly isSnapPoint: boolean;
 	readonly children?: React.ReactNode;
+	readonly size: number;
 }
 
-export const CarouselItem = ({ isSnapPoint, children }: CarouselItemProps) => (
+export const CarouselItem = ({
+	isSnapPoint,
+	children,
+	size,
+}: CarouselItemProps) => (
 	<li
 		style={{
-			...styles.item,
+			...styles.item(size),
 			...(isSnapPoint ? styles.itemSnapPoint : {}),
 		}}
 	>

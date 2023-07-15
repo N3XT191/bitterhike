@@ -117,11 +117,15 @@ const PostPage: React.FC<Props> = ({
 			<Carousel
 				items={items}
 				renderItem={({ item, isSnapPoint }) => (
-					<CarouselItem key={item.id} isSnapPoint={isSnapPoint}>
+					<CarouselItem
+						key={item.id}
+						isSnapPoint={isSnapPoint}
+						size={useMobile ? 150 : 250}
+					>
 						<img
 							src={item.src}
-							width="250"
-							height="250"
+							width={useMobile ? 150 : 250}
+							height={useMobile ? 150 : 250}
 							alt=""
 							style={{ objectFit: "cover" }}
 						/>
