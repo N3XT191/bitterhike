@@ -115,7 +115,7 @@ const PostPage: React.FC<Props> = ({
 			<h1>{frontMatter.title}</h1>
 			<Separator />
 			<Carousel
-				items={items}
+				items={useMobile ? items : items.slice(0, items.length - 1)}
 				renderItem={({ item, isSnapPoint }) => (
 					<CarouselItem
 						key={item.id}
