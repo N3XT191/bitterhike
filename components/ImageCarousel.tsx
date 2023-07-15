@@ -89,16 +89,20 @@ export const Carousel = <T extends any>({
 				>
 					←
 				</button>
-				{pages.map((_, i) => (
-					<button
-						key={i}
-						style={{
-							...styles.paginationButton,
-							...(activePageIndex === i ? styles.paginationButtonActive : {}),
-						}}
-						onClick={() => goTo(i)}
-					/>
-				))}
+				{pages.length <= 10 ? (
+					pages.map((_, i) => (
+						<button
+							key={i}
+							style={{
+								...styles.paginationButton,
+								...(activePageIndex === i ? styles.paginationButtonActive : {}),
+							}}
+							onClick={() => goTo(i)}
+						/>
+					))
+				) : (
+					<div style={{ width: 20, height: 5 }} />
+				)}
 				<button
 					style={{
 						...styles.nextPrevButton,
