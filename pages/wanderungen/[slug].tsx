@@ -40,6 +40,7 @@ export const getStaticProps = async ({
 	const { data: frontMatter, content } = matter(markdownWithMeta);
 	console.log(frontMatter);
 	const mdxSource = await serialize(content);
+	const photos = fs.readdirSync(path.join("public", frontMatter.images));
 	const files = fs.readdirSync(path.join("data", "posts"));
 	const posts = files.map((filename) => {
 		if (filename.slice(filename.length - 3) !== "mdx") {
@@ -55,13 +56,20 @@ export const getStaticProps = async ({
 			slug: filename.split(".")[0],
 		};
 	});
+	const imageUrls = photos.map((filename) => {
+		if (filename.slice(filename.length - 4) !== "jpeg") {
+			return null;
+		}
+		return frontMatter.images + filename;
+	});
 
 	return {
 		props: {
 			frontMatter,
 			slug,
 			mdxSource,
-			posts: posts.filter((p) => p.frontMatter.tags?.includes(frontMatter.id)),
+			posts: posts.filter((p) => p.frontMatter.tags?.includes(frontMatter.tag)),
+			imageUrls: imageUrls.filter((p) => p),
 		},
 	};
 };
@@ -72,8 +80,14 @@ interface Props {
 	};
 	posts: any[];
 	mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
+	imageUrls: string[];
 }
-const PostPage: React.FC<Props> = ({ frontMatter, mdxSource, posts }) => {
+const PostPage: React.FC<Props> = ({
+	frontMatter,
+	mdxSource,
+	posts,
+	imageUrls,
+}) => {
 	const MapWidget = React.useMemo(
 		() =>
 			dynamic(() => import("../../components/MapWidget"), {
@@ -85,10 +99,13 @@ const PostPage: React.FC<Props> = ({ frontMatter, mdxSource, posts }) => {
 		]
 	);
 	const useMobile = useIsMobile();
-	const items = Array.from({ length: 17 }).map((_, i) => ({
-		id: i,
-		src: `${frontMatter.images}${i + 1}.jpeg`,
-	}));
+	const items = imageUrls.map((url, i) => {
+		return {
+			id: i,
+			src: url,
+		};
+	});
+
 	return (
 		<div className="mt-4" style={{ width: "100%", position: "relative" }}>
 			<NextSeo
@@ -112,38 +129,16 @@ const PostPage: React.FC<Props> = ({ frontMatter, mdxSource, posts }) => {
 				)}
 			/>
 			<Separator />
-			<div style={{ display: "flex" }}>
-				<Card
-					style={{
-						margin: 10,
-						marginBottom: 30,
-						maxWidth: "100%",
-						zIndex: 1,
-					}}
-				>
-					<Card.Body>
-						<div style={{ display: "flex" }}>
-							<b style={{ marginRight: 7 }}>Wann: </b>
-							<div>{frontMatter.when}</div>
-						</div>
-						<div style={{ display: "flex" }}>
-							<b style={{ marginRight: 7 }}>Länge: </b>
-							<div>{frontMatter.distance + "km"}</div>
-						</div>
-						<div style={{ display: "flex" }}>
-							<b style={{ marginRight: 7 }}>Höhe: </b>
-							<div>
-								{frontMatter.ascent + "m ↗ " + frontMatter.descent + "m ↘ "}
-							</div>
-						</div>
-						<div style={{ display: "flex" }}>
-							<b style={{ marginRight: 7 }}>Anzahl Tage: </b>
-							<div>{frontMatter.days}</div>
-						</div>
-					</Card.Body>
-				</Card>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "space-between",
+					width: "100%",
+					flexDirection: useMobile ? "column-reverse" : "row",
+				}}
+			>
 				<div>
-					<b>Posts:</b>
+					<b style={{ fontSize: 24 }}>Blog Posts:</b>
 					{posts
 						.sort((a, b) => (a.frontMatter.date > b.frontMatter.date ? 1 : -1))
 						.map((p) => (
@@ -164,7 +159,39 @@ const PostPage: React.FC<Props> = ({ frontMatter, mdxSource, posts }) => {
 							</li>
 						))}
 				</div>
+				<Card
+					style={{
+						margin: 10,
+						marginBottom: 30,
+						zIndex: 1,
+					}}
+				>
+					<Card.Body>
+						<div style={{ display: "flex" }}>
+							<b style={{ marginRight: 7 }}>Wann: </b>
+							<div>{frontMatter.when}</div>
+						</div>
+						<div style={{ display: "flex" }}>
+							<b style={{ marginRight: 7 }}>Länge: </b>
+							<div>{frontMatter.distance + "km"}</div>
+						</div>
+						<div style={{ display: "flex" }}>
+							<b style={{ marginRight: 7 }}>Höhe: </b>
+							<div>
+								{frontMatter.ascent.toLocaleString("de-CH") +
+									"m ↗ " +
+									frontMatter.descent.toLocaleString("de-CH") +
+									"m ↘ "}
+							</div>
+						</div>
+						<div style={{ display: "flex" }}>
+							<b style={{ marginRight: 7 }}>Anzahl Tage: </b>
+							<div>{frontMatter.days}</div>
+						</div>
+					</Card.Body>
+				</Card>
 			</div>
+			<Separator />
 			<div>
 				{frontMatter.description.map((line) => (
 					<p>{line}</p>
