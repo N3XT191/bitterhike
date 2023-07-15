@@ -32,10 +32,10 @@ export const getStaticProps = async ({
 	params: { slug: string };
 }) => {
 	const markdownWithMeta = fs.readFileSync(
-		path.join("posts-WIP", slug + ".mdx"),
+		path.join("data", "posts-WIP", slug + ".mdx"),
 		"utf-8"
 	);
-	const files = fs.readdirSync(path.join("posts-WIP"));
+	const files = fs.readdirSync(path.join("data", "posts-WIP"));
 	const slugs = files.map((filename) => filename.replace(".mdx", "")).sort();
 	const slugIndex = slugs.findIndex((s) => s === slug);
 	const { data: frontMatter, content } = matter(markdownWithMeta);

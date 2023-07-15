@@ -26,12 +26,15 @@ const LongHikeSummary = ({
 }: Props) => {
 	return (
 		<>
-			<h3 id={id}>{title}</h3>
+			<h3 id={id}>
+				<Link href={"/wanderungen/" + id}>{title}</Link>
+			</h3>
+
 			<div
 				style={{
-					width: 450,
+					width: 405,
 					maxWidth: "100%",
-					height: 300,
+					height: 450,
 					float: "right",
 					marginBottom: 10,
 					marginLeft: 10,
@@ -40,7 +43,7 @@ const LongHikeSummary = ({
 				<MapWidget
 					sectionGPXUrl={sectionGPXUrl}
 					fullGPXUrl={fullGPXUrl}
-					height={295}
+					height={400}
 					sectionLabel="Gewandert"
 					fullLabel="Ganze Route"
 					focusOn={focus ? "full" : undefined}
@@ -50,8 +53,14 @@ const LongHikeSummary = ({
 			</div>
 			<div>
 				{description.map((paragraph) => (
-					<p>{paragraph}</p>
+					<>
+						<p>{paragraph}</p>
+					</>
 				))}
+
+				<div style={{ fontSize: 22, marginBottom: 10 }}>
+					<b>Blog Posts:</b>
+				</div>
 				<ul>
 					{posts
 						.sort((a, b) => (a.frontMatter.date > b.frontMatter.date ? 1 : -1))
@@ -73,6 +82,16 @@ const LongHikeSummary = ({
 							</li>
 						))}
 				</ul>
+				<div>
+					<Link href={"/wanderungen/" + id}>Mehr Informationen...</Link>
+				</div>
+				<hr
+					style={{
+						color: "black",
+						backgroundColor: "black",
+						height: 2,
+					}}
+				/>
 			</div>
 		</>
 	);

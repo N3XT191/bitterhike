@@ -11,13 +11,13 @@ import { Post } from "../interfaces/interfaces";
 import PostCard from "../components/PostCard";
 
 export const getStaticProps = async () => {
-	const files = fs.readdirSync(path.join("posts"));
+	const files = fs.readdirSync(path.join("data", "posts"));
 	const posts = files.map((filename) => {
 		if (filename.slice(filename.length - 3) !== "mdx") {
 			return;
 		}
 		const markdownWithMeta = fs.readFileSync(
-			path.join("posts", filename),
+			path.join("data", "posts", filename),
 			"utf-8"
 		);
 		const { data: frontMatter } = matter(markdownWithMeta);

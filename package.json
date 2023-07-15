@@ -28,6 +28,7 @@
 		"react-leaflet-fullscreen-control": "^0.0.4",
 		"react-leaflet-fullscreen-plugin": "^1.0.1",
 		"react-leaflet-wmts": "^0.1.0",
+		"react-snap-carousel": "^0.3.2",
 		"turf-bbox": "^3.0.12",
 		"xmldom": "^0.6.0"
 	},

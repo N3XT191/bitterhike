@@ -14,7 +14,7 @@ import StatCard from "../../components/StatCard";
 import { NextSeo } from "next-seo";
 
 export const getStaticPaths = async () => {
-	const files = fs.readdirSync(path.join("posts"));
+	const files = fs.readdirSync(path.join("data", "posts"));
 	const paths = files.map((filename) => ({
 		params: {
 			slug: filename.replace(".mdx", ""),
@@ -32,10 +32,10 @@ export const getStaticProps = async ({
 	params: { slug: string };
 }) => {
 	const markdownWithMeta = fs.readFileSync(
-		path.join("posts", slug + ".mdx"),
+		path.join("data", "posts", slug + ".mdx"),
 		"utf-8"
 	);
-	const files = fs.readdirSync(path.join("posts"));
+	const files = fs.readdirSync(path.join("data", "posts"));
 	const slugs = files.map((filename) => filename.replace(".mdx", "")).sort();
 	const slugIndex = slugs.findIndex((s) => s === slug);
 	const { data: frontMatter, content } = matter(markdownWithMeta);
