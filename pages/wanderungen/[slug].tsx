@@ -38,7 +38,6 @@ export const getStaticProps = async ({
 		"utf-8"
 	);
 	const { data: frontMatter, content } = matter(markdownWithMeta);
-	console.log(frontMatter);
 	const mdxSource = await serialize(content);
 	const photos = fs.readdirSync(path.join("public", frontMatter.images));
 	const files = fs.readdirSync(path.join("data", "posts"));
@@ -56,13 +55,19 @@ export const getStaticProps = async ({
 			slug: filename.split(".")[0],
 		};
 	});
-	const imageUrls = photos.map((filename) => {
-		if (filename.slice(filename.length - 4) !== "jpeg") {
-			return null;
-		}
-		return frontMatter.images + filename;
-	});
-
+	const imageUrls = photos
+		.map((filename) => {
+			if (
+				["jpeg", ".png", ".jpg"].includes(filename.slice(filename.length - 4))
+			) {
+				return filename;
+			} else {
+				return null;
+			}
+		})
+		.sort((a, b) => (parseInt(a) > parseInt(b) ? 1 : -1))
+		.filter((e) => e && !e.includes("thumb"))
+		.map((e) => frontMatter.images + e);
 	return {
 		props: {
 			frontMatter,
@@ -115,7 +120,7 @@ const PostPage: React.FC<Props> = ({
 			<h1>{frontMatter.title}</h1>
 			<Separator />
 			<Carousel
-				items={useMobile ? items : items.slice(0, items.length - 1)}
+				items={useMobile ? items : items.slice(0, items.length)}
 				renderItem={({ item, isSnapPoint }) => (
 					<CarouselItem
 						key={item.id}

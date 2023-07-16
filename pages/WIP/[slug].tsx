@@ -39,7 +39,6 @@ export const getStaticProps = async ({
 	const slugs = files.map((filename) => filename.replace(".mdx", "")).sort();
 	const slugIndex = slugs.findIndex((s) => s === slug);
 	const { data: frontMatter, content } = matter(markdownWithMeta);
-	console.log(frontMatter);
 	const mdxSource = await serialize(content);
 	return {
 		props: {

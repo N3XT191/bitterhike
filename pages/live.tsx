@@ -124,7 +124,6 @@ const Live = () => {
 			//const result = testFeed;
 			const result = await getFeed();
 
-			console.log(result?.response?.feedMessageResponse?.messages);
 
 			if (result?.response?.errors?.error?.code === "E-0195") {
 				setLiveData([]);

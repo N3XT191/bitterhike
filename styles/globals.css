@@ -42,3 +42,10 @@ ul li {
 .container {
 	position: relative;
 }
+
+.scroll::-webkit-scrollbar {
+	display: none;
+}
+.scroll {
+	scrollbar-width: none;
+}

@@ -1,6 +1,7 @@
 // Carousel.tsx
 import React, { CSSProperties } from "react";
 import { useSnapCarousel } from "react-snap-carousel";
+import useIsMobile from "./isMobile";
 
 const styles = {
 	root: { marginBottom: 20 },
@@ -69,9 +70,11 @@ export const Carousel = <T extends any>({
 		goTo,
 		snapPointIndexes,
 	} = useSnapCarousel();
+	const useMobile = useIsMobile();
+	const maxLimit = useMobile ? 10 : 20;
 	return (
 		<div style={styles.root}>
-			<ul style={styles.scroll} ref={scrollRef}>
+			<ul style={styles.scroll} ref={scrollRef} className="scroll">
 				{items.map((item, i) =>
 					renderItem({
 						item,
@@ -89,7 +92,7 @@ export const Carousel = <T extends any>({
 				>
 					←
 				</button>
-				{pages.length <= 10 ? (
+				{pages.length <= maxLimit ? (
 					pages.map((_, i) => (
 						<button
 							key={i}
