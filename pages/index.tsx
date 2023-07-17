@@ -9,6 +9,7 @@ import { Container, Row } from "react-bootstrap";
 import React from "react";
 import { Post } from "../interfaces/interfaces";
 import PostCard from "../components/PostCard";
+import useIsMobile from "../components/isMobile";
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("data", "posts"));
@@ -35,7 +36,10 @@ export const getStaticProps = async () => {
 
 export default function Home({ posts }: { posts: Post[] }) {
 	return (
-		<Container fluid>
+		<Container
+			fluid
+			style={{ maxWidth: 900, padding: useIsMobile() ? 10 : undefined }}
+		>
 			<NextSeo
 				title="BitterHike - Marc's Wanderblog"
 				description="BitterHike - Mein Blog in dem ich über meine Wandererlebnisse schreibe."

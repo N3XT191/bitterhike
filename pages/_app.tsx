@@ -6,11 +6,14 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { Container } from "react-bootstrap";
 import Script from "next/script";
+import useIsMobile from "../components/isMobile";
 
 function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
 	return (
 		<>
-			<Container style={{ maxWidth: 900 }}>
+			<Container
+				style={{ maxWidth: 900, padding: useIsMobile() ? 10 : undefined }}
+			>
 				<Script
 					src="https://www.googletagmanager.com/gtag/js?id=G-NLCK29G8PX"
 					strategy="afterInteractive"

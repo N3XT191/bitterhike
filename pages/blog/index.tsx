@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import RemoveTagFilter from "../../components/RemoveTagFilter";
 import PostCard from "../../components/PostCard";
+import useIsMobile from "../../components/isMobile";
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("data", "posts"));
@@ -41,7 +42,10 @@ export default function Blog({ posts }: { posts: any[] }) {
 		? posts.filter((p) => p.frontMatter.tags.findIndex((t) => t === tag) !== -1)
 		: posts;
 	return (
-		<Container fluid>
+		<Container
+			fluid
+			style={{ maxWidth: 900, padding: useIsMobile() ? 10 : undefined }}
+		>
 			<NextSeo
 				title="BitterHike - Marc's Wanderblog"
 				description="BitterHike - Mein Blog in dem ich über meine Wandererlebnisse schreibe."
