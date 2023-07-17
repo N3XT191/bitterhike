@@ -107,7 +107,7 @@ const PostCardData = ({ frontMatter, short }) => {
 							marginLeft: 5,
 						}}
 					>
-						{frontMatter.days + " day" + (frontMatter.days > 1 ? "s" : "")}
+						{frontMatter.days + " Tag" + (frontMatter.days > 1 ? "e" : "")}
 					</Card.Text>
 				</div>
 				<div style={iconContainer}>
