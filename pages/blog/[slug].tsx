@@ -12,6 +12,8 @@ import PostNavigation from "../../components/PostNavigation";
 import StatCard from "../../components/StatCard";
 
 import { NextSeo } from "next-seo";
+import { Card } from "react-bootstrap";
+import PostCardData from "../../components/PostCardData";
 
 export const getStaticPaths = async () => {
 	const files = fs.readdirSync(path.join("data", "posts"));
@@ -83,28 +85,33 @@ const PostPage: React.FC<Props> = ({
 			/>
 			<PostNavigation previousSlug={previousSlug} nextSlug={nextSlug} />
 			<h1>{frontMatter.title}</h1>
+			<Card style={{ marginBottom: 20, cursor: "pointer" }}>
+				<Card.Body style={{ padding: 15 }}>
+					<PostCardData frontMatter={frontMatter} short={false} />
+				</Card.Body>
+			</Card>
 			{frontMatter.sectionGPXUrl ? (
 				<div
 					style={{
-						width: 510,
+						width: "100%",
 						maxWidth: "100%",
-						float: "right",
 						marginBottom: 10,
-						marginLeft: 10,
-						height: useMobile ? 200 : 500,
+						height: useMobile ? 200 : 400,
 					}}
 				>
 					<MapWidget
 						sectionGPXUrl={frontMatter.sectionGPXUrl}
 						fullGPXUrl={frontMatter.fullGPXUrl}
-						height={useMobile ? 200 : 500}
+						height={useMobile ? 200 : 400}
 						global={frontMatter.global}
 					/>
 				</div>
 			) : (
 				<div />
 			)}
-			<StatCard data={frontMatter as any} />
+			{
+				//<StatCard data={frontMatter as any} />
+			}
 			<div style={{ fontSize: useMobile ? undefined : 24 }}>
 				<MDXRemote {...mdxSource} components={{ Img }} />
 			</div>

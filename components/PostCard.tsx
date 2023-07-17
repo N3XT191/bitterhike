@@ -27,7 +27,7 @@ const PostCard = ({ post }: { post: Post }) => {
 								{post.frontMatter.description}
 							</Card.Text>
 
-							<PostCardData frontMatter={post.frontMatter} />
+							<PostCardData frontMatter={post.frontMatter} short={true} />
 						</Card.Body>
 					</Card>
 				</a>
