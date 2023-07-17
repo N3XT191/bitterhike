@@ -8,7 +8,7 @@ interface Props {
 	fullGPXUrl: string;
 	posts: any[];
 	description: string[];
-	focus?: boolean;
+	finished?: boolean;
 	global?: boolean;
 	onToggleFullScreen?: (fullScreen: boolean) => void;
 }
@@ -20,14 +20,16 @@ const LongHikeSummary = ({
 	fullGPXUrl,
 	posts,
 	description,
-	focus,
 	global,
+	finished,
 	onToggleFullScreen,
 }: Props) => {
 	return (
 		<>
 			<h3 id={id}>
-				<Link href={"/wanderungen/" + id}>{title}</Link>
+				<Link href={"/wanderungen/" + id.toLowerCase()}>
+					{title + (finished ? " (Abgeschlossen)" : " (Aktiv)")}
+				</Link>
 			</h3>
 
 			<div
@@ -45,8 +47,8 @@ const LongHikeSummary = ({
 					fullGPXUrl={fullGPXUrl}
 					height={400}
 					sectionLabel="Gewandert"
-					fullLabel="Ganze Route"
-					focusOn={focus ? "full" : undefined}
+					fullLabel="To Do"
+					focusOn={"full"}
 					global={global}
 					onToggleFullScreen={onToggleFullScreen}
 				/>

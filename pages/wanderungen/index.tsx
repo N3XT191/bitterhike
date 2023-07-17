@@ -15,65 +15,6 @@ const LongHikeSummary = dynamic(
 	}
 );
 
-const sections = [
-	{
-		id: "hrp",
-		title: "HRP - Haute Route Pyrénéenne (Aktiv)",
-		description: [
-			"Vom Atlantik bis ans Mittelmeer, entlang der ganzen spanisch-französischen Grenze und queer durch Andorra hindurch führt der HRP oder 'Haute Route Pyrenée'.",
-			"Ende August 2018, in der kurzen Zeit zwischen Prüfungen und Semesterbeginn, startete ich in Hendaye (am Atlantik) und wanderte in 13 Tagen bis Gavarnie. Ein Jahr später ging ich ein zweites Mal in die Pyrennäen, musste aber nach 6 Tagen im spanischen Salardù aufgrund von Magen-Darm-Problemen aufgeben.",
-			"Ab dem 10. August 2023 plane ich, endlich den verbleibenden Teil fertig zu wandern, von Salardù bis nach Banyuls-sur-Mer.",
-			"Die ganze Route ist insgesamt 678km lang mit 39720 Höhenmetern. Davon sind aktuell noch 284km und 18480 Höhenmeter übrig.",
-		],
-		sectionGPXUrl: "/HRP/gpx/HRP_done.gpx",
-		fullGPXUrl: "/HRP/gpx/HRP_ganz.gpx",
-		tag: "HRP",
-		focus: true,
-		global: true,
-	},
-	{
-		id: "jura",
-		title: "Jura (Aktiv)",
-		description: [
-			"Vom Kanton Zürich bis nach Nyon, dem ganzen Jura entlang. Das ist der Plan.",
-			"Im Sommer 2021 war ich schon auf dem Lägern. Die weitere Route führt über den Hauenstein, Weissenstein, Chasseral und den Chasseron, so oft wie möglich auf der Krete bis zum Lac de Joux und von da runter nach Nyon",
-			"Unten aufgelistet sind alle Abschnitte die dazu gehören.",
-		],
-		sectionGPXUrl: "/jura/gpx/jura-completed.gpx",
-		fullGPXUrl: "/jura/gpx/jura.gpx",
-		tag: "Jura",
-		focus: true,
-		global: false,
-	},
-	{
-		id: "nswest",
-		title: "Schweiz Nord-Süd Querung 2.0 (Aktiv)",
-		description: [
-			"Seit Beginn der Planungsphase meiner Nord-Süd Querung habe ich mit einer alternativen Route geliebäugelt die im Tessin der Via Alta Verzasca folgt und dann auf 'meiner' Seite des Zürichsees vorbeikommt.",
-			"In 5 Tagesetappen habe ich in den letzten 2-3 Jahren schon einen Teil der Route schon gewandert, der Grossteil steht aber noch aus. Die Route ist mit 410 km etwas länger als die erste Querung, und hat mit über 29'000 Hm deutlich mehr Höhe!",
-			"Unten aufgelistet sind alle Abschnitte die dazu gehören.",
-		],
-		sectionGPXUrl: "/NSWest/gpx/nswest-completed.gpx",
-		fullGPXUrl: "/NSWest/gpx/nswest.gpx",
-		tag: "Nord-Süd-2.0",
-		focus: true,
-		global: false,
-	},
-	{
-		id: "ns",
-		title: "Schweiz Nord-Süd Querung (Abgeschlossen)",
-		description: [
-			"In 2019, 2020 und 2021 durchquerte ich die Schweiz vom südlichsten Punkt im Tessin zum nördlichsten Punkt im Kanton Schaffhausen in insgesamt 16 Tagesettapen in 5 Abschnitten. Grösstenteils alleine und mit Zelt, im Norden mit kleinem Rucksack in Tagesettappen. Die Route ist insgesamt fast 400km lang und hat 24'500 Hm. Das gibt pro Tag im Schnitt rund 24 km und über 1500 Hm!",
-			"Im Juni mehrfach vom letzten Schnee noch aufgehalten, im August und September aber auch teilweise vom ersten Schnee im Herbst überrascht... Von Alpinen Gratwanderungen bis gemütlichen Waldspaziergang hat diese Route für alle etwas.",
-		],
-		sectionGPXUrl: "/NS/gpx/ns.gpx",
-		fullGPXUrl: "",
-		tag: "Nord-Süd",
-		focus: false,
-		global: false,
-	},
-];
-
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("data", "posts"));
 	const posts = files.map((filename) => {
@@ -90,14 +31,31 @@ export const getStaticProps = async () => {
 			slug: filename.split(".")[0],
 		};
 	});
+	const longDistanceHikeFiles = fs.readdirSync(
+		path.join("data", "long-distance-hikes")
+	);
+	const longDistanceHikes = longDistanceHikeFiles.map((filename) => {
+		if (filename.slice(filename.length - 3) !== "mdx") {
+			return;
+		}
+		const markdownWithMeta = fs.readFileSync(
+			path.join("data", "long-distance-hikes", filename),
+			"utf-8"
+		);
+		const { data: frontMatter } = matter(markdownWithMeta);
+		return frontMatter;
+	});
 	return {
 		props: {
 			posts: posts.filter((p) => p),
+			longDistanceHikes: longDistanceHikes
+				.filter((h) => h)
+				.sort((a, b) => (a.order > b.order ? 1 : -1)),
 		},
 	};
 };
 
-const Wanderungen = ({ posts }) => {
+const Wanderungen = ({ posts, longDistanceHikes }) => {
 	const MapWidget = React.useMemo(
 		() =>
 			dynamic(() => import("../../components/MapWidget"), {
@@ -166,9 +124,12 @@ const Wanderungen = ({ posts }) => {
 						}}
 					>
 						<ul style={{ paddingLeft: useIsMobile() ? 20 : undefined }}>
-							{sections.map((section) => (
+							{longDistanceHikes.map((hike) => (
 								<li>
-									<a href={"#" + section.id}>{section.title}</a>
+									<a href={"#" + hike.id}>
+										{hike.title +
+											(hike.finished ? " (Abgeschlossen)" : " (Aktiv)")}
+									</a>
 								</li>
 							))}
 							<li>
@@ -177,19 +138,19 @@ const Wanderungen = ({ posts }) => {
 						</ul>
 					</Card.Body>
 				</Card>
-				{sections.map((section) =>
-					fullScreen === "" || fullScreen === section.id ? (
+				{longDistanceHikes.map((hike) =>
+					fullScreen === "" || fullScreen === hike.id ? (
 						<LongHikeSummary
-							id={section.id}
-							title={section.title}
-							description={section.description}
-							sectionGPXUrl={section.sectionGPXUrl}
-							fullGPXUrl={section.fullGPXUrl}
-							posts={getFilteredPosts(section.tag)}
-							focus={section.focus}
-							global={section.global}
+							id={hike.id}
+							title={hike.title}
+							description={hike.description}
+							sectionGPXUrl={hike.doneGPXUrl}
+							fullGPXUrl={hike.fullGPXUrl}
+							posts={getFilteredPosts(hike.tag)}
+							global={hike.global}
+							finished={hike.finished}
 							onToggleFullScreen={(fullScreen) =>
-								setFullScreen(fullScreen ? section.id : "")
+								setFullScreen(fullScreen ? hike.id : "")
 							}
 						/>
 					) : null
