@@ -11,6 +11,12 @@ const PostCardData = ({ frontMatter, short }) => {
 		month: "numeric" as "numeric",
 		day: "numeric" as "numeric",
 	};
+	const iconContainer = {
+		display: "flex",
+		alignItems: "flex-end",
+		marginRight: short ? 5 : 15,
+		marginBottom: 10,
+	};
 
 	return (
 		<>
@@ -21,14 +27,7 @@ const PostCardData = ({ frontMatter, short }) => {
 					flexWrap: "wrap",
 				}}
 			>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "flex-end",
-						marginRight: 15,
-						marginBottom: 10,
-					}}
-				>
+				<div style={iconContainer}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
@@ -45,8 +44,8 @@ const PostCardData = ({ frontMatter, short }) => {
 					</svg>
 					<Card.Text
 						style={{
-							fontSize: mobile ? 16 : 18,
-							lineHeight: mobile ? "14px" : "20px",
+							fontSize: iconSize,
+							lineHeight: iconSize + "px",
 							marginLeft: 5,
 						}}
 					>
@@ -82,7 +81,7 @@ const PostCardData = ({ frontMatter, short }) => {
 						<Card.Text
 							style={{
 								fontSize: iconSize,
-								lineHeight: mobile ? "14px" : "20px",
+								lineHeight: iconSize + "px",
 								marginLeft: 5,
 							}}
 						>
@@ -90,14 +89,7 @@ const PostCardData = ({ frontMatter, short }) => {
 						</Card.Text>
 					</div>
 				)}
-				<div
-					style={{
-						display: "flex",
-						alignItems: "flex-end",
-						marginRight: 15,
-						marginBottom: 10,
-					}}
-				>
+				<div style={iconContainer}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
@@ -111,27 +103,20 @@ const PostCardData = ({ frontMatter, short }) => {
 					<Card.Text
 						style={{
 							fontSize: iconSize,
-							lineHeight: mobile ? "14px" : "20px",
+							lineHeight: iconSize + "px",
 							marginLeft: 5,
 						}}
 					>
 						{frontMatter.days + " day" + (frontMatter.days > 1 ? "s" : "")}
 					</Card.Text>
 				</div>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "flex-end",
-						marginRight: 15,
-						marginBottom: 10,
-					}}
-				>
+				<div style={iconContainer}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
 						fill="currentColor"
 						className="w-5 h-5"
-						height={20}
+						height={iconSize}
 					>
 						<path
 							fillRule="evenodd"
@@ -143,21 +128,14 @@ const PostCardData = ({ frontMatter, short }) => {
 					<Card.Text
 						style={{
 							fontSize: iconSize,
-							lineHeight: mobile ? "14px" : "20px",
+							lineHeight: iconSize + "px",
 							marginLeft: 5,
 						}}
 					>
 						{frontMatter.distance + "km"}
 					</Card.Text>
 				</div>
-				<div
-					style={{
-						display: "flex",
-						alignItems: "flex-end",
-						marginRight: 15,
-						marginBottom: 10,
-					}}
-				>
+				<div style={iconContainer}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
@@ -174,7 +152,7 @@ const PostCardData = ({ frontMatter, short }) => {
 					<Card.Text
 						style={{
 							fontSize: iconSize,
-							lineHeight: mobile ? "14px" : "20px",
+							lineHeight: iconSize + "px",
 							marginLeft: 5,
 						}}
 					>
@@ -207,7 +185,7 @@ const PostCardData = ({ frontMatter, short }) => {
 						<Card.Text
 							style={{
 								fontSize: iconSize,
-								lineHeight: mobile ? "14px" : "20px",
+								lineHeight: iconSize + "px",
 								marginLeft: 5,
 							}}
 						>
@@ -241,7 +219,7 @@ const PostCardData = ({ frontMatter, short }) => {
 						<Card.Text
 							style={{
 								fontSize: iconSize,
-								lineHeight: mobile ? "14px" : "20px",
+								lineHeight: iconSize + "px",
 								marginLeft: 5,
 							}}
 						>
