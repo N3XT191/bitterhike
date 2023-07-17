@@ -5,7 +5,7 @@ import path from "path";
 import matter from "gray-matter";
 
 import Img from "../../components/Img";
-import React from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import useIsMobile from "../../components/isMobile";
 
@@ -110,6 +110,7 @@ const PostPage: React.FC<Props> = ({
 			src: url,
 		};
 	});
+	const [fullScreen, setFullScreen] = useState("");
 
 	return (
 		<div className="mt-4" style={{ width: "100%", position: "relative" }}>
@@ -122,19 +123,22 @@ const PostPage: React.FC<Props> = ({
 			<Carousel
 				items={useMobile ? items : items.slice(0, items.length)}
 				renderItem={({ item, isSnapPoint }) => (
-					<CarouselItem
-						key={item.id}
-						isSnapPoint={isSnapPoint}
-						size={useMobile ? 150 : 250}
-					>
-						<img
-							src={item.src}
-							width={useMobile ? 150 : 250}
-							height={useMobile ? 150 : 250}
-							alt=""
-							style={{ objectFit: "cover" }}
-						/>
-					</CarouselItem>
+					<>
+						<CarouselItem
+							key={item.id}
+							isSnapPoint={isSnapPoint}
+							size={useMobile ? 150 : 250}
+						>
+							<img
+								src={item.src}
+								width={useMobile ? 150 : 250}
+								height={useMobile ? 150 : 250}
+								alt=""
+								style={{ objectFit: "cover" }}
+								onClick={() => setFullScreen(item.src)}
+							/>
+						</CarouselItem>
+					</>
 				)}
 			/>
 			<Separator />
@@ -232,6 +236,34 @@ const PostPage: React.FC<Props> = ({
 			<div>
 				<MDXRemote {...mdxSource} components={{ Img }} />
 			</div>
+			{fullScreen ? (
+				<div
+					style={{
+						position: "fixed",
+						top: 0,
+						left: 0,
+						width: "100%",
+						height: "100vh",
+						backgroundColor: "rgba(0,0,0,0.9)",
+						zIndex: 9999999,
+						display: "flex",
+						justifyItems: "center",
+						alignItems: "center",
+					}}
+					onClick={() => setFullScreen("")}
+				>
+					<img
+						style={{
+							maxWidth: "100%",
+							maxHeight: "100%",
+							objectFit: "contain",
+							margin: "auto",
+						}}
+						src={fullScreen}
+						alt="image"
+					/>
+				</div>
+			) : undefined}
 		</div>
 	);
 };
