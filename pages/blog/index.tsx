@@ -44,7 +44,11 @@ export default function Blog({ posts }: { posts: any[] }) {
 	return (
 		<Container
 			fluid
-			style={{ maxWidth: 900, padding: useIsMobile() ? 10 : undefined }}
+			style={{
+				maxWidth: 900,
+				paddingLeft: useIsMobile() ? 10 : undefined,
+				paddingRight: useIsMobile() ? 10 : undefined,
+			}}
 		>
 			<NextSeo
 				title="BitterHike - Marc's Wanderblog"

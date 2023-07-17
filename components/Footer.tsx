@@ -5,7 +5,8 @@ const Footer = () => {
 				style={{
 					width: "100%",
 					borderTop: "1px solid black",
-					marginTop: "10px",
+					marginTop: "5px",
+					paddingTop: "5px",
 					marginBottom: "10px",
 					display: "flex",
 					justifyContent: "flex-end",

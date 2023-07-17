@@ -39,7 +39,11 @@ export default function Home({ posts }: { posts: Post[] }) {
 	return (
 		<Container
 			fluid
-			style={{ maxWidth: 900, padding: mobile ? 10 : undefined }}
+			style={{
+				maxWidth: 900,
+				paddingLeft: useIsMobile() ? 10 : undefined,
+				paddingRight: useIsMobile() ? 10 : undefined,
+			}}
 		>
 			<NextSeo
 				title="BitterHike - Marc's Wanderblog"

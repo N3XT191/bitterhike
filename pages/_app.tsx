@@ -12,7 +12,11 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
 	return (
 		<>
 			<Container
-				style={{ maxWidth: 900, padding: useIsMobile() ? 10 : undefined }}
+				style={{
+					maxWidth: 900,
+					paddingLeft: useIsMobile() ? 10 : undefined,
+					paddingRight: useIsMobile() ? 10 : undefined,
+				}}
 			>
 				<Script
 					src="https://www.googletagmanager.com/gtag/js?id=G-NLCK29G8PX"
