@@ -2,13 +2,9 @@ import Link from "next/link";
 import { Card } from "react-bootstrap";
 import { Post } from "../interfaces/interfaces";
 import useIsMobile from "./isMobile";
+import PostCardData from "./PostCardData";
 
 const PostCard = ({ post }: { post: Post }) => {
-	var dateOptions = {
-		year: "numeric" as "numeric",
-		month: "long" as "long",
-		day: "numeric" as "numeric",
-	};
 	const mobile = useIsMobile();
 	return (
 		<>
@@ -30,15 +26,8 @@ const PostCard = ({ post }: { post: Post }) => {
 							<Card.Text style={{ fontSize: mobile ? 14 : undefined }}>
 								{post.frontMatter.description}
 							</Card.Text>
-							<Card.Text
-								className={"text-muted"}
-								style={{ fontSize: mobile ? 14 : undefined }}
-							>
-								{new Date(post.frontMatter.date).toLocaleDateString(
-									"de-CH",
-									dateOptions
-								)}
-							</Card.Text>
+
+							<PostCardData frontMatter={post.frontMatter} />
 						</Card.Body>
 					</Card>
 				</a>
