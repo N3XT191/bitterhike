@@ -35,16 +35,19 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ posts }: { posts: Post[] }) {
+	const mobile = useIsMobile();
 	return (
 		<Container
 			fluid
-			style={{ maxWidth: 900, padding: useIsMobile() ? 10 : undefined }}
+			style={{ maxWidth: 900, padding: mobile ? 10 : undefined }}
 		>
 			<NextSeo
 				title="BitterHike - Marc's Wanderblog"
 				description="BitterHike - Mein Blog in dem ich über meine Wandererlebnisse schreibe."
 			/>
-			<h1>BitterHike - Mein Wanderblog</h1>
+			<h1 style={mobile ? { fontSize: "26px" } : undefined}>
+				BitterHike - Mein Wanderblog
+			</h1>
 			<p>
 				Hier schreibe ich ab und zu über meine Wanderungen in und um die
 				Schweizer Alpen. Unten sind meine aktuellsten Posts und{" "}
