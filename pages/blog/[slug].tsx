@@ -96,7 +96,7 @@ const PostPage: React.FC<Props> = ({
 						width: "100%",
 						maxWidth: "100%",
 						marginBottom: 10,
-						height: useMobile ? 200 : 400,
+						height: useMobile ? 300 : 400,
 					}}
 				>
 					<MapWidget
