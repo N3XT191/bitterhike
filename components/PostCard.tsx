@@ -19,7 +19,7 @@ const PostCard = ({ post }: { post: Post }) => {
 								style={{ objectFit: "cover" }}
 							/>
 						</div>
-						<Card.Body>
+						<Card.Body style={{ padding: mobile ? 10 : 20 }}>
 							<Card.Title style={{ fontSize: mobile ? 20 : undefined }}>
 								{post.frontMatter.title}
 							</Card.Title>

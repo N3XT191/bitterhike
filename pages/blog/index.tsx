@@ -7,8 +7,8 @@ import { NextSeo } from "next-seo";
 import { Container, Row } from "react-bootstrap";
 import { useRouter } from "next/router";
 import React from "react";
-import RemoveTagFilter from "../components/RemoveTagFilter";
-import PostCard from "../components/PostCard";
+import RemoveTagFilter from "../../components/RemoveTagFilter";
+import PostCard from "../../components/PostCard";
 
 export const getStaticProps = async () => {
 	const files = fs.readdirSync(path.join("data", "posts"));
