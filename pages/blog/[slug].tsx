@@ -9,7 +9,6 @@ import React from "react";
 import dynamic from "next/dynamic";
 import useIsMobile from "../../components/isMobile";
 import PostNavigation from "../../components/PostNavigation";
-import StatCard from "../../components/StatCard";
 
 import { NextSeo } from "next-seo";
 import { Card } from "react-bootstrap";
@@ -109,9 +108,7 @@ const PostPage: React.FC<Props> = ({
 			) : (
 				<div />
 			)}
-			{
-				//<StatCard data={frontMatter as any} />
-			}
+
 			<div style={{ fontSize: useMobile ? undefined : 24 }}>
 				<MDXRemote {...mdxSource} components={{ Img }} />
 			</div>
