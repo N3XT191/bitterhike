@@ -4,12 +4,15 @@ const Footer = () => {
 			<div
 				style={{
 					width: "100%",
-					height: "1px",
-					backgroundColor: "black",
+					borderTop: "1px solid black",
 					marginTop: "10px",
-					marginBottom: "20px",
+					marginBottom: "10px",
+					display: "flex",
+					justifyContent: "flex-end",
 				}}
-			/>
+			>
+				© Marc Bitterli
+			</div>
 		</>
 	);
 };
