@@ -17,7 +17,7 @@ const Bio = () => {
 					maxHeight: 400,
 					marginBottom: 20,
 				}}
-				src="/marc/6.jpeg"
+				imageUrl="/marc/6.jpeg"
 			/>
 			<p className="text-center">
 				Ich bin Marc. Ich gehe ab und zu wandern. Manchmal ganz alleine,

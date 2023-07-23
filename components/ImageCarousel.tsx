@@ -1,9 +1,8 @@
-// Carousel.tsx
-import React, { CSSProperties } from "react";
+import React from "react";
 import { useSnapCarousel } from "react-snap-carousel";
 import useIsMobile from "./isMobile";
 
-const styles = {
+const carouselStyles = {
 	root: { marginBottom: 20 },
 	scroll: {
 		position: "relative",
@@ -13,7 +12,7 @@ const styles = {
 		listStyleType: "none",
 		marginBlockEnd: 0,
 	},
-	item: (size) => {
+	item: (size: number) => {
 		return {
 			width: size,
 			height: size,
@@ -43,7 +42,7 @@ const styles = {
 		margin: 10,
 	},
 	paginationButtonActive: { opacity: 0.3 },
-} as any;
+} as const;
 
 interface CarouselProps<T> {
 	readonly items: T[];
@@ -70,11 +69,12 @@ export const Carousel = <T extends any>({
 		goTo,
 		snapPointIndexes,
 	} = useSnapCarousel();
-	const useMobile = useIsMobile();
-	const maxLimit = useMobile ? 10 : 20;
+	const isMobile = useIsMobile();
+	const maxLimit = isMobile ? 10 : 20;
+
 	return (
-		<div style={styles.root}>
-			<ul style={styles.scroll} ref={scrollRef} className="scroll">
+		<div style={carouselStyles.root}>
+			<ul style={carouselStyles.scroll} ref={scrollRef} className="scroll">
 				{items.map((item, i) =>
 					renderItem({
 						item,
@@ -82,11 +82,13 @@ export const Carousel = <T extends any>({
 					})
 				)}
 			</ul>
-			<div style={styles.controls} aria-hidden>
+			<div style={carouselStyles.controls} aria-hidden>
 				<button
 					style={{
-						...styles.nextPrevButton,
-						...(activePageIndex <= 0 ? styles.nextPrevButtonDisabled : {}),
+						...carouselStyles.nextPrevButton,
+						...(activePageIndex <= 0
+							? carouselStyles.nextPrevButtonDisabled
+							: {}),
 					}}
 					onClick={() => prev()}
 				>
@@ -97,20 +99,22 @@ export const Carousel = <T extends any>({
 						<button
 							key={i}
 							style={{
-								...styles.paginationButton,
-								...(activePageIndex === i ? styles.paginationButtonActive : {}),
+								...carouselStyles.paginationButton,
+								...(activePageIndex === i
+									? carouselStyles.paginationButtonActive
+									: {}),
 							}}
 							onClick={() => goTo(i)}
 						/>
 					))
 				) : (
-					<div style={{ width: 20, height: 5 }} />
+					<div key="empty-pagination" style={{ width: 20, height: 5 }} />
 				)}
 				<button
 					style={{
-						...styles.nextPrevButton,
+						...carouselStyles.nextPrevButton,
 						...(activePageIndex === pages.length - 1
-							? styles.nextPrevButtonDisabled
+							? carouselStyles.nextPrevButtonDisabled
 							: {}),
 					}}
 					onClick={() => next()}
@@ -135,8 +139,8 @@ export const CarouselItem = ({
 }: CarouselItemProps) => (
 	<li
 		style={{
-			...styles.item(size),
-			...(isSnapPoint ? styles.itemSnapPoint : {}),
+			...carouselStyles.item(size),
+			...(isSnapPoint ? carouselStyles.itemSnapPoint : {}),
 		}}
 	>
 		{children}

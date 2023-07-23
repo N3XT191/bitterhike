@@ -1,19 +1,20 @@
+import React from "react";
 import Link from "next/link";
 import MapWidget from "./MapWidget";
 
-interface Props {
+interface LongHikeSummaryProps {
 	id: string;
 	title: string;
 	sectionGPXUrl: string;
 	fullGPXUrl: string;
-	posts: any[];
+	posts: any[]; // Replace 'any' with the actual type for 'posts' if possible
 	description: string[];
 	finished?: boolean;
 	global?: boolean;
 	onToggleFullScreen?: (fullScreen: boolean) => void;
 }
 
-const LongHikeSummary = ({
+const LongHikeSummary: React.FC<LongHikeSummaryProps> = ({
 	id,
 	title,
 	sectionGPXUrl,
@@ -23,7 +24,7 @@ const LongHikeSummary = ({
 	global,
 	finished,
 	onToggleFullScreen,
-}: Props) => {
+}) => {
 	return (
 		<>
 			<h3 id={id}>
@@ -48,16 +49,14 @@ const LongHikeSummary = ({
 					height={400}
 					sectionLabel="Gewandert"
 					fullLabel="To Do"
-					focusOn={"full"}
+					focusOn="full"
 					global={global}
 					onToggleFullScreen={onToggleFullScreen}
 				/>
 			</div>
 			<div>
-				{description.map((paragraph) => (
-					<>
-						<p>{paragraph}</p>
-					</>
+				{description.map((paragraph, index) => (
+					<p key={index}>{paragraph}</p>
 				))}
 
 				<div style={{ fontSize: 22, marginBottom: 10 }}>
@@ -67,7 +66,7 @@ const LongHikeSummary = ({
 					{posts
 						.sort((a, b) => (a.frontMatter.date > b.frontMatter.date ? 1 : -1))
 						.map((p) => (
-							<li>
+							<li key={p.slug}>
 								<Link href={"/blog/" + p.slug}>
 									<div
 										style={{

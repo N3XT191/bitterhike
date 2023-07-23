@@ -104,7 +104,7 @@ const Wanderungen = ({ posts, longDistanceHikes }) => {
 					marginBottom: 20,
 				}}
 			>
-				<Img src="/NS/67.jpeg" d="" />
+				<Img imageUrl="/NS/67.jpeg" description="" />
 			</div>
 			<p className="display-4 text-center">Wanderungen</p>
 			<div style={{ position: "relative" }}>

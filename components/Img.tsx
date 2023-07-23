@@ -1,29 +1,41 @@
-/* eslint-disable @next/next/no-img-element */
-import { useRef, useState, useLayoutEffect } from "react";
-const Img = ({ d, src }: { d: string; src: string }) => {
-	const ref = useRef<HTMLDivElement>(null);
+import React, { useRef, useState, useLayoutEffect } from "react";
 
-	function useWindowSize() {
-		const [size, setSize] = useState([0, 0]);
+interface ImgProps {
+	description: string;
+	imageUrl: string;
+}
+
+const Img: React.FC<ImgProps> = ({ description, imageUrl }) => {
+	const containerRef = useRef<HTMLDivElement>(null);
+
+	function useWindowSize(): [number, number] {
+		const [windowSize, setWindowSize] = useState<[number, number]>([0, 0]);
+
 		useLayoutEffect(() => {
 			function updateSize() {
-				if (ref.current) {
-					setSize([ref.current.offsetWidth, ref.current.offsetHeight]);
+				if (containerRef.current) {
+					setWindowSize([
+						containerRef.current.offsetWidth,
+						containerRef.current.offsetHeight,
+					]);
 				}
 			}
+
 			window.addEventListener("resize", updateSize);
 			updateSize();
+
 			return () => window.removeEventListener("resize", updateSize);
 		}, []);
-		return size;
-	}
-	const [width] = useWindowSize();
 
-	const [fullScreen, setFullScreen] = useState(false);
+		return windowSize;
+	}
+
+	const [windowWidth] = useWindowSize();
+	const [isFullScreen, setIsFullScreen] = useState(false);
 
 	return (
 		<div>
-			{fullScreen ? (
+			{isFullScreen && (
 				<div
 					style={{
 						position: "fixed",
@@ -31,13 +43,13 @@ const Img = ({ d, src }: { d: string; src: string }) => {
 						left: 0,
 						width: "100%",
 						height: "100vh",
-						backgroundColor: "rgba(0,0,0,0.9)",
+						backgroundColor: "rgba(0, 0, 0, 0.9)",
 						zIndex: 9999999,
 						display: "flex",
-						justifyItems: "center",
+						justifyContent: "center",
 						alignItems: "center",
 					}}
-					onClick={() => setFullScreen(false)}
+					onClick={() => setIsFullScreen(false)}
 				>
 					<img
 						style={{
@@ -46,13 +58,13 @@ const Img = ({ d, src }: { d: string; src: string }) => {
 							objectFit: "contain",
 							margin: "auto",
 						}}
-						src={src}
+						src={imageUrl}
 						alt="image"
 					/>
 				</div>
-			) : undefined}
+			)}
 			<div
-				ref={ref}
+				ref={containerRef}
 				style={{
 					marginTop: 30,
 					marginBottom: 30,
@@ -63,23 +75,24 @@ const Img = ({ d, src }: { d: string; src: string }) => {
 					alignItems: "center",
 					objectPosition: "center",
 				}}
-				onClick={() => setFullScreen(true)}
+				onClick={() => setIsFullScreen(true)}
 			>
 				<img
-					width={Math.min(876, width)}
+					width={Math.min(876, windowWidth)}
 					style={{ objectFit: "contain", maxHeight: 600 }}
-					src={src}
+					src={imageUrl}
 					alt="image"
 				/>
 				<div
 					style={{ width: "100%", display: "flex", justifyContent: "center" }}
 				>
 					<div style={{ maxWidth: "90%", color: "#888", fontSize: 16 }}>
-						{d}
+						{description}
 					</div>
 				</div>
 			</div>
 		</div>
 	);
 };
+
 export default Img;

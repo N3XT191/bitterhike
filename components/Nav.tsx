@@ -3,6 +3,8 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import useIsMobile from "./isMobile";
 
 const Header = () => {
+	const isMobile = useIsMobile();
+
 	return (
 		<>
 			<Navbar expand="lg" style={{ marginBottom: 20 }}>
@@ -15,7 +17,7 @@ const Header = () => {
 							style={{ marginRight: 30, cursor: "pointer" }}
 						/>
 					</Link>
-					{useIsMobile() ? undefined : (
+					{!isMobile && (
 						<Navbar.Brand style={{ fontSize: 40 }} href="/">
 							BitterHike
 						</Navbar.Brand>
@@ -28,53 +30,52 @@ const Header = () => {
 							<Link href="/blog/" passHref>
 								<a style={{ color: "black", textDecoration: "none" }}>
 									<div
-										style={{
-											cursor: "pointer",
-											marginTop: 10,
-											fontSize: 20,
-										}}
+										style={{ cursor: "pointer", marginTop: 10, fontSize: 20 }}
 									>
 										Blog
 									</div>
 								</a>
 							</Link>
 							<Link href="/wanderungen/" passHref>
-								<a style={{ color: "black", textDecoration: "none" }}>
+								<a
+									style={{
+										color: "black",
+										textDecoration: "none",
+										marginLeft: 20,
+									}}
+								>
 									<div
-										style={{
-											cursor: "pointer",
-											marginLeft: 20,
-											marginTop: 10,
-											fontSize: 20,
-										}}
+										style={{ cursor: "pointer", marginTop: 10, fontSize: 20 }}
 									>
 										Wanderungen
 									</div>
 								</a>
 							</Link>
 							<Link href="/bio/" passHref>
-								<a style={{ color: "black", textDecoration: "none" }}>
+								<a
+									style={{
+										color: "black",
+										textDecoration: "none",
+										marginLeft: 20,
+									}}
+								>
 									<div
-										style={{
-											cursor: "pointer",
-											marginLeft: 20,
-											marginTop: 10,
-											fontSize: 20,
-										}}
+										style={{ cursor: "pointer", marginTop: 10, fontSize: 20 }}
 									>
 										Über Mich
 									</div>
 								</a>
 							</Link>
 							<Link href="/live/" passHref>
-								<a style={{ color: "black", textDecoration: "none" }}>
+								<a
+									style={{
+										color: "black",
+										textDecoration: "none",
+										marginLeft: 20,
+									}}
+								>
 									<div
-										style={{
-											cursor: "pointer",
-											marginLeft: 20,
-											marginTop: 10,
-											fontSize: 20,
-										}}
+										style={{ cursor: "pointer", marginTop: 10, fontSize: 20 }}
 									>
 										Live
 									</div>
@@ -89,11 +90,12 @@ const Header = () => {
 					width: "100%",
 					height: "1px",
 					backgroundColor: "black",
-					marginTop: useIsMobile() ? "-20px" : "-40px",
+					marginTop: isMobile ? "-20px" : "-40px",
 					marginBottom: "20px",
 				}}
 			/>
 		</>
 	);
 };
+
 export default Header;

@@ -8,30 +8,31 @@ import {
 } from "react-leaflet";
 import toGeoJSON from "./togeojson";
 
-import L from "leaflet";
+import L, { LatLngTuple } from "leaflet";
 
 import bbox from "turf-bbox";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-gpx";
 
-async function getGPX(path) {
+async function fetchGPX(path: string) {
 	try {
 		return await fetch(path).then((response) => response.text());
 	} catch (e) {}
 }
-const coordinates = [
+
+const defaultCoordinates = [
 	{ lat: 47.3769, lng: 8.54179 },
 	{ lat: 47.4769, lng: 8.54179 },
 	{ lat: 47.3769, lng: 8.44179 },
 ];
 
-let polyline = L.polyline(coordinates, {
+let polyline = L.polyline(defaultCoordinates, {
 	lineJoin: "round",
 });
 
-function useFetcher(fetchSomethingAPI) {
-	const [data, setData] = useState();
+function useFetcher(fetchSomethingAPI: () => Promise<any>) {
+	const [data, setData] = useState<any>();
 
 	useEffect(() => {
 		fetchSomethingAPI().then((response) => {
@@ -42,8 +43,9 @@ function useFetcher(fetchSomethingAPI) {
 
 	return data;
 }
-function useFetcherMany(fetchMany) {
-	const [data, setData] = useState([]);
+
+function useFetcherMany(fetchMany: (() => Promise<any>)[]) {
+	const [data, setData] = useState<any[]>([]);
 
 	useEffect(() => {
 		Promise.all(fetchMany.map((f) => f())).then((response) =>
@@ -55,9 +57,8 @@ function useFetcherMany(fetchMany) {
 
 	return data;
 }
-// eslint-disable-next-line react-hooks/rules-of-hooks
 
-interface Props {
+interface MapWidgetProps {
 	sectionGPXUrl?: string;
 	fullGPXUrl?: string;
 	height: number;
@@ -65,12 +66,13 @@ interface Props {
 	fullLabel?: string;
 	focusOn?: "section" | "full" | "live" | "all";
 	live?: boolean;
-	livePoints?: { lng: number; lat: number }[];
+	livePoints?: { lat: number; lng: number }[];
 	routeListUrls?: string[];
 	global?: boolean;
 	onToggleFullScreen?: (fullScreen: boolean) => void;
 }
-const MapWidget = ({
+
+const MapWidget: React.FC<MapWidgetProps> = ({
 	sectionGPXUrl,
 	fullGPXUrl,
 	height,
@@ -82,24 +84,25 @@ const MapWidget = ({
 	routeListUrls,
 	global,
 	onToggleFullScreen,
-}: Props) => {
+}) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
-	let mapRef = useRef<any>();
+	let mapRef = useRef<L.Map>();
 
-	const [wholeRoute, setWholeRoute] = useState(undefined);
-	const [partRoute, setPartRoute] = useState(undefined);
-	const [routeList, setRouteList] = useState([undefined]);
+	const [wholeRoute, setWholeRoute] = useState<any>();
+	const [partRoute, setPartRoute] = useState<any>();
+	const [routeList, setRouteList] = useState<any[]>([undefined]);
+
 	const wholeRouteGPX = fullGPXUrl
-		? useFetcher(() => getGPX(fullGPXUrl))
+		? useFetcher(() => fetchGPX(fullGPXUrl))
 		: undefined;
 	const partRouteGPX = sectionGPXUrl
-		? useFetcher(() => getGPX(sectionGPXUrl))
+		? useFetcher(() => fetchGPX(sectionGPXUrl))
 		: undefined;
 	const routeListGPXs =
 		routeListUrls?.length > 0
 			? JSON.stringify(
-					useFetcherMany(routeListUrls.map((url) => () => getGPX(url)))
+					useFetcherMany(routeListUrls.map((url) => () => fetchGPX(url)))
 			  )
 			: undefined;
 
@@ -131,7 +134,7 @@ const MapWidget = ({
 		if (routeListGPXs) {
 			const routeListGPXsArray = JSON.parse(routeListGPXs);
 			setRouteList(
-				routeListGPXsArray.map((gpx) =>
+				routeListGPXsArray.map((gpx: string) =>
 					toGeoJSON.gpx(new DOMParser().parseFromString(gpx, "text/xml"))
 				)
 			);
@@ -153,8 +156,8 @@ const MapWidget = ({
 			}
 			if (routeToFocusOn) {
 				const bboxArray = bbox(routeToFocusOn);
-				const corner1 = [bboxArray[1], bboxArray[0]];
-				const corner2 = [bboxArray[3], bboxArray[2]];
+				const corner1 = [bboxArray[1], bboxArray[0]] as LatLngTuple;
+				const corner2 = [bboxArray[3], bboxArray[2]] as LatLngTuple;
 				mapRef.current?.fitBounds([corner1, corner2]);
 			}
 		}
@@ -176,8 +179,8 @@ const MapWidget = ({
 			}
 			if (routeToFocusOn) {
 				const bboxArray = bbox(routeToFocusOn);
-				const corner1 = [bboxArray[1], bboxArray[0]];
-				const corner2 = [bboxArray[3], bboxArray[2]];
+				const corner1 = [bboxArray[1], bboxArray[0]] as LatLngTuple;
+				const corner2 = [bboxArray[3], bboxArray[2]] as LatLngTuple;
 				mapRef.current.fitBounds([corner1, corner2]);
 			}
 		}
@@ -221,7 +224,7 @@ const MapWidget = ({
 					borderRadius: 4,
 				}}
 				onClick={() => {
-					onToggleFullScreen ? onToggleFullScreen(!fullScreen) : null;
+					onToggleFullScreen?.(!fullScreen);
 					setFullScreen(!fullScreen);
 				}}
 			/>

@@ -5,17 +5,17 @@ const Bio = () => {
 	return (
 		<div className="mt-3">
 			<p className="display-4 text-center">Marc Bitterli</p>
-			<Img src="/marc/11.jpeg" d="" />
-			<Img src="/marc/10.jpeg" d="" />
-			<Img src="/marc/9.jpeg" d="" />
-			<Img src="/marc/8.jpeg" d="" />
-			<Img src="/marc/7.jpeg" d="" />
-			<Img src="/marc/6.jpeg" d="" />
-			<Img src="/marc/5.jpeg" d="" />
-			<Img src="/marc/4.jpeg" d="" />
-			<Img src="/marc/3.jpeg" d="" />
-			<Img src="/marc/2.jpeg" d="" />
-			<Img src="/marc/1.jpeg" d="" />
+			<Img imageUrl="/marc/11.jpeg" description="" />
+			<Img imageUrl="/marc/10.jpeg" description="" />
+			<Img imageUrl="/marc/9.jpeg" description="" />
+			<Img imageUrl="/marc/8.jpeg" description="" />
+			<Img imageUrl="/marc/7.jpeg" description="" />
+			<Img imageUrl="/marc/6.jpeg" description="" />
+			<Img imageUrl="/marc/5.jpeg" description="" />
+			<Img imageUrl="/marc/4.jpeg" description="" />
+			<Img imageUrl="/marc/3.jpeg" description="" />
+			<Img imageUrl="/marc/2.jpeg" description="" />
+			<Img imageUrl="/marc/1.jpeg" description="" />
 		</div>
 	);
 };
