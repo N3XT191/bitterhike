@@ -31,7 +31,6 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 						<Card.Text style={{ fontSize: isMobile ? 14 : undefined }}>
 							{post.frontMatter.description}
 						</Card.Text>
-
 						<PostCardData frontMatter={post.frontMatter} short={true} />
 					</Card.Body>
 				</Card>
