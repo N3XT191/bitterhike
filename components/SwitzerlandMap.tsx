@@ -4,49 +4,68 @@ import axios from "axios";
 import { gpx } from "@tmcw/togeojson";
 import { geoDistance } from "d3-geo";
 
-function SwitzerlandMap({ svgUrl, gpxUrls }) {
+function SwitzerlandMap({ gpxUrl }) {
 	const projectionRef = useRef();
 
 	const landmarks = [
-		{ name: "Schloss Chillon", coordinates: [6.9271, 46.4142] },
+		{ name: "Matterhorn", coordinates: [7.6588, 45.9763] },
+		{ name: "Jungfraujoch", coordinates: [7.9822, 46.5472] },
+		{ name: "Kapellbrücke, Luzern", coordinates: [8.305, 47.0502] },
+		{ name: "Genf", coordinates: [6.1481, 46.2044] },
 		{ name: "Rheinfall", coordinates: [8.6124, 47.6779] },
-		{ name: "Jet d'Eau", coordinates: [6.2082, 46.2044] },
-		{ name: "Matterhorn", coordinates: [7.6314, 45.9763] },
-		{ name: "Jungfraujoch", coordinates: [7.9613, 46.5475] },
-		{ name: "Aletschgletscher", coordinates: [8.0522, 46.4892] },
-		{ name: "Zytglogge", coordinates: [7.4481, 46.948] },
-		{ name: "Löwendenkmal", coordinates: [8.3373, 47.0583] },
-		{ name: "Zentrum Paul Klee", coordinates: [7.4667, 46.9386] },
-		{ name: "Grossmünster", coordinates: [8.5434, 47.3702] },
-		{ name: "Ballenberg", coordinates: [8.0636, 46.7415] },
-		{ name: "Schloss Gruyères", coordinates: [7.1513, 46.5837] },
-		{ name: "Stiftsbibliothek St. Gallen", coordinates: [9.3747, 47.4231] },
-		{ name: "Laténium", coordinates: [6.9203, 47.0085] },
-		{ name: "Olympisches Museum", coordinates: [6.6323, 46.5056] },
-		{ name: "Augusta Raurica", coordinates: [7.722, 47.5222] },
-		{ name: "Weinterrassen Lavaux", coordinates: [6.6774, 46.5022] },
-		{ name: "Rigi Kulm", coordinates: [8.4853, 47.0563] },
+		{ name: "Zytglogge, Bern", coordinates: [7.4474, 46.948] },
+		{ name: "Château de Chillon, Montreux", coordinates: [6.9271, 46.4142] },
+		{ name: "Grossmünster Zürich", coordinates: [8.5433, 47.3705] },
+		{ name: "Lausanne Olympic Museum", coordinates: [6.6351, 46.5214] },
+		{ name: "Rigi, Zug", coordinates: [8.5235, 47.0567] },
+		{ name: "Trummelbach Falls", coordinates: [7.9087, 46.5877] },
+		{ name: "Roche Towers", coordinates: [7.5909, 47.5601] },
+		{ name: "Brienzer Rothorn Railway", coordinates: [8.0335, 46.7651] },
+		{ name: "Lavertezzo", coordinates: [8.7582, 46.2326] },
+		{ name: "St. Gallen Kathedrale", coordinates: [9.3703, 47.4235] },
+		{ name: "Mythen, Schwyz", coordinates: [8.6477, 47.0335] },
+		{ name: "Teufelsbrücke", coordinates: [8.7239, 46.6466] },
+		{ name: "Creux du Van", coordinates: [6.6751, 46.9226] },
+		{ name: "Aareschlucht", coordinates: [8.178, 46.7325] },
+		{ name: "Bellinzona", coordinates: [9.0223, 46.1953] },
+		{ name: "Locarno", coordinates: [8.7959, 46.1713] },
+		{ name: "Gotthard", coordinates: [8.6454, 46.5755] },
+		{ name: "Emmental", coordinates: [7.8391, 47.0742] },
+		{ name: "Titlis", coordinates: [8.3964, 46.7727] },
+		{ name: "Landwasser Viaduct", coordinates: [9.674, 46.7047] },
+		{ name: "Kreisviadukt Brusio", coordinates: [10.0962, 46.2432] },
+		{ name: "Giger Museum", coordinates: [7.0828, 46.5783] },
+		{ name: "Hotel Belvedere", coordinates: [7.6673, 46.5443] },
+		{ name: "Munot, Schaffhausen", coordinates: [8.6356, 47.6986] },
+		{ name: "Papiliorama", coordinates: [7.1809, 46.9725] },
 	];
 
 	useEffect(() => {
 		const loadMapAndGpxData = async () => {
-			const gpxResponses = await Promise.all(
-				gpxUrls.map((url) => axios.get(url))
-			);
-
-			const gpxData = gpxResponses.map((response) => {
-				const parser = new DOMParser();
-				const gpxDOM = parser.parseFromString(response.data, "application/xml");
-				return gpx(gpxDOM);
-			});
-
-			renderSvg(gpxData);
+			renderSvg();
 		};
 
 		loadMapAndGpxData();
-	}, [svgUrl, gpxUrls]);
+	}, []);
 
-	const renderSvg = (gpxData) => {
+	useEffect(() => {
+		const loadMapAndGpxData = async () => {
+			const gpxResponse = await axios.get(gpxUrl);
+
+			const parser = new DOMParser();
+			const gpxDOM = parser.parseFromString(
+				gpxResponse.data,
+				"application/xml"
+			);
+			const gpxData = gpx(gpxDOM);
+
+			animateGpx(gpxData); // Animate once at the beginning
+		};
+
+		loadMapAndGpxData();
+	}, [gpxUrl]);
+
+	const renderSvg = () => {
 		const svgContainer = d3.select("svg");
 		svgContainer.html("");
 
@@ -62,16 +81,16 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 
 		const path = d3.geoPath().projection(projection);
 
+		// Append a new group for the map paths.
+		const cantonGroup = svgContainer.append("g").attr("id", "cantonGroup");
+		const countryGroup = svgContainer.append("g").attr("id", "countryGroup");
+		const lakeGroup = svgContainer.append("g").attr("id", "lakeGroup");
+
 		Promise.all([
 			d3.json("/ch.geojson"),
 			d3.json("/ch-lakes.geojson"),
 			d3.json("/ch-cantons.geojson"),
 		]).then(([chData, chLakesData, chCantonsData]) => {
-			// Append a new group for the map paths.
-			const cantonGroup = svgContainer.append("g").attr("id", "cantonGroup");
-			const countryGroup = svgContainer.append("g").attr("id", "countryGroup");
-			const lakeGroup = svgContainer.append("g").attr("id", "lakeGroup");
-
 			// Draw cantons
 			cantonGroup
 				.selectAll("path")
@@ -82,7 +101,8 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 				.attr("stroke-linejoin", "round")
 				.attr("fill", "none")
 				.attr("stroke", "#aaa")
-				.attr("stroke-width", 1);
+				.attr("stroke-width", 0);
+
 			//Draw country paths
 			countryGroup
 				.selectAll("path")
@@ -104,7 +124,6 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 				.attr("d", path)
 				.attr("stroke-linejoin", "round")
 				.attr("fill", "#0000ff");
-			animateGpx(gpxData);
 		});
 
 		projectionRef.current = projection;
@@ -112,21 +131,24 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 
 	const animateGpx = (gpxData) => {
 		const svgContainer = d3.select("svg");
+		svgContainer.select("#gpxGroup").remove();
+		svgContainer.select("#landmarkGroup").remove();
 		const gpxGroup = svgContainer.append("g").raise().attr("id", "gpxGroup");
 
-		// Randomly select a GPX track.
-		const gpx = gpxData[Math.floor(Math.random() * gpxData.length)];
-		gpx.features = gpx.features.filter(
+		// Compute the new index
+
+		gpxData.features = gpxData.features.filter(
 			(feature) => feature.geometry.type === "LineString"
 		);
-		console.log(gpx.features[0].geometry.coordinates.length);
-		gpx.features[0].geometry.coordinates =
-			gpx.features[0].geometry.coordinates.filter(
+		gpxData.features[0].geometry.coordinates =
+			gpxData.features[0].geometry.coordinates.filter(
 				(coordinate, i) =>
-					i % Math.floor(gpx.features[0].geometry.coordinates.length / 220) ===
-						0 || i === gpx.features[0].geometry.coordinates.length - 1
+					i %
+						Math.floor(
+							gpxData.features[0].geometry.coordinates.length / 220
+						) ===
+						0 || i === gpxData.features[0].geometry.coordinates.length - 1
 			);
-
 		// Create a path generator.
 		const pathGenerator = d3.geoPath().projection(projectionRef.current);
 
@@ -135,7 +157,7 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 			"http://www.w3.org/2000/svg",
 			"path"
 		);
-		pathElement.setAttribute("d", pathGenerator(gpx));
+		pathElement.setAttribute("d", pathGenerator(gpxData));
 
 		// Calculate the path length.
 		const pathLength = pathElement.getTotalLength();
@@ -154,9 +176,12 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 			.duration(5000)
 			.ease(d3.easeLinear)
 			.attr("stroke-dashoffset", 0)
-			.attr("z-index", 10);
+			.transition() // added transition
+			.delay(3500) //
+			.duration(1000)
+			.style("opacity", 0); // final opacity
 
-		drawClosestLandmark(gpx.features[0].geometry.coordinates, landmarks);
+		drawClosestLandmark(gpxData.features[0].geometry.coordinates, landmarks);
 	};
 	const drawClosestLandmark = (path, landmarks, skipPoints = 10) => {
 		const svgContainer = d3.select("svg");
@@ -196,7 +221,16 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 				.attr("font-family", "Arial, Helvetica, sans-serif")
 				.attr("font-size", `${fontSize}px`)
 				.attr("fill", "black")
-				.text(labelText);
+				.text(labelText)
+				.style("opacity", 0) // initially hidden
+				.transition()
+				.delay(1000)
+				.duration(1000) // fade-in duration
+				.style("opacity", 1) // final opacity
+				.transition()
+				.delay(6500) // delay before fade-out starts
+				.duration(1000) // fade-out duration
+				.style("opacity", 0); // final opacity
 
 			const textWidth = text.node().getComputedTextLength();
 			const textHeight = fontSize * 1.2; // approximately
@@ -209,7 +243,16 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 				.attr("height", textHeight + padding)
 				.attr("fill", "white")
 				.attr("stroke", "black")
-				.attr("rx", 5);
+				.attr("rx", 5)
+				.style("opacity", 0) // initially hidden
+				.transition()
+				.delay(1000)
+				.duration(1000) // fade-in duration
+				.style("opacity", 1) // final opacity
+				.transition()
+				.delay(6500) // delay before fade-out starts
+				.duration(1000) // fade-out duration
+				.style("opacity", 0); // final opacity
 
 			landmarkGroup
 				.append("circle")
@@ -219,8 +262,12 @@ function SwitzerlandMap({ svgUrl, gpxUrls }) {
 				.attr("fill", "#000")
 				.transition()
 				.delay(1000)
-				.duration(3000)
-				.attr("r", 20);
+				.duration(2000)
+				.attr("r", 20)
+				.transition()
+				.delay(5500) // delay before fade-out starts
+				.duration(1000) // fade-out duration
+				.style("opacity", 0); // final opacity
 		}
 	};
 
