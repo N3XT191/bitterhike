@@ -41,8 +41,14 @@ const Live = () => {
 		};
 
 		fetchData();
+
+		const intervalId = setInterval(fetchData, 60000);
+
+		return () => clearInterval(intervalId);
 	}, []);
+
 	const mobile = useIsMobile();
+
 	return (
 		<div className="mt-3">
 			<NextSeo
@@ -68,4 +74,5 @@ const Live = () => {
 		</div>
 	);
 };
+
 export default Live;
