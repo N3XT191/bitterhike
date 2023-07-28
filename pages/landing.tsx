@@ -43,7 +43,10 @@ export const getStaticProps = async () => {
 	const gpxUrls = posts
 		.map((post) => post.frontMatter.sectionGPXUrl)
 		.concat(longDistanceHikes.map((hike) => hike.fullGPXUrl))
-		.sort(() => Math.random() - 0.5);
+		.concat(longDistanceHikes.map((hike) => hike.fullGPXUrl))
+		.concat(longDistanceHikes.map((hike) => hike.fullGPXUrl))
+		.sort(() => Math.random() - 0.5)
+		.filter((hike) => !hike.includes("/HRP/"));
 	return {
 		props: {
 			gpxUrls,

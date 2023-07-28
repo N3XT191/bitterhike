@@ -2,7 +2,10 @@ import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import axios from "axios";
 import { gpx } from "@tmcw/togeojson";
-import { geoDistance } from "d3-geo";
+import { geoDistance, geoLength } from "d3-geo";
+
+const width = 1348.8688;
+const height = 865.04437;
 
 function SwitzerlandMap({ gpxUrl }) {
 	const projectionRef = useRef();
@@ -41,11 +44,7 @@ function SwitzerlandMap({ gpxUrl }) {
 	];
 
 	useEffect(() => {
-		const loadMapAndGpxData = async () => {
-			renderSvg();
-		};
-
-		loadMapAndGpxData();
+		renderSvg();
 	}, []);
 
 	useEffect(() => {
@@ -57,7 +56,9 @@ function SwitzerlandMap({ gpxUrl }) {
 				gpxResponse.data,
 				"application/xml"
 			);
-			const gpxData = gpx(gpxDOM);
+			const gpxData = gpx(gpxDOM) as any;
+			const feature = gpxData.features[0];
+			drawHeightProfile(feature);
 
 			animateGpx(gpxData); // Animate once at the beginning
 		};
@@ -65,12 +66,105 @@ function SwitzerlandMap({ gpxUrl }) {
 		loadMapAndGpxData();
 	}, [gpxUrl]);
 
+	const drawHeightProfile = (feature) => {
+		let path = feature.geometry.coordinates;
+		path = path.filter(
+			(coordinate, i) =>
+				i % Math.floor(path.length / 200) === 0 || i === path.length - 1
+		);
+		console.log(path.length);
+
+		const svgContainer = d3.select("svg");
+		svgContainer.select("#heightProfileGroup").remove();
+		const heightProfileGroup = svgContainer
+			.append("g")
+			.attr("id", "heightProfileGroup")
+			.attr("transform", "translate(0, 865)"); // Adjust the vertical position of the height profile
+
+		// Data for height profile
+		const heightData = path.map((coords, i) => ({
+			x: i, // Scale x values to fit width of the height profile
+			y: coords[2], // Assuming the third coordinate in the GPX data is the elevation
+		}));
+
+		const xScale = d3
+			.scaleLinear()
+			.range([100, width - 50])
+			.domain([0, path.length - 1]);
+
+		const yScale = d3
+			.scaleLinear()
+			.range([120, 0])
+			.domain(d3.extent(heightData, (d) => d.y));
+
+		// Line generator for the height profile
+		const line = d3
+			.line()
+			.x((d) => xScale(d.x))
+			.y((d) => yScale(d.y));
+
+		// Append the path for the height profile
+		const heightProfilePath = heightProfileGroup
+			.append("path")
+			.datum(heightData)
+			.attr("d", line)
+			.attr("stroke", "green")
+			.attr("fill", "none")
+			.attr("stroke-width", 2);
+
+		// Get the total length of the path
+		const pathLength = heightProfilePath.node().getTotalLength();
+
+		// Animate the height profile line from left to right
+		heightProfilePath
+			.attr("fill", "none")
+			.attr("stroke-width", 3)
+			.attr("stroke-dasharray", pathLength)
+			.attr("stroke-dashoffset", pathLength)
+			.attr("stroke-linejoin", "round")
+			.transition()
+			.duration(5000)
+			.ease(d3.easeLinear)
+			.attr("stroke-dashoffset", 0)
+			.transition() // added transition
+			.delay(3500) //
+			.duration(1000)
+			.style("opacity", 0); // final opacity
+
+		// Add x-axis for distance
+		heightProfileGroup
+			.append("g")
+			.attr("transform", "translate(0, 120)")
+			.call(
+				d3
+					.axisBottom(xScale)
+					.ticks(6)
+					.tickFormat(
+						(d) =>
+							`${
+								Math.floor((d / path.length) * geoLength(feature) * 63710) / 10
+							} km`
+					)
+			)
+			.selectAll("text")
+			.style("font-size", "25");
+
+		// Add y-axis for elevation
+		heightProfileGroup
+			.append("g")
+			.attr("transform", "translate(100, 0)")
+			.call(
+				d3
+					.axisLeft(yScale)
+					.tickFormat((d) => `${d} m`)
+					.ticks(3)
+			)
+			.selectAll("text")
+			.style("font-size", "25");
+	};
 	const renderSvg = () => {
 		const svgContainer = d3.select("svg");
 		svgContainer.html("");
-
-		const width = 1348.8688;
-		const height = 865.04437;
 
 		const projection = d3
 			.geoMercator()
@@ -145,7 +239,7 @@ function SwitzerlandMap({ gpxUrl }) {
 				(coordinate, i) =>
 					i %
 						Math.floor(
-							gpxData.features[0].geometry.coordinates.length / 220
+							gpxData.features[0].geometry.coordinates.length / 200
 						) ===
 						0 || i === gpxData.features[0].geometry.coordinates.length - 1
 			);
@@ -274,7 +368,7 @@ function SwitzerlandMap({ gpxUrl }) {
 	return (
 		<svg
 			style={{ display: "block", maxWidth: "100%", height: "auto" }}
-			viewBox="0 0 1348.8688 865.04437"
+			viewBox={`0 0 ${width} ${height + 180}`}
 			preserveAspectRatio="xMidYMid meet"
 		></svg>
 	);
