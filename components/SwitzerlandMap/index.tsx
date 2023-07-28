@@ -32,7 +32,7 @@ function SwitzerlandMap({ gpxUrl }) {
 				"application/xml"
 			);
 			const gpxData = gpx(gpxDOM) as any;
-			const originalCoordinates = gpxData.features[0].geometry.coordinates;
+			const originalCoordinates = gpxData?.features[0]?.geometry?.coordinates;
 			if (originalCoordinates) {
 				const filteredCoordinates = originalCoordinates.filter(
 					(coordinate, i) =>
