@@ -237,6 +237,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 				worldCopyJump={false}
 				whenCreated={(mapInstance) => {
 					mapRef.current = mapInstance;
+					mapInstance.style.transform = 'scale(3)';
 				}}
 			>
 				<TileLayer
