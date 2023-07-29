@@ -232,12 +232,12 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 				center={[46.57591, 7.84956]}
 				zoom={9}
 				minZoom={7}
-				style={{ height: "100%", width: "100%" }}
+				style={{ height: "100%", width: "100%",transform: "scale(3)"}}
 				crs={L.CRS.EPSG3857}
 				worldCopyJump={false}
 				whenCreated={(mapInstance) => {
 					mapRef.current = mapInstance;
-					mapInstance.style.transform = 'scale(3)';
+					
 				}}
 			>
 				<TileLayer
