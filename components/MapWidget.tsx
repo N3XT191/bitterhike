@@ -232,7 +232,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 				center={[46.57591, 7.84956]}
 				zoom={9}
 				minZoom={7}
-				style={{ height: "100%", width: "100%",transform: "scale(3)"}}
+				style={{ height: "100%", width: "100%",transform: "scale(1)"}}
 				crs={L.CRS.EPSG3857}
 				worldCopyJump={false}
 				whenCreated={(mapInstance) => {
