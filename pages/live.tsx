@@ -56,7 +56,7 @@ const Live = () => {
 				description="Verfolge mich live auf meinen Wanderungen"
 			/>
 			<p className="display-4 text-center">Live Tracking</p>
-			{liveData.length > 0 ? (
+			{true || liveData.length > 0 ? (
 				<MapWidget
 					height={mobile ? 470 : 600}
 					sectionGPXUrl=""
