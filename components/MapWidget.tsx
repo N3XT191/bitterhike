@@ -304,7 +304,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						<div />
 					)}
 				</Pane>
-				{live ? (
+				{live && livePoints?.length>0 ? (
 					<Pane name="live" className="live">
 						<Polyline
 							pathOptions={{ color: "lime", weight: 7 }}
