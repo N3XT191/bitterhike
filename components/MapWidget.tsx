@@ -193,7 +193,6 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	];
 	const key = keys[Math.floor(Math.random() * keys.length)];
 
-	console.log(livePoints.at(0));
 	return (
 		<div
 			style={{
