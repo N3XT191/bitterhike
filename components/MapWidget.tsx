@@ -10,7 +10,7 @@ import {
 } from "react-leaflet";
 import toGeoJSON from "./togeojson";
 
-import L, { LatLngTuple, Icon } from "leaflet";
+import { LatLngTuple, Map, polyline, Browser, CRS } from "leaflet";
 
 import bbox from "turf-bbox";
 
@@ -84,7 +84,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 }) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
-	let mapRef = useRef<L.Map>();
+	let mapRef = useRef<Map>();
 
 	const [wholeRoute, setWholeRoute] = useState<any>();
 	const [partRoute, setPartRoute] = useState<any>();
@@ -103,9 +103,9 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 			  )
 			: undefined;
 
-	let polyline;
+	let polyLine;
 	if (livePoints?.length > 0) {
-		polyline = L.polyline(livePoints, {
+		polyLine = polyline(livePoints, {
 			lineJoin: "round",
 		});
 	}
@@ -140,8 +140,8 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	}, [mapRef.current, routeListGPXs]);
 
 	useEffect(() => {
-		if (focusOn === "live" && polyline) {
-			mapRef.current?.fitBounds(polyline.getBounds());
+		if (focusOn === "live" && polyLine) {
+			mapRef.current?.fitBounds(polyLine.getBounds());
 		} else {
 			const routeToFocusOn =
 				focusOn === "full" ? wholeRoute : focusOn === "all" ? "all" : partRoute;
@@ -159,12 +159,12 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 				mapRef.current?.fitBounds([corner1, corner2]);
 			}
 		}
-	}, [mapRef.current, partRoute, wholeRoute, routeList, focusOn, polyline]);
+	}, [mapRef.current, partRoute, wholeRoute, routeList, focusOn, polyLine]);
 
 	useEffect(() => {
 		mapRef.current?.invalidateSize();
-		if (focusOn === "live" && polyline) {
-			mapRef.current?.fitBounds(polyline.getBounds());
+		if (focusOn === "live" && polyLine) {
+			mapRef.current?.fitBounds(polyLine.getBounds());
 		} else {
 			const routeToFocusOn =
 				focusOn === "full" ? wholeRoute : focusOn === "all" ? "all" : partRoute;
@@ -229,10 +229,10 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 			<MapContainer
 				center={[46.57591, 7.84956]}
 				zoom={9}
-				tap={L.Browser.safari && L.Browser.mobile}
+				tap={Browser.safari && Browser.mobile}
 				minZoom={7}
 				style={{ height: "100%", width: "100%", transform: "scale(1)" }}
-				crs={L.CRS.EPSG3857}
+				crs={CRS.EPSG3857}
 				worldCopyJump={false}
 				whenCreated={(mapInstance) => {
 					mapRef.current = mapInstance;
