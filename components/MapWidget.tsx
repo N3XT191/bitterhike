@@ -303,21 +303,21 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						<div />
 					)}
 				</Pane>
-				{live && livePoints?.length > 0 ? (
+				{live && livePoints?.length > 0 && (
 					<Pane name="live" className="live">
 						<Polyline
 							pathOptions={{ color: "lime", weight: 7 }}
 							positions={livePoints}
 						/>
-						{livePoints?.[0] && (
-							<>
-								<Marker position={livePoints[0]}>
-									<Popup>{JSON.stringify(livePoints[0])}</Popup>
-								</Marker>
-							</>
-						)}
 					</Pane>
-				) : undefined}
+				)}
+				{livePoints?.[0] && (
+					<>
+						<Marker position={livePoints[0]}>
+							<Popup>{JSON.stringify(livePoints[0])}</Popup>
+						</Marker>
+					</>
+				)}
 			</MapContainer>
 			<div
 				style={{
