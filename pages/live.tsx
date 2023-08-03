@@ -22,7 +22,9 @@ const Live = () => {
 		[]
 	);
 
-	const [liveData, setLiveData] = useState<any[]>([]);
+	const [liveData, setLiveData] = useState<
+		{ lat: number; lng: number; age: string }[]
+	>([]);
 
 	const fetchDataPage = async (start) => {
 		const result = await getFeed(start);
@@ -30,7 +32,27 @@ const Live = () => {
 		if (result?.response?.feedMessageResponse?.messages?.message.length > 0) {
 			const messages = result.response.feedMessageResponse.messages.message;
 			const points = messages.map((m) => {
-				return { lat: m.latitude, lng: m.longitude };
+				const date = new Date(m.dateTime);
+				const now = new Date();
+				let delta = Math.abs(now.valueOf() - date.valueOf()) / 1000;
+				const age = [
+					["days", 24 * 60 * 60],
+					["hours", 60 * 60],
+					["minutes", 60],
+					["seconds", 1],
+				].reduce(
+					(acc, [key, value]) => (
+						(acc[key] = Math.floor(delta / (value as number))),
+						(delta -= acc[key] * (value as number)),
+						acc
+					),
+					{}
+				) as any;
+				return {
+					lat: m.latitude,
+					lng: m.longitude,
+					age: age.days + "d " + age.hours + "h " + age.minutes + "m",
+				};
 			});
 			return points;
 		}

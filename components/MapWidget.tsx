@@ -63,7 +63,7 @@ interface MapWidgetProps {
 	fullLabel?: string;
 	focusOn?: "section" | "full" | "live" | "all";
 	live?: boolean;
-	livePoints?: { lat: number; lng: number }[];
+	livePoints?: { lat: number; lng: number; age: string }[];
 	routeListUrls?: string[];
 	global?: boolean;
 	onToggleFullScreen?: (fullScreen: boolean) => void;
@@ -309,14 +309,14 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 							pathOptions={{ color: "lime", weight: 7 }}
 							positions={livePoints}
 						/>
+						{livePoints?.[0] && (
+							<>
+								<Marker position={livePoints[0]}>
+									<Popup>{"vor " + livePoints[0].age}</Popup>
+								</Marker>
+							</>
+						)}
 					</Pane>
-				)}
-				{livePoints?.[0] && (
-					<>
-						<Marker position={livePoints[0]}>
-							<Popup>{JSON.stringify(livePoints[0])}</Popup>
-						</Marker>
-					</>
 				)}
 			</MapContainer>
 			<div
