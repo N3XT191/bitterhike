@@ -5,31 +5,28 @@ import {
 	GeoJSON,
 	Pane,
 	Polyline,
+	Marker,
+	Popup,
 } from "react-leaflet";
 import toGeoJSON from "./togeojson";
 
-import L, { LatLngTuple } from "leaflet";
+import L, { LatLngTuple, Icon } from "leaflet";
 
 import bbox from "turf-bbox";
 
 import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"; // Re-uses images from ~leaflet package
+import "leaflet-defaulticon-compatibility";
+
 import "leaflet-gpx";
+
+// some other code
 
 async function fetchGPX(path: string) {
 	try {
 		return await fetch(path).then((response) => response.text());
 	} catch (e) {}
 }
-
-const defaultCoordinates = [
-	{ lat: 47.3769, lng: 8.54179 },
-	{ lat: 47.4769, lng: 8.54179 },
-	{ lat: 47.3769, lng: 8.44179 },
-];
-
-let polyline = L.polyline(defaultCoordinates, {
-	lineJoin: "round",
-});
 
 function useFetcher(fetchSomethingAPI: () => Promise<any>) {
 	const [data, setData] = useState<any>();
@@ -106,6 +103,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 			  )
 			: undefined;
 
+	let polyline;
 	if (livePoints?.length > 0) {
 		polyline = L.polyline(livePoints, {
 			lineJoin: "round",
@@ -142,7 +140,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	}, [mapRef.current, routeListGPXs]);
 
 	useEffect(() => {
-		if (focusOn === "live") {
+		if (focusOn === "live" && polyline) {
 			mapRef.current?.fitBounds(polyline.getBounds());
 		} else {
 			const routeToFocusOn =
@@ -161,11 +159,11 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 				mapRef.current?.fitBounds([corner1, corner2]);
 			}
 		}
-	}, [mapRef.current, partRoute, wholeRoute, routeList, focusOn]);
+	}, [mapRef.current, partRoute, wholeRoute, routeList, focusOn, polyline]);
 
 	useEffect(() => {
 		mapRef.current?.invalidateSize();
-		if (focusOn === "live") {
+		if (focusOn === "live" && polyline) {
 			mapRef.current?.fitBounds(polyline.getBounds());
 		} else {
 			const routeToFocusOn =
@@ -194,8 +192,8 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 		"uuvwmcKSJPIIH0MuBlw9", //m.b@a
 	];
 	const key = keys[Math.floor(Math.random() * keys.length)];
-	
 
+	console.log(livePoints.at(0));
 	return (
 		<div
 			style={{
@@ -232,13 +230,13 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 			<MapContainer
 				center={[46.57591, 7.84956]}
 				zoom={9}
+				tap={L.Browser.safari && L.Browser.mobile}
 				minZoom={7}
-				style={{ height: "100%", width: "100%",transform: "scale(1)"}}
+				style={{ height: "100%", width: "100%", transform: "scale(1)" }}
 				crs={L.CRS.EPSG3857}
 				worldCopyJump={false}
 				whenCreated={(mapInstance) => {
 					mapRef.current = mapInstance;
-					
 				}}
 			>
 				<TileLayer
@@ -256,6 +254,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 					url="https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.swisstlm3d-wanderwege/default/current/3857/{z}/{x}/{y}.png"
 					opacity={0.5}
 				/>
+
 				<Pane name="partRoute" className="partRoute">
 					{partRoute ? (
 						<GeoJSON
@@ -305,12 +304,19 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						<div />
 					)}
 				</Pane>
-				{live && livePoints?.length>0 ? (
+				{live && livePoints?.length > 0 ? (
 					<Pane name="live" className="live">
 						<Polyline
 							pathOptions={{ color: "lime", weight: 7 }}
 							positions={livePoints}
 						/>
+						{livePoints?.[0] && (
+							<>
+								<Marker position={livePoints[0]}>
+									<Popup>{JSON.stringify(livePoints[0])}</Popup>
+								</Marker>
+							</>
+						)}
 					</Pane>
 				) : undefined}
 			</MapContainer>
@@ -327,7 +333,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 					paddingRight: 10,
 				}}
 			>
-				{sectionGPXUrl ? (
+				{sectionGPXUrl && (
 					<div
 						style={{
 							display: "flex",
@@ -344,8 +350,8 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						/>
 						<div>{sectionLabel ? sectionLabel : "Current Section"}</div>
 					</div>
-				) : undefined}
-				{fullGPXUrl ? (
+				)}
+				{fullGPXUrl && (
 					<div
 						style={{
 							display: "flex",
@@ -362,8 +368,8 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						/>
 						<div>{fullLabel ? fullLabel : "Complete Route"}</div>
 					</div>
-				) : undefined}
-				{live ? (
+				)}
+				{live && (
 					<div
 						style={{
 							display: "flex",
@@ -380,7 +386,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						/>
 						<div>{"Letzte 7 Tage"}</div>
 					</div>
-				) : undefined}
+				)}
 			</div>
 		</div>
 	);
