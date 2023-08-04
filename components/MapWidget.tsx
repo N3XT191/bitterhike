@@ -8,7 +8,7 @@ import {
 	Marker,
 	Popup,
 } from "react-leaflet";
-import toGeoJSON from "./togeojson";
+import { gpx } from "@tmcw/togeojson";
 
 import { LatLngTuple, Map, polyline, Browser, CRS } from "leaflet";
 
@@ -113,9 +113,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	useEffect(() => {
 		if (wholeRouteGPX) {
 			setWholeRoute(
-				toGeoJSON.gpx(
-					new DOMParser().parseFromString(wholeRouteGPX, "text/xml")
-				)
+				gpx(new DOMParser().parseFromString(wholeRouteGPX, "text/xml"))
 			);
 		}
 	}, [mapRef.current, wholeRouteGPX]);
@@ -123,7 +121,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	useEffect(() => {
 		if (partRouteGPX) {
 			setPartRoute(
-				toGeoJSON.gpx(new DOMParser().parseFromString(partRouteGPX, "text/xml"))
+				gpx(new DOMParser().parseFromString(partRouteGPX, "text/xml"))
 			);
 		}
 	}, [mapRef.current, partRouteGPX]);
@@ -132,8 +130,8 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 		if (routeListGPXs) {
 			const routeListGPXsArray = JSON.parse(routeListGPXs);
 			setRouteList(
-				routeListGPXsArray.map((gpx: string) =>
-					toGeoJSON.gpx(new DOMParser().parseFromString(gpx, "text/xml"))
+				routeListGPXsArray.map((gpxString: string) =>
+					gpx(new DOMParser().parseFromString(gpxString, "text/xml"))
 				)
 			);
 		}
