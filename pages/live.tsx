@@ -99,13 +99,13 @@ const Live = () => {
 				<MapWidget
 					height={mobile ? 470 : 600}
 					sectionGPXUrl=""
-					fullGPXUrl="/fluebrig/gpx/fluebrig.gpx"
+					fullGPXUrl="/HRP/gpx/HRP_todo.gpx"
 					fullLabel="Geplante Route"
 					sectionLabel="Letzte 7 Tage"
 					live={true}
 					focusOn="live"
 					livePoints={liveData}
-					global={false}
+					global={true}
 				/>
 			) : (
 				<div>Momentan sind keine Live-Daten vorhanden.</div>
