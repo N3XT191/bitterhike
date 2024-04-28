@@ -162,6 +162,7 @@ const Live = () => {
 					focusOn="live"
 					livePoints={liveData}
 					global={true}
+					startEndMarkers="whole"
 				/>
 			) : (
 				<div>Momentan sind keine Live-Daten vorhanden.</div>
