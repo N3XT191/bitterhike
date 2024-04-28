@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import useIsMobile from "../components/isMobile";
+import { test } from "gray-matter";
 
 const getFeed = async (start) => {
 	const res = await fetch(
@@ -23,7 +24,7 @@ const Live = () => {
 	);
 
 	const [liveData, setLiveData] = useState<
-		{ lat: number; lng: number; age: string }[]
+		{ lat: number; lng: number; age: string }[][]
 	>([]);
 
 	const fetchDataPage = async (start) => {
@@ -54,9 +55,63 @@ const Live = () => {
 					age: age.days + "d " + age.hours + "h " + age.minutes + "m",
 				};
 			});
+
 			return points;
 		}
-		return [];
+		const testPoints = [
+			{
+				lat: 38.803341,
+				lng: -106.372553,
+				age: "0d 0h 0m",
+			},
+			{
+				lat: 38.804341,
+				lng: -106.374553,
+				age: "0d 0h 0m",
+			},
+			{
+				lat: 38.804426,
+				lng: -106.374232,
+				age: "0d 0h 0m",
+			},
+			{
+				lat: 38.804058,
+				lng: -106.374342,
+				age: "0d 0h 0m",
+			},
+			{ lat: 38.679439, lng: -106.383436, age: "0d 0h 0m" },
+			{ lat: 38.679375, lng: -106.38353, age: "0d 0h 0m" },
+			{ lat: 38.679299, lng: -106.383594, age: "0d 0h 0m" },
+			{ lat: 38.83915, lng: -106.333894, age: "0d 0h 0m" },
+			{ lat: 38.840318, lng: -106.333354, age: "0d 0h 0m" },
+			{ lat: 37.256536, lng: -112.910962, age: "0d 0h 0m" },
+			{ lat: 37.257072, lng: -112.906539, age: "0d 0h 0m" },
+		];
+		return testPoints;
+	};
+
+	const closePoints = (a, b) => {
+		const distanceInDeg = Math.sqrt(
+			(a.lng - b.lng) ** 2 + (a.lat - b.lat) ** 2
+		);
+		const distanceInKm = distanceInDeg * 111;
+		console.log(distanceInKm);
+		return distanceInKm < 5;
+	};
+
+	const splitData = (data) => {
+		var pointIndex = 1;
+		var splitData = [[data[0]]];
+
+		while (pointIndex <= data.length - 1) {
+			if (closePoints(data[pointIndex], data[pointIndex - 1])) {
+				splitData[splitData.length - 1].push(data[pointIndex]);
+			} else {
+				splitData.push([data[pointIndex]]);
+			}
+			pointIndex++;
+		}
+		return splitData;
 	};
 
 	useEffect(() => {
@@ -70,18 +125,20 @@ const Live = () => {
 				const points = await fetchDataPage(start);
 				start += 50;
 				data = [...data, ...points];
-				console.log(points.length);
 				if (points.length !== 51) {
 					lastPage = true;
 				}
 			}
+
+			data = splitData(data);
+			console.log(data);
 
 			setLiveData(data);
 		};
 
 		fetchData();
 
-		const intervalId = setInterval(fetchData, 60000);
+		const intervalId = setInterval(fetchData, 600000);
 
 		return () => clearInterval(intervalId);
 	}, []);
@@ -98,10 +155,10 @@ const Live = () => {
 			{true || liveData.length > 0 ? (
 				<MapWidget
 					height={mobile ? 470 : 600}
-					sectionGPXUrl=""
-					fullGPXUrl="/HRP/gpx/HRP_todo.gpx"
-					fullLabel="Geplante Route"
-					sectionLabel="Letzte 7 Tage"
+					fullGPXUrl="/utah/gpx/utah.gpx"
+					sectionGPXUrl="/utah/gpx/utah_done.gpx"
+					fullLabel="Auto"
+					sectionLabel="Geplante Wanderungen"
 					live={true}
 					focusOn="live"
 					livePoints={liveData}

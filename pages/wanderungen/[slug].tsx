@@ -227,6 +227,7 @@ const PostPage: React.FC<Props> = ({
 						sectionLabel="Gewandert"
 						fullLabel="Ganze Route"
 						focusOn={"full"}
+						markers={frontMatter.markers}
 					/>
 				</div>
 			) : (
@@ -234,7 +235,17 @@ const PostPage: React.FC<Props> = ({
 			)}
 			<Separator />
 			<div>
-				<MDXRemote {...mdxSource} components={{ Img }} />
+				<MDXRemote
+					{...mdxSource}
+					components={{
+						Img,
+						tr: (props) => (
+							<tr style={{ borderBottom: "1px solid black" }}>
+								{props.children}
+							</tr>
+						),
+					}}
+				/>
 			</div>
 			{fullScreen ? (
 				<div

@@ -5,9 +5,10 @@ import {
 	GeoJSON,
 	Pane,
 	Polyline,
-	Marker,
 	Popup,
 } from "react-leaflet";
+import Marker from "./MyMarker";
+
 import { gpx } from "@tmcw/togeojson";
 
 import { LatLngTuple, Map, polyline, Browser, CRS } from "leaflet";
@@ -55,6 +56,15 @@ function useFetcherMany(fetchMany: (() => Promise<any>)[]) {
 	return data;
 }
 
+const renderMarker = (label) => {
+	const markerStyle = {};
+	return (
+		<div style={markerStyle} className="pin">
+			{label}
+		</div>
+	);
+};
+
 interface MapWidgetProps {
 	sectionGPXUrl?: string;
 	fullGPXUrl?: string;
@@ -63,10 +73,11 @@ interface MapWidgetProps {
 	fullLabel?: string;
 	focusOn?: "section" | "full" | "live" | "all";
 	live?: boolean;
-	livePoints?: { lat: number; lng: number; age: string }[];
+	livePoints?: { lat: number; lng: number; age: string }[][];
 	routeListUrls?: string[];
 	global?: boolean;
 	onToggleFullScreen?: (fullScreen: boolean) => void;
+	markers?: { position: [number, number]; label: string }[];
 }
 
 const MapWidget: React.FC<MapWidgetProps> = ({
@@ -81,6 +92,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	routeListUrls,
 	global,
 	onToggleFullScreen,
+	markers,
 }) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
@@ -105,7 +117,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 
 	let polyLine;
 	if (livePoints?.length > 0) {
-		polyLine = polyline(livePoints, {
+		polyLine = polyline(livePoints.flat(), {
 			lineJoin: "round",
 		});
 	}
@@ -228,7 +240,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 				center={[46.57591, 7.84956]}
 				zoom={9}
 				tap={Browser.safari && Browser.mobile}
-				minZoom={7}
+				minZoom={global ? 5 : 7}
 				style={{ height: "100%", width: "100%", transform: "scale(1)" }}
 				crs={CRS.EPSG3857}
 				worldCopyJump={false}
@@ -247,10 +259,12 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 							  "https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/{z}/{x}/{y}.jpeg"
 					}
 				/>
-				<TileLayer
-					url="https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.swisstlm3d-wanderwege/default/current/3857/{z}/{x}/{y}.png"
-					opacity={0.5}
-				/>
+				{!global && (
+					<TileLayer
+						url="https://wmts10.geo.admin.ch/1.0.0/ch.swisstopo.swisstlm3d-wanderwege/default/current/3857/{z}/{x}/{y}.png"
+						opacity={0.5}
+					/>
+				)}
 
 				<Pane name="partRoute" className="partRoute">
 					{partRoute ? (
@@ -274,7 +288,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 							data={wholeRoute}
 							style={{
 								color: "#0095ff",
-								weight: 5,
+								weight: 3,
 								opacity: 1,
 							}}
 						/>
@@ -303,17 +317,39 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 				</Pane>
 				{live && livePoints?.length > 0 && (
 					<Pane name="live" className="live">
-						<Polyline
-							pathOptions={{ color: "lime", weight: 7 }}
-							positions={livePoints}
-						/>
+						{livePoints.map((section, i) => (
+							<Polyline
+								pathOptions={{ color: "#D33D17", weight: 7 }}
+								positions={section}
+								key={i}
+							/>
+						))}
 						{livePoints?.[0] && (
 							<>
-								<Marker position={livePoints[0]}>
-									<Popup>{"vor " + livePoints[0].age}</Popup>
-								</Marker>
+								<Marker
+									position={livePoints[0][0]}
+									iconSize={[0, 22]}
+									iconAnchor={[16, 45]}
+									popupAnchor={[0, -22]}
+									icon={renderMarker("")}
+									children={<Popup>{"vor " + livePoints[0][0].age}</Popup>}
+								/>
 							</>
 						)}
+					</Pane>
+				)}
+				{markers && markers?.length > 0 && (
+					<Pane name="markers" className="markers">
+						{markers.map((marker, i) => (
+							<Marker
+								position={marker.position}
+								iconSize={[0, 22]}
+								iconAnchor={[16, 45]}
+								popupAnchor={[0, -22]}
+								icon={renderMarker(marker.label)}
+								children={<div />}
+							/>
+						))}
 					</Pane>
 				)}
 			</MapContainer>
@@ -330,24 +366,6 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 					paddingRight: 10,
 				}}
 			>
-				{sectionGPXUrl && (
-					<div
-						style={{
-							display: "flex",
-							alignItems: "center",
-						}}
-					>
-						<div
-							style={{
-								width: 20,
-								height: 7,
-								backgroundColor: "#0ea800",
-								margin: "0 10px",
-							}}
-						/>
-						<div>{sectionLabel ? sectionLabel : "Current Section"}</div>
-					</div>
-				)}
 				{fullGPXUrl && (
 					<div
 						style={{
@@ -366,6 +384,24 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						<div>{fullLabel ? fullLabel : "Complete Route"}</div>
 					</div>
 				)}
+				{sectionGPXUrl && (
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+						}}
+					>
+						<div
+							style={{
+								width: 20,
+								height: 7,
+								backgroundColor: "#0ea800",
+								margin: "0 10px",
+							}}
+						/>
+						<div>{sectionLabel ? sectionLabel : "Current Section"}</div>
+					</div>
+				)}
 				{live && (
 					<div
 						style={{
@@ -377,11 +413,11 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 							style={{
 								width: 20,
 								height: 7,
-								backgroundColor: "lime",
+								backgroundColor: "#D33D17",
 								margin: "0 10px",
 							}}
 						/>
-						<div>{"Letzte 7 Tage"}</div>
+						<div>{"Letzte 7 Tage (Live)"}</div>
 					</div>
 				)}
 			</div>

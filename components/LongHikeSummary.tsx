@@ -37,7 +37,7 @@ const LongHikeSummary: React.FC<LongHikeSummaryProps> = ({
 				style={{
 					width: 405,
 					maxWidth: "100%",
-					height: 450,
+					height: 405,
 					float: "right",
 					marginBottom: 10,
 					marginLeft: 10,
@@ -47,8 +47,8 @@ const LongHikeSummary: React.FC<LongHikeSummaryProps> = ({
 					sectionGPXUrl={sectionGPXUrl}
 					fullGPXUrl={fullGPXUrl}
 					height={400}
-					sectionLabel="Gewandert"
-					fullLabel="To Do"
+					sectionLabel={id === "utah" ? "Geplante Wanderungen" : "Gewandert"}
+					fullLabel={id === "utah" ? "Auto" : "To Do"}
 					focusOn="full"
 					global={global}
 					onToggleFullScreen={onToggleFullScreen}
@@ -56,12 +56,14 @@ const LongHikeSummary: React.FC<LongHikeSummaryProps> = ({
 			</div>
 			<div>
 				{description.map((paragraph, index) => (
-					<p key={index}>{paragraph}</p>
+					<p key={index}>{paragraph}&nbsp;</p>
 				))}
 
-				<div style={{ fontSize: 22, marginBottom: 10 }}>
-					<b>Blog Posts:</b>
-				</div>
+				{posts && posts.length > 0 && (
+					<div style={{ fontSize: 22, marginBottom: 10 }}>
+						<b>Blog Posts:</b>
+					</div>
+				)}
 				<ul>
 					{posts
 						.sort((a, b) => (a.frontMatter.date > b.frontMatter.date ? 1 : -1))
