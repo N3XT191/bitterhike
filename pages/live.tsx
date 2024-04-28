@@ -95,7 +95,6 @@ const Live = () => {
 			(a.lng - b.lng) ** 2 + (a.lat - b.lat) ** 2
 		);
 		const distanceInKm = distanceInDeg * 111;
-		console.log(distanceInKm);
 		return distanceInKm < 5;
 	};
 

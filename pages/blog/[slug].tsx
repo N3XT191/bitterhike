@@ -103,6 +103,7 @@ const PostPage: React.FC<Props> = ({
 						fullGPXUrl={frontMatter.fullGPXUrl}
 						height={useMobile ? 200 : 400}
 						global={frontMatter.global}
+						startEndMarkers={"part"}
 					/>
 				</div>
 			) : (

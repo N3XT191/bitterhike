@@ -61,6 +61,7 @@ ul li {
 	align-items: center;
 	font-weight: bold;
 	background-color: #fff;
+	z-index: 700 !important;
 }
 
 .pin::after {
@@ -72,4 +73,34 @@ ul li {
 	left: 3px;
 	border: 13px solid transparent;
 	border-top: 21px solid blue;
+}
+
+.table-container {
+	width: 100%;
+	max-width: 100%;
+	overflow-x: scroll;
+}
+
+.start {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 4px solid white;
+	background-color: green;
+}
+
+.end {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 3px solid white;
+	background: conic-gradient(
+		white 90deg,
+		black 90deg 180deg,
+		white 180deg 270deg,
+		black 270deg
+	);
+	background-repeat: repeat;
+	background-size: 5px 5px;
+	background-position: top left;
 }

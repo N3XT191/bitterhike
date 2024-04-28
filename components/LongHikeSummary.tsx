@@ -52,6 +52,7 @@ const LongHikeSummary: React.FC<LongHikeSummaryProps> = ({
 					focusOn="full"
 					global={global}
 					onToggleFullScreen={onToggleFullScreen}
+					startEndMarkers={"whole"}
 				/>
 			</div>
 			<div>

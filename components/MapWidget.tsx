@@ -56,13 +56,19 @@ function useFetcherMany(fetchMany: (() => Promise<any>)[]) {
 	return data;
 }
 
-const renderMarker = (label) => {
-	const markerStyle = {};
-	return (
-		<div style={markerStyle} className="pin">
-			{label}
-		</div>
-	);
+const renderMarker = (marker) => {
+	switch (marker.type) {
+		case "start":
+			return <div className="start"></div>;
+		case "end":
+			return <div className="end"></div>;
+		case "start-small":
+			return <div className="start-small"></div>;
+		case "end-small":
+			return <div className="end-small"></div>;
+		default:
+			return <div className="pin">{marker.label}</div>;
+	}
 };
 
 interface MapWidgetProps {
@@ -78,6 +84,7 @@ interface MapWidgetProps {
 	global?: boolean;
 	onToggleFullScreen?: (fullScreen: boolean) => void;
 	markers?: { position: [number, number]; label: string }[];
+	startEndMarkers?: string;
 }
 
 const MapWidget: React.FC<MapWidgetProps> = ({
@@ -93,6 +100,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	global,
 	onToggleFullScreen,
 	markers,
+	startEndMarkers,
 }) => {
 	const [fullScreen, setFullScreen] = useState(false);
 
@@ -203,6 +211,8 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 	];
 	const key = keys[Math.floor(Math.random() * keys.length)];
 
+	const routeForMarkers = startEndMarkers === "whole" ? wholeRoute : partRoute;
+
 	return (
 		<div
 			style={{
@@ -265,18 +275,19 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						opacity={0.5}
 					/>
 				)}
-
 				<Pane name="partRoute" className="partRoute">
 					{partRoute ? (
-						<GeoJSON
-							key={1}
-							data={partRoute}
-							style={{
-								color: "#0ea800",
-								weight: 7,
-								opacity: 1,
-							}}
-						/>
+						<>
+							<GeoJSON
+								key={1}
+								data={partRoute}
+								style={{
+									color: "#0ea800",
+									weight: 7,
+									opacity: 1,
+								}}
+							/>
+						</>
 					) : (
 						<div />
 					)}
@@ -296,34 +307,56 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 						<div />
 					)}
 				</Pane>
+				{startEndMarkers && routeForMarkers && (
+					<Pane name="startEndMarkers" className="markers">
+						<Marker
+							position={{
+								lat: routeForMarkers.features[0].geometry.coordinates[0][1],
+								lng: routeForMarkers.features[0].geometry.coordinates[0][0],
+							}}
+							iconSize={[20, 20]}
+							iconAnchor={[10, 10]}
+							popupAnchor={[0, -20]}
+							icon={renderMarker({ label: "", type: "start" })}
+							children={""}
+						/>
+						<Marker
+							position={{
+								lat: routeForMarkers.features[0].geometry.coordinates.slice(
+									-1
+								)[0][1],
+								lng: routeForMarkers.features[0].geometry.coordinates.slice(
+									-1
+								)[0][0],
+							}}
+							iconSize={[20, 20]}
+							iconAnchor={[10, 10]}
+							popupAnchor={[0, -20]}
+							icon={renderMarker({ label: "", type: "end" })}
+							children={""}
+						/>
+					</Pane>
+				)}
 				<Pane name={"route"}>
-					{routeList?.length > 1 ? (
+					{routeList?.length > 1 &&
 						routeList.map((route2, i) => {
 							return (
-								<GeoJSON
-									key={i + 100}
-									data={route2}
-									style={{
-										color: "#0095ff",
-										weight: 5,
-										opacity: 1,
-									}}
-								/>
+								<>
+									<GeoJSON
+										key={i + 100}
+										data={route2}
+										style={{
+											color: "#0095ff",
+											weight: 5,
+											opacity: 1,
+										}}
+									/>
+								</>
 							);
-						})
-					) : (
-						<div />
-					)}
-				</Pane>
+						})}
+				</Pane>{" "}
 				{live && livePoints?.length > 0 && (
 					<Pane name="live" className="live">
-						{livePoints.map((section, i) => (
-							<Polyline
-								pathOptions={{ color: "#D33D17", weight: 7 }}
-								positions={section}
-								key={i}
-							/>
-						))}
 						{livePoints?.[0] && (
 							<>
 								<Marker
@@ -331,11 +364,18 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 									iconSize={[0, 22]}
 									iconAnchor={[16, 45]}
 									popupAnchor={[0, -22]}
-									icon={renderMarker("")}
+									icon={renderMarker({})}
 									children={<Popup>{"vor " + livePoints[0][0].age}</Popup>}
 								/>
 							</>
 						)}
+						{livePoints.map((section, i) => (
+							<Polyline
+								pathOptions={{ color: "#D33D17", weight: 7 }}
+								positions={section}
+								key={i}
+							/>
+						))}
 					</Pane>
 				)}
 				{markers && markers?.length > 0 && (
@@ -346,7 +386,7 @@ const MapWidget: React.FC<MapWidgetProps> = ({
 								iconSize={[0, 22]}
 								iconAnchor={[16, 45]}
 								popupAnchor={[0, -22]}
-								icon={renderMarker(marker.label)}
+								icon={renderMarker(marker)}
 								children={<div />}
 							/>
 						))}

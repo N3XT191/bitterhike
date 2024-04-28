@@ -148,35 +148,41 @@ const PostPage: React.FC<Props> = ({
 					justifyContent: "space-between",
 					width: "100%",
 					flexDirection: useMobile ? "column-reverse" : "row",
+					flexGrow: "unset",
 				}}
 			>
 				<div>
 					<b style={{ fontSize: 24 }}>Blog Posts:</b>
-					{posts
-						.sort((a, b) => (a.frontMatter.date > b.frontMatter.date ? 1 : -1))
-						.map((p) => (
-							<li>
-								<Link href={"/blog/" + p.slug}>
-									<div
-										style={{
-											marginBottom: 10,
-											color: "#0d6efd",
-											fontSize: 20,
-											cursor: "pointer",
-											textDecoration: "underline",
-										}}
-									>
-										{p.frontMatter.title}
-									</div>
-								</Link>
-							</li>
-						))}
+					<ul>
+						{posts
+							.sort((a, b) =>
+								a.frontMatter.date > b.frontMatter.date ? 1 : -1
+							)
+							.map((p) => (
+								<li>
+									<Link href={"/blog/" + p.slug}>
+										<div
+											style={{
+												marginBottom: 10,
+												color: "#0d6efd",
+												fontSize: 20,
+												cursor: "pointer",
+												textDecoration: "underline",
+											}}
+										>
+											{p.frontMatter.title}
+										</div>
+									</Link>
+								</li>
+							))}
+					</ul>
 				</div>
 				<Card
 					style={{
 						margin: 10,
 						marginBottom: 30,
 						zIndex: 1,
+						height: "100%",
 					}}
 				>
 					<Card.Body>
@@ -228,6 +234,7 @@ const PostPage: React.FC<Props> = ({
 						fullLabel="Ganze Route"
 						focusOn={"full"}
 						markers={frontMatter.markers}
+						startEndMarkers="whole"
 					/>
 				</div>
 			) : (
@@ -240,7 +247,11 @@ const PostPage: React.FC<Props> = ({
 					components={{
 						Img,
 						tr: (props) => (
-							<tr style={{ borderBottom: "1px solid black" }}>
+							<tr
+								style={{
+									borderBottom: "1px solid black",
+								}}
+							>
 								{props.children}
 							</tr>
 						),
