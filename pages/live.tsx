@@ -59,33 +59,8 @@ const Live = () => {
 			return points;
 		}
 		const testPoints = [
-			{
-				lat: 38.803341,
-				lng: -106.372553,
-				age: "0d 0h 0m",
-			},
-			{
-				lat: 38.804341,
-				lng: -106.374553,
-				age: "0d 0h 0m",
-			},
-			{
-				lat: 38.804426,
-				lng: -106.374232,
-				age: "0d 0h 0m",
-			},
-			{
-				lat: 38.804058,
-				lng: -106.374342,
-				age: "0d 0h 0m",
-			},
-			{ lat: 38.679439, lng: -106.383436, age: "0d 0h 0m" },
-			{ lat: 38.679375, lng: -106.38353, age: "0d 0h 0m" },
-			{ lat: 38.679299, lng: -106.383594, age: "0d 0h 0m" },
-			{ lat: 38.83915, lng: -106.333894, age: "0d 0h 0m" },
-			{ lat: 38.840318, lng: -106.333354, age: "0d 0h 0m" },
 			{ lat: 37.256536, lng: -112.910962, age: "0d 0h 0m" },
-			{ lat: 37.257072, lng: -112.906539, age: "0d 0h 0m" },
+			{ lat: 36.1803, lng: -115.4456, age: "0d 0h 0m" },
 		];
 		return testPoints;
 	};
