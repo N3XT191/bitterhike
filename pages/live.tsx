@@ -29,9 +29,11 @@ const Live = () => {
 
 	const fetchDataPage = async (start) => {
 		const result = await getFeed(start);
+		console.log(result);
 
 		if (result?.response?.feedMessageResponse?.messages?.message.length > 0) {
 			const messages = result.response.feedMessageResponse.messages.message;
+			console.log(messages);
 			const points = messages.map((m) => {
 				const date = new Date(m.dateTime);
 				const now = new Date();
@@ -55,14 +57,16 @@ const Live = () => {
 					age: age.days + "d " + age.hours + "h " + age.minutes + "m",
 				};
 			});
+			console.log(points);
 
 			return points;
+		} else {
+			const testPoints = [
+				{ lat: 37.256536, lng: -112.910962, age: "0d 0h 0m" },
+				{ lat: 36.1803, lng: -115.4456, age: "0d 0h 0m" },
+			];
+			return testPoints;
 		}
-		const testPoints = [
-			{ lat: 37.256536, lng: -112.910962, age: "0d 0h 0m" },
-			{ lat: 36.1803, lng: -115.4456, age: "0d 0h 0m" },
-		];
-		return testPoints;
 	};
 
 	const closePoints = (a, b) => {
