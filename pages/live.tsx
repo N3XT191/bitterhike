@@ -36,6 +36,7 @@ const Live = () => {
 			console.log(messages);
 			const points = messages.map((m) => {
 				const date = new Date(m.dateTime);
+				console.log(date);
 				const now = new Date();
 				let delta = Math.abs(now.valueOf() - date.valueOf()) / 1000;
 				const age = [
