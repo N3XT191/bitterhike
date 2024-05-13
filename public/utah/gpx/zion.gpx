@@ -6,41 +6,11 @@
     <link href="http://www.alltrails.com">
       <text>AllTrails, LLC</text>
     </link>
-    <bounds minlat="37.2527" minlon="-112.94042" maxlat="37.29702" maxlon="-112.88679"/>
+
   </metadata>
   <trk>
     <name><![CDATA[Afternoon hike at East Mesa Trail to East Rim Trail and Observation Point]]></name>
     <src>AllTrails</src>
-    <trkseg>
-      <trkpt lat="37.26776" lon="-112.89915">
-        <ele>1965.99</ele>
-        <time>2024-05-13T14:09:10Z</time>
-      </trkpt>
-      <trkpt lat="37.26775" lon="-112.8992">
-        <ele>1965.45</ele>
-        <time>2024-05-13T14:09:13Z</time>
-      </trkpt>
-      <trkpt lat="37.26775" lon="-112.89924">
-        <ele>1965.15</ele>
-        <time>2024-05-13T14:09:15Z</time>
-      </trkpt>
-      <trkpt lat="37.26774" lon="-112.89927">
-        <ele>1964.93</ele>
-        <time>2024-05-13T14:09:18Z</time>
-      </trkpt>
-      <trkpt lat="37.26772" lon="-112.8993">
-        <ele>1964.83</ele>
-        <time>2024-05-13T14:09:22Z</time>
-      </trkpt>
-      <trkpt lat="37.26771" lon="-112.89935">
-        <ele>1964.74</ele>
-        <time>2024-05-13T14:09:26Z</time>
-      </trkpt>
-      <trkpt lat="37.26771" lon="-112.89938">
-        <ele>1964.73</ele>
-        <time>2024-05-13T14:09:30Z</time>
-      </trkpt>
-    </trkseg>
     <trkseg>
       <trkpt lat="37.26731" lon="-112.90581">
         <ele>1949.29</ele>
