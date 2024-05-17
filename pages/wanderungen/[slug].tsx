@@ -58,7 +58,7 @@ export const getStaticProps = async ({
 	const imageUrls = photos
 		.map((filename) => {
 			if (
-				["jpeg", ".png", ".jpg"].includes(filename.slice(filename.length - 4))
+				["jpeg", ".png", ".jpg", ".JPG", ".JPEG" ].includes(filename.slice(filename.length - 4))
 			) {
 				return filename;
 			} else {
