@@ -55,17 +55,23 @@ export const getStaticProps = async ({
 			slug: filename.split(".")[0],
 		};
 	});
+	const sorting = (slug) => {
+		if (slug === "utah") return (a, b) => (a > b ? 1 : -1);
+		else return (a, b) => (parseInt(a) > parseInt(b) ? 1 : -1);
+	};
 	const imageUrls = photos
 		.map((filename) => {
 			if (
-				["jpeg", ".png", ".jpg", ".JPG", ".JPEG" ].includes(filename.slice(filename.length - 4))
+				["jpeg", ".png", ".jpg", ".JPG", "JPEG"].includes(
+					filename.slice(filename.length - 4)
+				)
 			) {
 				return filename;
 			} else {
 				return null;
 			}
 		})
-		.sort((a, b) => (parseInt(a) > parseInt(b) ? 1 : -1))
+		.sort(sorting(slug))
 		.filter((e) => e && !e.includes("thumb"))
 		.map((e) => frontMatter.images + e);
 	return {
