@@ -27,12 +27,9 @@ const LongHikeSummary: React.FC<LongHikeSummaryProps> = ({
 }) => {
 	return (
 		<>
-			<h3 id={id}>
-				<Link href={"/wanderungen/" + id.toLowerCase()}>
-					{title + (finished ? " (Abgeschlossen)" : " (Aktiv)")}
-				</Link>
-			</h3>
-
+			<Link href={"/wanderungen/" + id.toLowerCase()}>
+				<h3 id={id}>{title + (finished ? " (Abgeschlossen)" : " (Aktiv)")}</h3>
+			</Link>
 			<div
 				style={{
 					width: 405,
