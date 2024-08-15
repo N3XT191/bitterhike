@@ -62,10 +62,7 @@ const Live = () => {
 
 			return points;
 		} else {
-			const testPoints = [
-				{ lat: 37.256536, lng: -112.910962, age: "0d 0h 0m" },
-				{ lat: 36.1803, lng: -115.4456, age: "0d 0h 0m" },
-			];
+			const testPoints = [{ lat: 42.498176, lng: 2.087601, age: "0d 0h 0m" }];
 			return testPoints;
 		}
 	};
@@ -134,10 +131,8 @@ const Live = () => {
 			{true || liveData.length > 0 ? (
 				<MapWidget
 					height={mobile ? 470 : 600}
-					fullGPXUrl="/utah/gpx/utah.gpx"
-					sectionGPXUrl="/utah/gpx/utah_done.gpx"
-					fullLabel="Auto"
-					sectionLabel="Geplante Wanderungen"
+					fullGPXUrl="/HRP/gpx/HRP_2024.gpx"
+					fullLabel="Geplante Wanderung"
 					live={true}
 					focusOn="live"
 					livePoints={liveData}
