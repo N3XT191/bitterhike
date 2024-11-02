@@ -62,7 +62,7 @@ const Live = () => {
 
 			return points;
 		} else {
-			const testPoints = [{ lat: 42.498176, lng: 2.087601, age: "0d 0h 0m" }];
+			const testPoints = [{ lat: 47.1694603, lng: 7.2576147, age: "0d 0h 0m" }];
 			return testPoints;
 		}
 	};
