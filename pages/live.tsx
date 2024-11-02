@@ -131,12 +131,12 @@ const Live = () => {
 			{true || liveData.length > 0 ? (
 				<MapWidget
 					height={mobile ? 470 : 600}
-					fullGPXUrl="/HRP/gpx/HRP_2024.gpx"
+					fullGPXUrl="/jura/gpx/jura.gpx"
 					fullLabel="Geplante Wanderung"
 					live={true}
 					focusOn="live"
 					livePoints={liveData}
-					global={true}
+					global={false}
 					startEndMarkers="whole"
 				/>
 			) : (
